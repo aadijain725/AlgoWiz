@@ -32,24 +32,24 @@ Data Structures (to learn basics):
 Earlier basics such as arrays, linked lists etc.
 
 ## Non-functional Requirements
-
-1.Scalability: 
+ 
+1. Scalability: 
 How to handle millions of users?
 UI heavy instead  -- lot of users can access the website at once 
 This depends on how server heavy our app is and where we are hosting it.
 We’ll start out with a small backend like NoSQL (Google Firebase) that can easily be scaled as required in the future. 
 
-2.Security and Privacy: 
+2. Security and Privacy: 
 No user data will be gathered.
 Stretch goals will utilize OAuth to avoid storing passwords.
 
-3.Usability: 
+3. Usability: 
 Targeting people with basic computer science background knowledge (will not be explaining basic structures such as for loops, conditionals etc). 
 People who have any experience with some basic CS concepts will easily be able to access and utilize our website. 
 Heavy emphasis on user friendly UI. 
 Follow W3C Accessibility Standards wherever possible. 
 
-4.Portability and compatibility: Web app (some computer + stable wifi)
+4. Portability and compatibility: Web app (some computer + stable wifi)
  
 External Requirements
 Stable internet connection -- for lag-free experience
