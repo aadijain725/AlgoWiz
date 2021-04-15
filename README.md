@@ -1,10 +1,10 @@
-#AlgoWiz
+# AlgoWiz
 CSE 403: AlgoWiz
 
 
-#Product description
+# Product description
 
-##Major Goals : 
+## Major Goals : 
 1. 3 main Tiers for learning (Beginner, Intermediate, Advanced).
 At Least 1 Algorithm per tier. 
 Each tier has its own section which will contain introductory material and a list of prerequisite skills. 
@@ -26,7 +26,7 @@ A reward system to help motivate studying. Plus adding a leaderboard.
 Data Structures (to learn basics):
 Earlier basics such as arrays, linked lists etc.
 
-##Non-functional Requirements
+## Non-functional Requirements
 
 1.Scalability: 
 How to handle millions of users?
