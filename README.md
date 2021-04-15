@@ -18,7 +18,7 @@ Visualize the internal workings of each algorithm.
 Stepping through the code and letting the user see how to modify/change the output.
 4. Development of an interactive web-based platform
 
-##Stretch Goals : 
+## Stretch Goals : 
 User Database (Profiles) to keep track of their progress -
 Using Google API to setup a user database system to store and update user progress, 
 Gamified Point system (reward points) -
