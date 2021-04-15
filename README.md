@@ -1,6 +1,6 @@
 # AlgoWiz
-CSE 403: AlgoWiz
 
+A web application for aiding computer science students by helping them study and review computer science concepts via definitions and interactives, as well as quizzes on those topics that will help in strengthening grasp on those concepts.
 
 # Product description
 
