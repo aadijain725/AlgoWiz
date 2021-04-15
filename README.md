@@ -10,7 +10,7 @@ At Least 1 Algorithm per tier.
 Each tier has its own section which will contain introductory material and a list of prerequisite skills. 
 
 
-2.Quiz system 
+2. Quiz system 
 Test understanding of the particular concept.
 Each concept in each section has its own section 
 On getting the answers correct, we give some positive feedback (great work) and recommended the next steps
