@@ -40,5 +40,8 @@ Shivam Drishti Bhatia:
 Wendy Jiang: Created Trello for the team to organize tasks. Made edits to the requirement document. Researched on Java backend framework and watched videos on Spring framework
 to get familiar with its usage on backend.
 
+Pranesh Reddy Jambula:
+
+Michael Wen:
 
 ## Plans for following week: 
