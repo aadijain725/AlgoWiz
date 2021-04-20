@@ -36,6 +36,6 @@ lessons and quizes.
 
 [AlgoWiz Requirements and Policies]() 
 
-[Status Reports](AlgoWiz/blob/main/status-reports)
+[Status Reports](/status-reports)
 
 
