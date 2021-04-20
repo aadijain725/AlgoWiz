@@ -16,7 +16,7 @@ understanding of the particular concept. Users recieve feedback on both correct
 and incorrect answers as each answer is submitted. Correct answers display encouraging visuals while wrong answers provide hints. Users are not required to 
 pass quizzes to procede to other lessons. 
 
-3. **Interactive Demo** - Each lesson contains at least 1 visual aid to help illustrate concepts. Interactive Demos have a simple to understand UI that allows
+3. **Interactive Demo** - Each lesson contains at least one visual aid to help illustrate concepts. Interactive Demos have a simple to understand UI that allows
 the user to procede or review at their own pace. Code demos allow users to 
 visualize the internal workings of each algorithm by stepping through the code and letting the user see how to modify/change the output.
 
@@ -29,10 +29,14 @@ integrate more content and features.
 2. **Gamified Point System** - A reward system to motivate studying. 
 3. **Online Leaderboard** - Public competition to encourage students to explore the site and attempt more lessons and quizes. 
 
-## Documentation
+## Directory Map
 
-[Getting Started Guide]()
+**[api](/api):** Backend Code 
 
-[AlgoWiz Requirements and Policies](/docs/requirements.md) 
+**[docs](/docs):** App and Team Policy documentation
 
-[Status Reports](/status-reports)
+**[planning](/planning):** Wireframes, UI mockups, and project planning
+
+**[site](/site):** Frontend source code
+
+**[status-reports](/status-reports):** Weekly status reports

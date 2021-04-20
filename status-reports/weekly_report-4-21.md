@@ -1,15 +1,98 @@
-# Team Meets
+# Status Report - Week 2 - 04/21/2021
 
-## Frontend Team:
+## Team Report
+<!-- status update for the TA, including an agenda for the project meeting -->
 
-Progress: 
-1. Designed possible layouts for the website
-2. Worked on the homepage, quiz section and some of the visualiser :https://whimsical.com/algowiz-Tr266b6UioZrZhnNJmAu7U
-4. Decided on what sections need to be present/ worked on when
+### Last Weeks Team Goals
+<!-- should be an exact copy of the third section from last week -->
+- Set up Git Repository, including directory structure.
+- Converting google docs to Markdown on github
+- Rewrite Requirement doc to use more technical language (complete sentences, make each section clear without references to other documents)
+- Remove tier system and document new functional requirements to include tag system and organize by topic.
+- Set up a boilerplate React Application
+- Begin wireframe diagrams for UI
+- Research which provider / Architecture we decide for our database + server 
+- Research MVP / MVVM models
+- Research on making a JAVA API 
 
-TODO:
-1. Decide on Visualizer
-2. Settup some react infrastructure 
+### Progress & Issues
+<!--  what you did, what worked, what you learned, where you had trouble, and where you are stuck. -->
+- [x] Set up Git Repository, including directory structure.
+- [x] Converting google docs to Markdown on github
+- [x] Rewrite Requirement doc to use more technical language (complete sentences, make each section clear without references to other documents)
+- [x] Remove tier system and document new functional requirements to include tag system and organize by topic.
+- [ ] Set up a boilerplate React Application
+- [x] Begin wireframe diagrams for UI
+- [ ]Research which provider / Architecture we decide for our database + server 
+- [ ] Research MVP / MVVM models
+- [ ] Research on making a JAVA API 
 
-## Backend Team:
-1. 
+### Next Weeks Team Goals
+<!-- outline your plans and goals for the following week. 
+   For the team report, this subsection should be higher-level and indicate who is responsible for what tasks. Also, it’s good to include longer-term goals in this list as well, to keep the bigger picture in mind and plan beyond just the next week. -->
+- [ ] Set up a boilerplate React Application
+- [ ] Finalize wireframe diagrams for Homepage
+- [ ] Finalize wireframe diagrams for Lessons
+- [ ] Finalize wireframe diagrams for Quiz
+- [ ] Begin wireframe diagrams for Interactive Visuals
+- [ ]Research which provider / Architecture we decide for our database + server 
+- [ ] Research MVP / MVVM models
+- [ ] Research on making a JAVA API 
+
+***
+
+## Individual Contributions
+
+### Last Weeks Individual Goals
+
+**Aadi Jain:**
+
+* **Shivam Drishti Bhatia:** 
+
+* **Estevan Seyfried:**
+    * Work on mockups 
+    * Setup React Application
+    * Proofread and convert Docs to Markdown
+
+* **Wendy Jiang:** 
+
+* **Michael Wen:**
+
+* **Pranesh Reddy Jambula:** 
+
+### Members Progress & Issues
+
+**Aadi Jain:**
+
+* **Shivam Drishti Bhatia:** 
+
+* **Estevan Seyfried:** 
+    - [x] Worked with Aadi and Shivam to create wireframe mockups
+    - [x] Proofread, rewrote, and converted documentaion to markdown
+    - [ ] Fell behind on react app, need to set up the blank app and 
+    readme so other team members can easily start in on their own machines. 
+
+* **Wendy Jiang:** 
+
+* **Michael Wen:**
+
+* **Pranesh Reddy Jambula:** 
+
+### Next Weeks Individual Goals
+<!-- Outline your plans and goals for the following week. 
+    Bullet points are fine. If tasks from one week aren’t yet complete, they should roll over into tasks for the next week -->
+    
+**Aadi Jain:**
+
+* **Shivam Drishti Bhatia:** 
+
+* **Estevan Seyfried:** 
+    * Continue wireframing and mockups for the other site elements
+    * Create blank react app and readme
+    * Begin breaking down app wireframes into react component stubs 
+
+* **Wendy Jiang:** 
+
+* **Michael Wen:**
+
+* **Pranesh Reddy Jambula:** 
