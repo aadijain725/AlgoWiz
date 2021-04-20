@@ -2,7 +2,7 @@
 
 AlgoWiz is a web application to help students study and review computer science concepts via definitions, interactive demos, and quizzes.
 
-## Major Goals : 
+## Major Goals
 1. **Lessons** - Organize lessons by topic/category (Sorting Algorithms, Graphs, etc.
 At least one lesson per topic with three topics planned for initial release.
 Users can visit lessons in any order (there is no locked progession system).
@@ -24,18 +24,15 @@ visualize the internal workings of each algorithm by stepping through the code a
 on a single easy to navigate web based platform designed to be easy to scale and
 integrate more content and features.
 
-## Stretch Goals : 
-* User Database (Profiles) to allow users to keep track of their progress
-* Gamified Point System (reward points) A reward system to help motivate studying. 
-* Online Leaderboard to encourage students to explore the site and attempt more 
-lessons and quizes. 
+## Stretch Goals
+1. **User Database** - User profiles will allow users to keep track of their progress.
+2. **Gamified Point System** - A reward system to motivate studying. 
+3. **Online Leaderboard** - Public competition to encourage students to explore the site and attempt more lessons and quizes. 
 
 ## Documentation
 
 [Getting Started Guide]()
 
-[AlgoWiz Requirements and Policies]() 
+[AlgoWiz Requirements and Policies](/docs/requirements.md) 
 
 [Status Reports](/status-reports)
-
-
