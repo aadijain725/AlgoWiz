@@ -42,6 +42,6 @@ to get familiar with its usage on backend.
 
 Pranesh Reddy Jambula:
 
-Michael Wen:
+Michael Wen: Continued research on Java backend and the MVC model.
 
 ## Plans for following week: 
