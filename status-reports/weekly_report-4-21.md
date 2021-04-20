@@ -23,9 +23,9 @@
 - [x] Remove tier system and document new functional requirements to include tag system and organize by topic.
 - [ ] Set up a boilerplate React Application
 - [x] Begin wireframe diagrams for UI
-- [ ]Research which provider / Architecture we decide for our database + server 
-- [ ] Research MVP / MVVM models
-- [ ] Research on making a JAVA API 
+- [ ] Research which provider / Architecture we decide for our database + server 
+- [ ] Continue Research MVP / MVVM models
+- [ ] Continue Research on making a JAVA API 
 
 ### Next Weeks Team Goals
 <!-- outline your plans and goals for the following week. 
@@ -72,9 +72,10 @@
     - [ ] Fell behind on react app, need to set up the blank app and 
     readme so other team members can easily start in on their own machines. 
 
-* **Wendy Jiang:** 
+* **Wendy Jiang:** Created Trello for the team to organize tasks. Made edits to the requirement document. Researched on Java backend framework and watched videos on Spring framework
+to get familiar with its usage on backend.
 
-* **Michael Wen:**
+* **Michael Wen:** Continued research on Java backend and the MVC model.
 
 * **Pranesh Reddy Jambula:** 
 
