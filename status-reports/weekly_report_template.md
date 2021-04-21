@@ -22,7 +22,7 @@
 
 ### Last Weeks Individual Goals
 
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 
@@ -36,7 +36,7 @@
 
 ### Members Progress & Issues
 
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 
@@ -52,7 +52,7 @@
 <!-- Outline your plans and goals for the following week. 
     Bullet points are fine. If tasks from one week aren’t yet complete, they should roll over into tasks for the next week -->
     
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 

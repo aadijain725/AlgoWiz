@@ -25,7 +25,8 @@
 - [x] Begin wireframe diagrams for UI
 - [ ] Research which provider / Architecture we decide for our database + server 
 - [ ] Continue Research MVP / MVVM models
-- [ ] Continue Research on making a JAVA API 
+- [x] Began Research on making a JAVA Backend API.
+- [x] Chose to use SPRING framework for the React backend 
 
 ### Next Weeks Team Goals
 <!-- outline your plans and goals for the following week. 
@@ -35,8 +36,8 @@
 - [ ] Finalize wireframe diagrams for Lessons
 - [ ] Finalize wireframe diagrams for Quiz
 - [ ] Begin wireframe diagrams for Interactive Visuals
-- [ ]Research which provider / Architecture we decide for our database + server 
-- [ ] Research MVP / MVVM models
+- [ ] Research which provider / Architecture we decide for our database + server 
+- [ ] Continue Research and Setup SPRING Framework
 - [ ] Research on making a JAVA API 
 
 ***
@@ -45,7 +46,7 @@
 
 ### Last Weeks Individual Goals
 
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 
@@ -67,13 +68,14 @@
 * **Shivam Drishti Bhatia:** 
 
 * **Estevan Seyfried:** 
-    - [x] Worked with Aadi and Shivam to create wireframe mockups
+    - [x] Worked with Aadi, Shivam, and Wendy to create wireframe mockups
     - [x] Proofread, rewrote, and converted documentaion to markdown
     - [ ] Fell behind on react app, need to set up the blank app and 
-    readme so other team members can easily start in on their own machines. 
+    readme so other team members can easily start it on their own machines. 
 
-* **Wendy Jiang:** Created Trello for the team to organize tasks. Made edits to the requirement document. Researched on Java backend framework and watched videos on Spring framework
-to get familiar with its usage on backend.
+* **Wendy Jiang:** 
+    - [x] Created Trello for the team to organize tasks. Made edits to the requirement document. 
+    - [x] Researched on Java backend framework and watched videos on Spring framework to get familiar with its usage on backend.
 
 * **Michael Wen:** Continued research on Java backend and the MVC model.
 
@@ -83,7 +85,7 @@ to get familiar with its usage on backend.
 <!-- Outline your plans and goals for the following week. 
     Bullet points are fine. If tasks from one week aren’t yet complete, they should roll over into tasks for the next week -->
     
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 
@@ -93,6 +95,9 @@ to get familiar with its usage on backend.
     * Begin breaking down app wireframes into react component stubs 
 
 * **Wendy Jiang:** 
+    * Research and begin implementing SPRING Backend
+    * Research Databases
+    * Coordinate Team meetings and Docs
 
 * **Michael Wen:**
 
