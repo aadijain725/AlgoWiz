@@ -63,7 +63,7 @@
 
 ### Members Progress & Issues
 
-**Aadi Jain:**
+* **Aadi Jain:**
 
 * **Shivam Drishti Bhatia:** 
 
