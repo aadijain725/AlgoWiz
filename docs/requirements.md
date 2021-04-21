@@ -1,4 +1,7 @@
 # AlgoWiz Requirements
+
+## Git Repo
+[https://github.com/aadijain725/AlgoWiz](https://github.com/aadijain725/AlgoWiz)
  
 ## Team Info & policies
 
