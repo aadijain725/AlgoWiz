@@ -80,15 +80,15 @@ The app is going to be a web application accessible by anyone using the internet
 
 (Wendy)  
 > **Actors:** Jane, a sophomore in College, is applying for an internship in the summer.
-**Triggers:** Need to refresh on her algorithm concepts so she can ace that interview. 
-**Preconditions:** Jane browses through AlgoWiz site, there are different algorithm concepts under each topic. 
-**Postconditions:** She has a better understanding of algorithm concepts after reviewing and taking the quiz.  
+**Triggers:** Need to refresh on her algorithm concepts so she can ace that interview.
+**Preconditions:** Jane browses through AlgoWiz site, there are different algorithm concepts under each topic.
+**Postconditions:** She has a better understanding of algorithm concepts after reviewing and taking the quiz.
 >**Steps:**
 >1. She clicks on one of the algorithm lessons and it takes her to a new page that contains explanations and visuals of that algorithm. She can read through each explanation and watch the interactive visualization of that algorithm.
 >2. There is an optional quiz section at the end of the algorithm to check for understanding.
->3. Jane clicked on the quiz, it takes her to a quiz page, starting with the first question. 
->4. She receives immediate feedback on her answer. She can click on next to move to the next question.  
-> 4. She has the option to exit the quiz and click the back button that will take her back to the algorithm page.  
+>3. Jane clicked on the quiz, it takes her to a quiz page, starting with the first question.
+>4. She receives immediate feedback on her answer. She can click on next to move to the next question.
+>5. She has the option to exit the quiz and click the back button that will take her back to the algorithm page.
 > 
 > **Extensions:**
 > * Jane can continue using the website anytime
@@ -98,16 +98,16 @@ The app is going to be a web application accessible by anyone using the internet
 
 (Estevan) 
 >**Actors:** Ben is a college tutor assisting intro to programming students remotely. 
-**Triggers:** They are looking for a way to help students better understand sorting algorithms for an upcoming exam.  
+**Triggers:** Ben is looking for a way to help students better understand sorting algorithms for an upcoming exam.  
 **Preconditions:** Ben is already familiar with AlgoWiz and searches for the correct sorting algorithm.  
-**Postconditions:** They are able to help the student better understand the concept. 
+**Postconditions:** Ben is able to help the student better understand the concept. 
 **Steps:** 
 >1. Ben searches for and finds the correct algorithm.
->2. They skip the quiz section.
->3. They share their screen as they use the visualizer to walk the student through the algorithm.   
+>2. He skips the quiz section.
+>3. He shares his screen as he use the visualizer to walk the student through the algorithm.   
 >
 >**Extensions:** 
->* They may choose to have the student use the tool on their own.
+>* Be may choose to have the student use the tool on their own.
 >* Ben may use the quiz to help the student in addition to the visualizer.  
 >
 >**Exceptions:** 
@@ -146,7 +146,7 @@ navigates to that lesson page.
 >4. By expanding the visual element, she shows students how algorithms work.
 >
 > **Extensions:** 
->* More high level algorithms can also be learned visually.
+>* More high level algorithms can be learned visually.
 >* The quiz section of the application can be used to test students .
 >
 >**Exceptions:** 
@@ -159,16 +159,15 @@ navigates to that lesson page.
 **Triggers:** He needs to learn and also review some algorithm concepts so he can do well in his exam.  
 **Preconditions:** Arihant browses through the AlgoWiz website using a stable internet connection on his computer. He selects a lesson to study.  
 **Postconditions:** He has a clearer understanding of the various
-algorithms he studied and the quizzes he did. 
-(And hopefully, he now goes and aces his exam)  
-**Steps** 
->1. He explores the various sections choosing the beginner algorithm sections since the summary is most closely related to his exam.
->2. He gets redirected to a new page with various algorithms he can study.
->3. He chooses the sorting algorithms section and studies the Bubble sort.
->4. He sees interactive visuals which help him more deeply understand the underlying concepts.
- >5. He then takes the quiz on bubble sort, but he gets the answer wrong
- >6. He gets a few hints on how to approach the problem and some other resource links for further his understanding.
->7. He finishes his study session and moves back to the course webpage.
+algorithms he studied and the quizzes he did.
+(And hopefully, he now goes and aces his exam)
+**Steps**
+>1. He chooses one of the algorithms that he wants to review prior to his exam.
+>2. He clicks on that algorithm lesson button and it redirects him to a new page with that lesson summary.
+>3. On that lesson, he sees interactive visuals which help him more deeply understand the underlying concepts.
+ >4. He then clicks on the quiz button on the bottom which takes him to a new quiz page. He sees the first question, clicks submit after he picks his answer but got it wrong.
+ >5. He gets a few hints on how to approach the problem and some other resource links for further his understanding.
+>7. He finishes his lesson and moves back to the course webpage.
  >
 >**Extensions:** 
 >* Arihant was successfully and easily able to navigate through the website.
@@ -176,13 +175,13 @@ algorithms he studied and the quizzes he did.
 >
 >**Exceptions:**
 >* Some of contents are missing some algorithm concepts and the quiz section gives an incorrect output (false positive)
->* He is unable to interact with the bubble sort algorithm well.
+>* He is unable to interact with the visuals.
 
 (Pranesh)
 > **Actors:** Jeff is an undergraduate student who is joining as a research assistant over the summer.
 **Triggers:** He will work under the map routing system team and wants to test his knowledge on various graph algorithms before joining.
 **Preconditions:** Jeff has already taken a data structures and algorithms course last quarter. He only wants to test his knowledge by taking quizzes on the algorithms.
-Postconditions: He is now confident about all the graph algorithms listed on AlgoWiz.  
+**Postconditions:** He is now confident about all the graph algorithms listed on AlgoWiz.  
 **Steps** 
 >1. Jeff explores the AlgoWiz website and goes to the graph algorithms topic.
 >2. Jeff then selects the desired algorithm.
@@ -246,7 +245,7 @@ Postconditions: He is now confident about all the graph algorithms listed on Alg
 * Individually meet outside of meetings to collaborate and program alongside another member of the same role. 
 
 ### Other Important Team Meets
-* Meeting to decide the visualizer, its logic and its visuals to be able to get setup done for some rudimentary testing -  04/02 
+* Meeting to decide the visualizer, its logic and its visuals to be able to get setup done for some rudimentary testing -  05/02 
 * Hosting the code onto website 05/10-11 (Beta Release)
 * Before the Beta Release (05/11), there will be 2 subgroups that work separately on the front and back end of our product. 
 
@@ -273,9 +272,9 @@ Postconditions: He is now confident about all the graph algorithms listed on Alg
     * Final Release - 06/01
 
 ## Major Risks
-* Failure to complete visualization tool because we have not created one before and might require more time to research on how to do it. 
-* Failure to complete tasks due to poor planning/scheduling
-* Failure to set up the server properly causing an error in hosting the website online.
+* Failure to complete visualization tool because we have not created one before and might require more time to research and learn new tools. 
+* Failure to complete tasks due to poor planning/scheduling.
+* Failure to set up the server properly due to lack of knowledge in server setup.
 
 ## External Feedback
 Intuitive UI is one of our highest priorities, the core feature of this app is a visualization tool that will help users better understand algorithms. Extensive user testing of the UI and visualization tool will begin as soon as we have a working demo. As the target demographic is individuals with previous computer science exposure, we will be recruiting classmates and instructors/TA’s to test the app and fill out surveys throughout the development process. 
