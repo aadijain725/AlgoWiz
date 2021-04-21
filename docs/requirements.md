@@ -1,8 +1,8 @@
 # AlgoWiz Requirements
-
-## Git Repo
-[https://github.com/aadijain725/AlgoWiz](https://github.com/aadijain725/AlgoWiz)
  
+ ## Git Repo
+[https://github.com/aadijain725/AlgoWiz](https://github.com/aadijain725/AlgoWiz)
+
 ## Team Info & policies
 
 ### Roles
@@ -82,12 +82,13 @@ The app is going to be a web application accessible by anyone using the internet
 > **Actors:** Jane, a sophomore in College, is applying for an internship in the summer.
 **Triggers:** Need to refresh on her algorithm concepts so she can ace that interview. 
 **Preconditions:** Jane browses through AlgoWiz site, there are different algorithm concepts under each topic. 
-Postconditions: She has a better understanding of algorithm concepts after reviewing and taking the quiz.  
+**Postconditions:** She has a better understanding of algorithm concepts after reviewing and taking the quiz.  
 >**Steps:**
->1. She clicks on one of the algorithm buttons and it takes her to a new page that contains explanations and visuals of that algorithm. She can read through each explanation and watch the interactive visualization of that algorithm.
+>1. She clicks on one of the algorithm lessons and it takes her to a new page that contains explanations and visuals of that algorithm. She can read through each explanation and watch the interactive visualization of that algorithm.
 >2. There is an optional quiz section at the end of the algorithm to check for understanding.
->3. Jane clicked on the quiz, there are several multiple choice questions. If she answered questions correctly, she received feedback that she answered them correctly. 
-> 4. She has the option to exit the quiz and click the back button that will take her back to the home page.  
+>3. Jane clicked on the quiz, it takes her to a quiz page, starting with the first question. 
+>4. She receives immediate feedback on her answer. She can click on next to move to the next question.  
+> 4. She has the option to exit the quiz and click the back button that will take her back to the algorithm page.  
 > 
 > **Extensions:**
 > * Jane can continue using the website anytime
@@ -98,8 +99,8 @@ Postconditions: She has a better understanding of algorithm concepts after revie
 (Estevan) 
 >**Actors:** Ben is a college tutor assisting intro to programming students remotely. 
 **Triggers:** They are looking for a way to help students better understand sorting algorithms for an upcoming exam.  
-**Preconditions:** Ben is already familiar with AlgoWiz and searches for the correct sorting algorithm.
-Postconditions: They are able to help the student better understand the concept. 
+**Preconditions:** Ben is already familiar with AlgoWiz and searches for the correct sorting algorithm.  
+**Postconditions:** They are able to help the student better understand the concept. 
 **Steps:** 
 >1. Ben searches for and finds the correct algorithm.
 >2. They skip the quiz section.
@@ -114,50 +115,52 @@ Postconditions: They are able to help the student better understand the concept.
 >* Ben has trouble navigating the site.
 
 (Michael)  
-> **Actors:** Jason is a high school student who learned fundamental programming concepts at school
-**Triggers:** Jason is curious and wants to get an idea of what other, more complex programming concepts there are without having to go through overly in-depth resources
-**Preconditions:** Jason is already familiar with programming fundamentals, such as loops, methods/functions, syntax. etc.
-Postconditions: Jason will get a general idea of what other programming concepts exist
-**Steps** 
-> 1. Jason looks at the topics that AlgoWiz offers and considers which one he is interested in learning
-> 2. Upon selecting the topic, Jason is given the option to view a summarized version of the lesson or to proceed with the actual lesson
->3. By selecting the summary, Jason is provided an overview of the concept(s) covered in the section
+> **Actors:** Jason is a high school student who learned fundamental programming concepts at school.  
+**Triggers:** Jason is curious and wants to get an idea of what other, more complex programming concepts like algorithms without having to go through overly in-depth resources.   
+**Preconditions:** Jason is already familiar with programming fundamentals, such as loops, methods/functions, syntax. etc.  
+**Postconditions:** Jason will get a general idea of what some of the algorithms are. 
+**Steps:** 
+>1. Jason looks at the algorithm topics that AlgoWiz offers and considers which one he is interested in learning
+>2. Upon selecting one of the algorithm topics, Jason can click on the lesson or take the quiz
+>3. Jason clicks on the lesson button and it takes him to a new page that covers that algorithm along with a visual and quiz section.
 >
 >**Extensions:** 
->* Jason can view other, higher-level summaries regardless of whether he has seen summaries of or worked through previous lessons
->* Jason can download the summary to read offline
+>* Jason can view other algorithms at any time.
 >
 >**Exceptions:** 
->* AlgoWiz does not provide Jason with a satisfactory summary, which leads him to search elsewhere
->* Jason is unable to access the summary, or there is a problem with the summary page
-
+>* AlgoWiz does not provide Jason with a satisfactory summary, which leads him to search elsewhere.
+>* Jason is unable to access the lesson, or there is a problem with the
+lesson's page.
 
 (Shivam) 
-> **Actors:** Elizabeth is a college professor who wants to teach her students different pathfinding algorithms and hence uses the app as a teaching tool in her lecture.
-**Triggers:**. Elizabeth wants to give her students a good idea about how these pathfinding algorithms work and better their understanding of these concepts.
+> **Actors:** Elizabeth is a college professor who wants to teach her students different graph algorithms and hence uses the app as a teaching tool in her lecture.  
+**Triggers:**. Elizabeth wants to give her students a good idea about how
+different graph algorithms work and better their understanding of these concepts.
 **Preconditions:** These students know computer science fundamentals like syntax, loops, methods, and data structures like array, queue, stacks, priority queue.
-Postconditions: These students better grasp the idea of these algorithms and their working because of the visual demonstrations.
+Postconditions: These students better grasp the idea of these algorithms and their working because of the visual demonstrations.  
 **Steps** 
 >1. Elizabeth explores the AlgoWiz website.
->2. Elizabeth finds the section for Pathfinding algorithms and navigates to that section.
->3. Elizabeth looks at different pathfinding algorithms available.
->4. Upon selecting the algorithm, Elizabeth gets the option to learn the topics visually.
->5. By selecting the visual demonstration section, she shows students how algorithms work.
+>2. Elizabeth finds the lesson for one of the graph algorithms and
+navigates to that lesson page.
+>3. Upon selecting the algorithm, Elizabeth views the lesson and gets the option to expand the interactive visual element.
+>4. By expanding the visual element, she shows students how algorithms work.
 >
 > **Extensions:** 
->* More high level algorithms like stable matching can also be learned visually.
+>* More high level algorithms can also be learned visually.
 >* The quiz section of the application can be used to test students .
 >
 >**Exceptions:** 
 >* Website is down.
->* Not all the pathfinding algorithms are covered. 
+>* Not all graph algorithms he requires are covered. 
 >* The demonstrations sometimes lag.
 
 (Aadi)  
 > **Actors:** Arihant is a freshman in College, is preparing for his CSE 14X exam.  
 **Triggers:** He needs to learn and also review some algorithm concepts so he can do well in his exam.  
-**Preconditions:** Arihant browses through the AlgoWiz website a stable internet connection on his computer. He selects a particular section to study.  
-**Postconditions:** He has a clearer understanding of the various sections he studied from and the various quizzes he did. (And hopefully, he now goes and aces his exam)
+**Preconditions:** Arihant browses through the AlgoWiz website using a stable internet connection on his computer. He selects a lesson to study.  
+**Postconditions:** He has a clearer understanding of the various
+algorithms he studied and the quizzes he did. 
+(And hopefully, he now goes and aces his exam)  
 **Steps** 
 >1. He explores the various sections choosing the beginner algorithm sections since the summary is most closely related to his exam.
 >2. He gets redirected to a new page with various algorithms he can study.
@@ -177,20 +180,20 @@ Postconditions: These students better grasp the idea of these algorithms and the
 
 (Pranesh)
 > **Actors:** Jeff is an undergraduate student who is joining as a research assistant over the summer.
-**Triggers:** He will work under the map routing system team and wants to test his knowledge on various pathfinding algorithms before joining.
+**Triggers:** He will work under the map routing system team and wants to test his knowledge on various graph algorithms before joining.
 **Preconditions:** Jeff has already taken a data structures and algorithms course last quarter. He only wants to test his knowledge by taking quizzes on the algorithms.
-Postconditions: He is now confident about all the pathfinding algorithms.
+Postconditions: He is now confident about all the graph algorithms listed on AlgoWiz.  
 **Steps** 
->1. Jeff explores the AlgoWiz website and goes to the pathfinding algorithms section.
+>1. Jeff explores the AlgoWiz website and goes to the graph algorithms topic.
 >2. Jeff then selects the desired algorithm.
- >3. Jeff skips the lessons and visualization and directly goes to the quiz.
+ >3. Jeff clicked on the quiz button next to the lesson which takes him to the quiz directly.
  >4. He gets all of the answers right and then moves on to the next algorithm.
 >
 >**Extensions:** 
 >* Jeff may choose to go back to lessons and visualizations to relearn the concepts if he gets questions incorrect on the quiz.
 >
 >**Exceptions:** 
-> * AlgoWiz does not have all the pathfinding algorithms that Jeff requires.
+>* AlgoWiz does not have all the graph algorithms that Jeff requires.
 >* The questions are not correctly displayed in the quiz.
 >* The website is down.
 >* He encounters some glitches while selecting the answers in the quiz.
@@ -217,10 +220,10 @@ Postconditions: He is now confident about all the pathfinding algorithms.
 * Web app (some computer + stable wifi)
  
 ## External Requirements
-1. The application will be hosted on the internet, users will not need
-to download anything. 
-2. We will provide details on hosting on Filezilla or other hosting services
-3. We will provide details on downloading and setting up packages related to our app.
+1. AlgoWiz server is easily deployable on a server.
+2. We will be using Filezilla server.
+3. We will provide details on downloading and setting up packages related to our app on our github.
+
 
 ### Toolset
 * Version Control: Git - well documented standard for version control
@@ -233,8 +236,6 @@ to download anything.
 ### Back End 
 * Java API (Platform independent)
 * Algorithms like sorting and pathfinding will be implemented in the backend of our program with Java.
-
-
 
 ## Schedule:
 * Meeting twice each week: Tuesday/Thursday 1:30 pm PST. Here we check in and discuss all progress and set goals according to backlogs/ current progres.
