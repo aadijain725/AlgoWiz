@@ -278,3 +278,6 @@ algorithms he studied and the quizzes he did.
 
 ## External Feedback
 Intuitive UI is one of our highest priorities, the core feature of this app is a visualization tool that will help users better understand algorithms. Extensive user testing of the UI and visualization tool will begin as soon as we have a working demo. As the target demographic is individuals with previous computer science exposure, we will be recruiting classmates and instructors/TA’s to test the app and fill out surveys throughout the development process. 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY1Nzc1NzcxNF19
+-->
