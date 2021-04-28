@@ -138,6 +138,7 @@ For the team report, this subsection should be higher-level and indicate who is 
 * Decided upon major react components and helped flesh out the requirements doc.
 
 * Researched and decided the components we need in the React App.
+* Chose to design the component
 
   
 
