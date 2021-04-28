@@ -32,12 +32,12 @@ integrate more content and features.
 
 ## Directory Map
 
+**[algowiz-app](/algowiz-app):** Front-end code
+
 **[api](/api):** Backend Code 
 
 **[docs](/docs):** Living document and Team Policy documentation
 
 **[layouts](/layouts):** Wireframes, UI mockups, and project planning
-
-**[site](/site):** Front End source code
 
 **[status-reports](/status-reports):** Weekly status reports
