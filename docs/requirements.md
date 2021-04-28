@@ -449,14 +449,14 @@ instructors/TA’s to test the app and fill out surveys throughout the developme
 
 ## Software Architecture
 ### Major Components and Functionality
-Our web-based application consists of three main components, a front-end 
-React Application, a back-end Java Spring Boot server, and PostgreSQL database.
+Our web-based application consists of three main components: a front-end 
+React Application, a back-end Java Spring Boot server, and a PostgreSQL database.
 
 **React App** - The React Application provides the front end User interface 
 for AlgoWiz. All routing is handled by the React application on the client side. 
-JSON data is sent to and from the server via asynchronous http requests. 
-A react application is made up of individual components, which can be reused 
-throughout the application. Each react component has its own modifiable state, 
+JSON data is sent to and from the server via asynchronous HTTP requests. 
+A React application is made up of individual components, which can be reused 
+throughout the application. Each React component has its own modifiable state, 
 and static props.  
 
 **React Components:**
@@ -470,6 +470,7 @@ and static props.
 	*Image
 * QuizPage
 	* Question
+	* Answer choices
 * Result
 * Correct Answer
 * Incorrect Answer
@@ -479,9 +480,9 @@ and static props.
 
 **Java Spring Server**   
 We will use the Spring Boot framework in Java to handle the backend portion 
-of the application. We will use this for two things. First, we will handle 
+of the application. We will use this for two reasons. First, we will handle 
 the HTTP requests that we get from the client by fetching the request, 
-and then with the business logic that we implement, we send the desired 
+and then, with the business logic that we implement, we send the desired 
 response back to the client. The second purpose is to access the information 
 stored in our database. To make the implementation of this data access 
 layer easier, we will use the Spring Data JPA API. 
@@ -492,7 +493,7 @@ automatically be included in the executable jar file to run the application.
 
 ### Components / Interfaces
 There will be three major components for the backend: Controller layer, 
-Service layer and the data access layer. The requests will be processed 
+Service layer, and the data access layer. The requests will be processed 
 by the controller and sent to the service layer to handle the logic. 
 The data access layer talks to PostgreSQL database using calls from the JPA API.
 
@@ -503,8 +504,8 @@ In our database we mainly have 2 entities:
 * Quiz Questions: This entity in the database stores the information for 
 the quizzes. “QID” is the primary key that assigns an ID to each question, 
 “Category” represents what topic the question belongs to, “Question” 
-attribute stores the question and “Answer” stores the answer to the question. 
-“Options” stores the multiple choices for the question.
+attribute stores the question, and “Answer” stores the answer to the question. 
+“Options” stores the possible choices for the multiple choice question.
 
 <img src="./images/schema2.png" alt="quiz schema">
 
@@ -518,42 +519,42 @@ summaries for each topic that will be displayed on the homepage.
 
 ### Architecture Assumptions
 * We do not assume any requirements in terms of using the app from the user. 
-In case they want to have a local copy of our app they would need to have JAVA. 
+In case they want to have a local copy of our app they would need to have a JRE. 
 * To avoid manual configurations and build dependencies, we decided to go with 
 Spring Boot as it bundles all these dependencies into one for us, making it 
 easier for others to build from our code without additional installation.
 * We are assuming that our user base is small and hence are not setting up a 
 large user database for now. 
 * We are using a SQL database as opposed to a JSON file for web content so that 
-if we do want to scale and create user login, we have a database that can 
-handle large data. 
+if we want to scale and create user login, we have a database already made that 
+can handle large data. 
 * We are assuming that users are at least novice programmers with basic 
 programming experience. 
-* We assume users have knowledge of loops, recursion and basic arrays.
+* We assume users have knowledge of loops, recursion, and basic arrays.
  
 ### Architecture Alternatives
 **React Alternatives:**
 We considered using another UI Framework such as Angular or Vue. Angular is 
 well established and highly customizable, but has a very steep learning curve 
-and no one on our team was familiar with it. React is very well established, 
-with many online resources and our team already had some experience developing 
-with it. Vue is very popular and would have been a fine choice, but our team 
-stayed with React since we had the most experience. 
+and no one on our team is familiar with it. React is very well established, 
+with many online resources, and our team already had some experience developing 
+with it. Vue is very popular and would have also been a fine choice, but our team 
+settled with React since we have the most experience with it. 
 
 **Spring Boot Alternatives**  
 For backend servers, an alternative for Spring Boot would be to use Netlify. 
 Netlify offers hosting and serverless backend services for web applications. 
-The pros are: It can build web applications directly on Github, makes 
+Pros: It can build web applications directly on Github, makes 
 it easier for developers to see web application results after they push to 
-Github, and it provides hosting as well. The cons: it does not work for Java 
-such as Spring Boot. 
+Github, and it provides hosting.
+Cons: it does not work for Java such as Spring Boot. 
 
 **PostgreSQL Alternatives**  
-We choose Postgres database because it is one of the databases that work 
-with Spring Boot. Alternative would be to use MongoDB. The pros are MongoDB 
-has a change friendly design that enables you to  make changes to the database 
-without disrupting webpage operation. The cons is MongoDB uses high memory 
-for data storage.
+We choose Postgres database because it is one of the databases that works 
+with Spring Boot. The alternative would be to use MongoDB. The pros are MongoDB 
+has a change-friendly design that enables you to make live changes to the database 
+without disrupting webpage operation. The con is that MongoDB uses large amounts
+of memory for data storage.
 
 ## Software Design (Front End)
 **React Components:**  
@@ -562,30 +563,30 @@ Each React component has its own modifiable state, and static props.
 * HomePage : The home page is the index page of the website from which the 
 user can navigate to any other section of our website. It describes the various 
 topics we have to study from and the type of content we offer.
-	* SiteSummary: A general summary of our website and how it works. Also, has 
+	* SiteSummary: A general summary of our website and how it works. Also has 
     a cool visual image (website logo)
 	* Topic: The content offered by Algo Wiz is broken down into 3 main 
-    sections, Graph, Sorting and Search Algorithms. So the home page contains 
-    a section which lets the user toggle between the different offerings 
-    amongst these 3 sections. Each of these 3 topics then have subtopics under 
-    them that redirect users to the lesson content/ quiz content. 
-		* LessonSummary: Each of the sub topics in this section will have a 
-        small  lesson summary which describes what that particular sub topic 
-        is teaching. Eg.  Under Graphs as the main topic, BFS may be a subtopic 
+    sections: Graph, Sorting Algorithms, and Search Algorithms. The home page will contain 
+    a section which lets the user toggle between the different options 
+    amongst these 3 sections. Each of these 3 topics will have subtopics under 
+    them that redirect users to the specific lesson/quiz content. 
+		* LessonSummary: Each of the subtopics in this section will have a 
+        small lesson summary which describes what that particular sub topic 
+        teaches. Eg. Under Graphs as the main topic, BFS may be a subtopic 
         which would contain a small summary of what BFS is.
 * LessonPage: This is the page displayed to the user once they decide on a 
 particular topic they want to study. This page contains all study material 
 to teach the given topic to the user. 
 	* Visualizer: An interactive visual tool (separate react component) 
-    that allows the user to interact and understand how the algorithm at hand 
+    that allows the user can interact with and understand how the algorithm at hand 
     is working.
 	* Text: This is the main lesson content. This will be curated information 
     about the topic tailor made to aid user understanding and learning.
 	*Image: Extra images that might be helpful visual aids to the users.
 * QuizPage: This will be an interactive quiz section with a format similar to 
-Duilingo, where we give immediate input per quiz question the user answers. 
+Duolingo, where we give immediate input for each quiz question the user answers. 
 We believe this will help provide a stress free and low stakes testing 
-environment which will aid user experience.
+environment which will improve user experience.
 	* Question: The quiz page will display 1 question at a time to the user. 
     This will be an MCQ format question and could possibly have an visual 
     element to help visualise the situation presented to the user
@@ -594,9 +595,9 @@ environment which will aid user experience.
     for each question that is correctly answered by the user. This will have 
     some positive reinforcement such as a positive message or some feedback.
     * Incorrect Answer: A red colored screen will be displayed to the user for 
-    each question that is incorrectly answered by the user. 
-    This will have some feedback and some hints to guide them to the correct 
-    answer and more importantly the correct way of thinking in the given situation.
+    an incorrectly answered question. 
+    The screen will also include some feedback and some hints to guide them to the correct 
+    answer, and more importantly the correct way of thinking in the given situation.
 
 ## Software Design (Back End)
 **Responsibilities**  
@@ -607,7 +608,7 @@ The design of the spring boot application has the following layers:
 First, the requests like GET and POST, received from the client will be 
 processed by the controller component(API layer) of our application. 
 The data from these requests will then be sent to the service component by 
-the controller. The service layer handles the logic of the application. 
+the controller. Then, the service layer handles the logic of the application. 
 Here we implement various functions to validate the information sent from 
 the client or perform any of the CRUD actions(Create, Read, Update and Delete) 
 based on the request. The service layer also has access to the information 
@@ -615,17 +616,17 @@ sent by the data access layer. The data access layer is implemented using
 Spring JPA. The purpose of this layer is to connect to the PostgreSQL database. 
 Once connected, we can query the desired information from the entities in 
 the database and send it back to the service layer. The output from the service 
-layer will be passed back to the controller and from there, the response 
+layer will be passed back to the controller. From there, the response 
 will be returned to the client.
 
 **Component Abstractions**  
-We will create two packages. One package called topic, will contain algorithm.java 
+We will create two packages. One package called topic, will contain the algorithm.java 
 class that describes what algorithm should have, such as an Id, the type of algorithm, 
-body content, and algorithm. Within the same package, we’ll have AlgorithmController, 
+body content, and the algorithm itself. Within the same package, we will have AlgorithmController, 
 AlgorithmService, AlgorithmRepository or data access class that deal with CRUD 
-(create, read, update, and delete) from the database. Second package, 
-we will have a quiz package, inside the quiz package, we’ll create a quiz class 
-that defines what the quiz should have such as a qid that references the algorithm, 
+(create, read, update, and delete) from the database. In the second package, 
+we will have a quiz package. Inside the quiz package, we will create a quiz class 
+that defines what the quiz should have, such as a qid that references the algorithm, 
 questions, options for the questions, and answer key. Also within the quiz 
 package is the QuizController, QuizService, and QuizRepository classes that 
 deal with CRUD from the database.
