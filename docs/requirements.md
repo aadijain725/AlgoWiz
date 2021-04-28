@@ -348,7 +348,7 @@ get setup done for some rudimentary testing -  05/02
 * Before the Beta Release (05/11), there will be 2 subgroups that work 
 separately on the front and back end of our product. 
 
-### Goals till Beta Release
+### Beta Release Goals
 * Front End
     * :white_check_mark: Designing the layouts for homepage, quiz section, 
     and the algorithms section.  - 04/22
@@ -433,7 +433,7 @@ separately on the front and back end of our product.
     This way if any one part of the system crashes we have a fail safe system 
     that doesn’t completely crash the entire  app.
 * Failure to build our application on a host
-	* Low rist, we have not yet deployed our code to a host provider. 
+	* Low risk, we have not yet deployed our code to a host provider. 
     The impact will be low. We have researched on Heroku host provider that 
     is compatible with Java Spring Boot. If it failed to run on host, we’ll 
     find another host provider as there are many out there. We plan on using 
@@ -444,8 +444,8 @@ Intuitive UI is one of our highest priorities, the core feature of this app is
 a visualization tool that will help users better understand algorithms. 
 Extensive user testing of the UI and visualization tool will begin as soon 
 as we have a working demo. As the target demographic is individuals with 
-previous computer science exposure, we will be recruiting classmates and i
-nstructors/TA’s to test the app and fill out surveys throughout the development process. 
+previous computer science exposure, we will be recruiting classmates and 
+instructors/TA’s to test the app and fill out surveys throughout the development process. 
 
 ## Software Architecture
 ### Major Components and Functionality
@@ -490,7 +490,7 @@ The dependencies that we will use for this application are Spring Web
 (driver to connect to our database). All these dependencies will 
 automatically be included in the executable jar file to run the application.
 
-### Component/Interfaces
+### Components / Interfaces
 There will be three major components for the backend: Controller layer, 
 Service layer and the data access layer. The requests will be processed 
 by the controller and sent to the service layer to handle the logic. 
@@ -555,7 +555,7 @@ has a change friendly design that enables you to  make changes to the database
 without disrupting webpage operation. The cons is MongoDB uses high memory 
 for data storage.
 
-## Software Design (Front end)
+## Software Design (Front End)
 **React Components:**  
 Each React component has its own modifiable state, and static props.  
  
@@ -598,7 +598,7 @@ environment which will aid user experience.
     This will have some feedback and some hints to guide them to the correct 
     answer and more importantly the correct way of thinking in the given situation.
 
-## Software Design (Backend)
+## Software Design (Back End)
 **Responsibilities**  
 The Spring Boot Server is responsible for handling the backend business logic 
 of the application and connect/access information from our database. 
@@ -619,13 +619,29 @@ layer will be passed back to the controller and from there, the response
 will be returned to the client.
 
 **Component Abstractions**  
-We will create two packages. One package called topic, will contain algorithm.java class that describes what algorithm should have, such as an Id, the type of algorithm, body content, and algorithm. Within the same package, we’ll have AlgorithmController, AlgorithmService, AlgorithmRepository or data access class that deal with CRUD (create, read, update, and delete) from the database. Second package, we will have a quiz package, inside the quiz package, we’ll create a quiz class that defines what the quiz should have such as a qid that references the algorithm, questions, options for the questions, and answer key. Also within the quiz package is the QuizController, QuizService, and QuizRepository classes that deal with CRUD from the database.
+We will create two packages. One package called topic, will contain algorithm.java 
+class that describes what algorithm should have, such as an Id, the type of algorithm, 
+body content, and algorithm. Within the same package, we’ll have AlgorithmController, 
+AlgorithmService, AlgorithmRepository or data access class that deal with CRUD 
+(create, read, update, and delete) from the database. Second package, 
+we will have a quiz package, inside the quiz package, we’ll create a quiz class 
+that defines what the quiz should have such as a qid that references the algorithm, 
+questions, options for the questions, and answer key. Also within the quiz 
+package is the QuizController, QuizService, and QuizRepository classes that 
+deal with CRUD from the database.
 
 ## Coding Guidelines
 
 **Javascript and React:**  
-* We will be using Airbnb’s javascript and react guidelines for our project. Airbnb has a very exhaustive set of guidelines that will help us ensure that our application code is as per the industry standards. All the style guidelines are accompanied with examples. These examples will be helpful when we would be implementing the application.
-* Enforcing the guidelines: Once a member of the front end team makes a pull request, the other 2 team members will review and make sure that proper Airbnb guidelines and conventions were followed. They will review the code individually so that there is higher chance of error detection.
+* We will be using Airbnb’s javascript and react guidelines for our project. 
+Airbnb has a very exhaustive set of guidelines that will help us ensure that 
+our application code is as per the industry standards. All the style guidelines 
+are accompanied with examples. These examples will be helpful when we would be 
+implementing the application.
+* Enforcing the guidelines: Once a member of the front end team makes a pull request, 
+the other 2 team members will review and make sure that proper Airbnb guidelines 
+and conventions were followed. They will review the code individually so that 
+there is higher chance of error detection.
 * Links :  
     * https://airbnb.io/javascript/    (For Javascript)
     * https://airbnb.io/javascript/react/  (For React)
@@ -678,6 +694,3 @@ Back End developers must maintain the [api]() Readme<area>.md
 information and create documentation from React components. 
 * Use [JavaDoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html) 
 to generate documentation for Java Spring Back End code. 
-
-
-
