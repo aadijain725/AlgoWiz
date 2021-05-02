@@ -506,7 +506,7 @@ the quizzes. “QID” is the primary key that assigns an ID to each question,
 attribute stores the question and “Answer” stores the answer to the question. 
 “Options” stores the multiple choices for the question.
 
-<img src="./images/schema2.png" alt="quiz schema">
+<img src="./images/quizSchema.png" alt="quiz schema">
 
 * Topic content/Description: This entity in the database stores the topic 
 summaries for each topic that will be displayed on the homepage. 
@@ -514,7 +514,7 @@ summaries for each topic that will be displayed on the homepage.
 “Topic Category” represents the topic that the description belongs to. 
 “Description” stores the summaries for each topic on the homepage.
 
-<img src="./images/schema1.png" alt="topic schema">
+<img src="./images/topicSchema.png" alt="topic schema">
 
 ### Architecture Assumptions
 * We do not assume any requirements in terms of using the app from the user. 

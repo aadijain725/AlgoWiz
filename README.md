@@ -36,7 +36,7 @@ integrate more content and features.
 
 **[api](/api):** Backend Code 
 
-**[docs](/docs):** Living document and Team Policy documentation
+**[documentation](/docs):** Living document and Team Policy documentation
 
 **[layouts](/layouts):** Wireframes, UI mockups, and project planning
 
