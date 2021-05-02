@@ -41,3 +41,7 @@ integrate more content and features.
 **[layouts](/layouts):** Wireframes, UI mockups, and project planning
 
 **[status-reports](/status-reports):** Weekly status reports
+
+## Git Workflow / Guide
+[Read our Git Guide](/documentation/gitguide.md) if you want to start 
+contributing to the repo but feel lost!
