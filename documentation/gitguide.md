@@ -78,12 +78,61 @@ Ready to make your changes public? Great!
 
 If this is your first push:
 ```
-git push -
+git push --set-upstream origin este_fk_branch
+```
 
+If tracking is already set up:
+```
+git push
+```
 
+### Pull Requests
+Once you are ready to merge your changes you should create a pull request.
+You can [do this through the command line](https://git-scm.com/docs/git-request-pull) using:
+```
+git request-pull [-p] <start> <url> [<end>]
+```
+But its easier to use the github online UI:
+1. [Go to AlgoWiz Repo](https://github.com/aadijain725/AlgoWiz)
+2. Select the 'Pull requests' tab at the top of the page
+3. Select 'New pull request'
+4. Select the base branch. base refers to the branch you are merging into.
+This will likely be the branch you first split off from. 'dev' in our 
+previous examples. 
+5. Select the target (or compare) branch. This should be your new feature 
+branch to merge. 
+6. Select 'Compare & pull request' Add a title and summary for the new feature, bug fix, or documentation added. If there are any merge conflicts you should resolve them now. 
 
+### Final Notes
+Thats it, you did it! Your pull request will have to pass the CI pipeline
+and have at least 1 passing review before it can be merged! You can visit 
+the pull request tab to see progress made on your pull request. 
 
-
-
+Your reviewer may request some changes before they allow you to merge 
+your code. If this occurs simply leave the pull request open and follow
+the same steps outlined above. Go to your local repository, checkout your
+feature branch and make the requested changes, track them, commit, 
+and push. As long as it is open your pull request will reflect any new 
+changes you push. No need to create a new one!
 
 ## AlgoWiz git Policies
+
+* **DO NOT** attempt push or merge directly into the `main` branch
+
+* If you are only changing documentation, such as weekly reports etc. 
+you can make the changes directly to the `doc` branch as it does not 
+require a code review. **DO NOT** push **ANYTHING** to the `doc` branch 
+except for .md files or this policy may have to change. 
+
+* If you are making code changes create a pull request to the `dev` branch.
+
+* `dev` & `main` branchs require all CI tests to pass and at least 1 passing 
+review before any changes are made.
+
+* In most cases select the 'Squash and merge' option in a pull request. 
+This helps keep the git history clean. 
+
+* Unless you plan to make further code changes it is best to delete feature branches once merged.
+
+* Feature branches should use the following naming convetion:
+userAlias_feature_anyOtherDetails

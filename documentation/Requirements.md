@@ -61,6 +61,8 @@ refined code.
 6. Front End code should follow Airbnb Style Guide: 
 https://github.com/airbnb/javascript/tree/master/react
 Front End-- React, Back End -- Java API, possibly Node Express Server 
+7. Read the [Git Guide](gitguide.md) for more information regarding 
+the AlgoWiz repository policies and best practices.
  
 ## Product Description
 
