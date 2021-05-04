@@ -2,7 +2,7 @@
 # Setting up Spring Boot backend API for web application
 
 ## Getting Started Guides
-Go to Spring Boot initializer [here] (https://start.spring.io/) and select the following tabs
+Go to Spring Boot initializer [here](https://start.spring.io/) and select the following tabs
 - Project: Maven Project
 - Language: Java
 - Spring Boot: 2.4.5
