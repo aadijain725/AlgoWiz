@@ -15,7 +15,7 @@ component, the UI will be critical to the success of this project.
 Since we have a small team our UI Designers will also act as Front End 
 Engineers, responsible for implementing and testing the functionality of the App.
 
-* **Aadi Jain:** Has experience and a keen interest in using React and loves 
+* **Aadi Jain:** I have experience and a keen interest in using React and loves 
 developing websites. Further, wants to develop an interactive and user-friendly UI.
 
 * **Shivam Drishti Bhatia:** I have experience in React and always loved how 
@@ -75,8 +75,7 @@ various topics. Each of these sections will have a study guide, a quiz, and
 a visualizer to help visualize the concepts.
 
 ### Major Goals
-1. Feature three algorithm topics; Sorting algorithm, Graph algorithm, and 
-Searching algorithm.
+1. Feature three algorithm topics; Sorting algorithm, Graph algorithm, and Searching algorithm.  
     * Each topic will feature algorithms. Ex. Sorting algorithm features 
     merge sort, insertion sort. Graph algorithm features pathfinding(Dijkstra’s), 
     Depth First search, Breadth First search. Searching algorithm features binary search.
@@ -120,11 +119,11 @@ different sections they have covered.
 (Functional Requirements)
 
 (Wendy)  
-> **Actors:** Jane, a sophomore in College, is applying for an internship in the summer.
-**Triggers:** Need to refresh on her algorithm concepts so she can ace that interview.
-**Preconditions:** Jane browses through AlgoWiz site, there are different 
+> **Actors:** Jane, a sophomore in College, is applying for an internship in the summer.  
+**Triggers:** Need to refresh on her algorithm concepts so she can ace that interview.  
+**Preconditions:** Jane browses through AlgoWiz site, there are different  
 algorithm concepts under each topic.
-**Postconditions:** She has a better understanding of algorithm concepts 
+**Postconditions:** She has a better understanding of algorithm concepts  
 after reviewing and taking the quiz.
 >**Steps:**
 >1. She clicks on one of the algorithm lessons and it takes her to a new 
@@ -139,10 +138,10 @@ move to the next question.
 >5. She has the option to exit the quiz and click the back button that will 
 take her back to the algorithm page.
 > 
-> **Extensions:**
+> **Extensions:**  
 > * Jane can continue using the website anytime
 > * She can view any algorithms without having to take the quiz
-> **Exceptions:**
+> **Exceptions:**  
 > * The contents are missing some algorithm concepts
 
 (Estevan) 
@@ -194,7 +193,7 @@ lesson's page.
 (Shivam) 
 > **Actors:** Elizabeth is a college professor who wants to teach her students 
 different graph algorithms and hence uses the app as a teaching tool in her lecture.  
-**Triggers:**. Elizabeth wants to give her students a good idea about how
+**Triggers:**. Elizabeth wants to give her students a good idea about how  
 different graph algorithms work and better their understanding of these concepts.
 **Preconditions:** These students know computer science fundamentals like 
 syntax, loops, methods, and data structures like array, queue, stacks, priority queue.
@@ -223,10 +222,10 @@ option to expand the interactive visual element.
 can do well in his exam.  
 **Preconditions:** Arihant browses through the AlgoWiz website using a stable 
 internet connection on his computer. He selects a lesson to study.  
-**Postconditions:** He has a clearer understanding of the various
+**Postconditions:** He has a clearer understanding of the various  
 algorithms he studied and the quizzes he did.
 (And hopefully, he now goes and aces his exam)
-**Steps**
+**Steps**  
 >1. He chooses one of the algorithms that he wants to review prior to his exam.
 >2. He clicks on that algorithm lesson button and it redirects him to a 
 new page with that lesson summary.
@@ -243,7 +242,7 @@ understand the underlying concepts.
 >* Arihant was successfully and easily able to navigate through the website.
 >* He was able to view and review other algorithms and sections successfully.
 >
->**Exceptions:**
+>**Exceptions:**  
 >* Some of contents are missing some algorithm concepts and the quiz section 
 gives an incorrect output (false positive)
 >* He is unable to interact with the visuals.
@@ -278,8 +277,7 @@ concepts if he gets questions incorrect on the quiz.
 ## Non-functional Requirements
 
 ### Scalability
-* How to handle millions of users? This app is UI heavy instead -- 
-lots of users can access the website at once.
+* Since our app is a web based app we expect it to  have lots of users. We expect high user actviity which we plan to support.
 * This depends on how server heavy our app is and where we are hosting it.
 * We’ll start out with a small backend like NoSQL (Google Firebase) that can 
 easily be scaled as required in the future. 
@@ -316,20 +314,6 @@ be built and deployed by other contributors and reviewers.
 build system should be implemented to allow local deployment of both the front 
 and back end components from the root directory of the repository in one step. 
 
-### Toolset
-* Version Control: Git - well documented standard for version control
-* REACT Build System: NPM - standard solution for Node Development
-
-### Front End
-* React - widely used, well documented, scalable library for front end web development.
-* Javascript, CSS - standard web development languages
-* Team members are free to develop using whichever code editor they are most familiar.
-
-### Back End 
-* Java Spring Boot framework
-* Algorithms like sorting and pathfinding will be implemented in the 
-backend of our program with Java.
-
 ## Schedule:
 * Meeting twice each week: Tuesday/Thursday 1:30 pm PST. 
 Here we check in and discuss all progress and set goals according to backlogs 
@@ -353,7 +337,7 @@ separately on the front and back end of our product.
 ### Beta Release Goals
 * Front End
     * :white_check_mark: Designing the layouts for homepage, quiz section, 
-    and the algorithms section.  - 04/22
+    and the lesson algorithms section.  - 04/22
     * In progress: Implementing the layouts for homepage, quiz section, 
     and the algorithms section. Currently, developing the various components 
     for each of the pages. 05/04
@@ -366,9 +350,9 @@ separately on the front and back end of our product.
     group to discuss by 4/22
     * Gathering contents home page description and contents for different 
     Algorithms by 4/30
-        * Wendy: Introduction to AlgoWiz descriptions and selection sort
-        * Michael: Graph algorithm(Dijkstra’s shortest path algorithm)
-        * Pranesh Reddy Jambula: Search algorithm (Binary search)
+        * Wendy: Introduction to AlgoWiz descriptions and Graph: Dijkstra
+        * Michael: Sorting: selection sort algorithm  
+        * Pranesh Reddy Jambula: Search; Binary search
     * Quizzes: create a layout and contents for the quiz for each algorithm by by 5/4 
         * Each backend team will create a rough sketch of 3 quiz questions for 
         each algorithm
@@ -384,23 +368,11 @@ separately on the front and back end of our product.
     * Final Release - 06/01
 
 ## Major Risks
-* Code compilation and build issues leading to unsuccessful deployment of the app. 
-    * This has a low risk of occurring but can have a very big impact.
-    * This can be mitigated easily by keeping bug reports and keeping track of 
-    all our builds  and their subsequent commits to branches. 
-    * We will insure regular testing especially before pushing code to the main 
-    branch of the repo to keep the code as bug free.
-    * We will have strict testing procedures and testing units that thoroughly 
-    navigate any such bugs. 
-    * We plan to have highly separated components that don’t crash in case of 
-    one or the other failing. 
-    * Finally, we have a policy that ensures clean commits. We make sure at 
-    least 2 people check any and all pull requests before pushing code onto 
-    the main repo.
- 
+
 * Insufficient user feedback
-	* This has medium risk of occurring, depending on the kind and quality of 
-    user feedback we get access to
+    * We are looking to make a highly interactive app and hence upon beta release are looking to get and leverage large amounts of user feeback to increase app usability. Insufficient user feedback means not getting enough quality user feeback that allows us to maximise usability and user satisfaction.  
+	* This has medium risk, depending on the kind and quality of 
+    user feedback we get.
     * This can have a high impact on our apps usability and UI experience 
     which is the main incentive for the app. Since, the app is a study tool 
     for a variety of users we need feedback from different groups  of people 
@@ -434,12 +406,6 @@ separately on the front and back end of our product.
     a good server, and  having a good separation between different components. 
     This way if any one part of the system crashes we have a fail safe system 
     that doesn’t completely crash the entire  app.
-* Failure to build our application on a host
-	* Low risk, we have not yet deployed our code to a host provider. 
-    The impact will be low. We have researched on Heroku host provider that 
-    is compatible with Java Spring Boot. If it failed to run on host, we’ll 
-    find another host provider as there are many out there. We plan on using 
-    something like Netlify which we have researched a bit on.
 	
 ## External Feedback
 Intuitive UI is one of our highest priorities, the core feature of this app is 
@@ -447,76 +413,66 @@ a visualization tool that will help users better understand algorithms.
 Extensive user testing of the UI and visualization tool will begin as soon 
 as we have a working demo. As the target demographic is individuals with 
 previous computer science exposure, we will be recruiting classmates and 
-instructors/TA’s to test the app and fill out surveys throughout the development process. 
+instructors/TA’s to test the app and fill out surveys throughout the development process.  
+
+TA's feedback: Modify docs according to feedback listed below.
+[x]-move libraries to design part of doc, components are architecture
+[x]Double check each section header and content, make sure content matches the header
+[x]move layering architecture to Major components -michael
+[x]change graph section to "Graph Algorithms section, Sorting Algorithms section, Search Algorithms section
+[x]modify quiz page to: Where we give immediate feedback when a user answers a question
+[x]Define MCQ to multiple choice questions
+[x]change quiz bullet points so correct answer and incorrect answer should be nested under result
+
+[x]Software design backend responsibility-elaborate on business logic ---- Pranesh
+[x]Coding guideline: test plan is at different heading level
+
+[x]code compilation and build issues are not part of tests, remove or edit -michael
+
+[x]explain insufficient user feedback mean
+[x]test front end and backend together should be a system test. How to test each button? elaborate on system test below-shivam
 
 ## Software Architecture
 ### Major Components and Functionality
 Our web-based application consists of three main components, a front-end 
 React Application, a back-end Java Spring Boot server, and PostgreSQL database.
 
+### Front End Structure:
+
 **React App** - The React Application provides the front end User interface 
 for AlgoWiz. All routing is handled by the React application on the client side. 
 JSON data is sent to and from the server via asynchronous http requests. 
 A react application is made up of individual components, which can be reused 
 throughout the application. Each react component has its own modifiable state, 
-and static props.  
+and static props. We will have 3 main pages, the HomePage, the LessonPage and the QuizPage, more details. on this can be found in the  [Software Design(Front End)](#software-design) section later in this document.
 
-**React Components:**
-* HomePage
-	* SiteSummary
-	* Topic:
-		* LessonSummary
-* LessonPage
-	* Visualizer
-	* Text
-	*Image
-* QuizPage
-	* Question
-* Result
-* Correct Answer
-* Incorrect Answer
+
+
 
 **UI Wireframe**
 <img src="./images/algowiz_wireframe.png" alt="Algowiz wireframe diagram">
 
+
+
+### Backend Structure:
+
 **Java Spring Server**   
 We will use the Spring Boot framework in Java to handle the backend portion 
-of the application. We will use this for two things. First, we will handle 
-the HTTP requests that we get from the client by fetching the request, 
-and then with the business logic that we implement, we send the desired 
-response back to the client. The second purpose is to access the information 
-stored in our database. To make the implementation of this data access 
-layer easier, we will use the Spring Data JPA API. 
-The dependencies that we will use for this application are Spring Web 
-(for building RESTful web apps) and PostgreSQL driver 
-(driver to connect to our database). All these dependencies will 
-automatically be included in the executable jar file to run the application.
+of the application. In combination with this we use  Spring Web  (for building RESTful web apps) and PostgreSQL driver (driver to connect to our database). The backend API serves 2 main functions:
+1. To handle client HTTP requests using buisness logic.
+2. To allow access to database information. 
 
-### Components / Interfaces
-There will be three major components for the backend: Controller layer, 
-Service layer and the data access layer. The requests will be processed 
-by the controller and sent to the service layer to handle the logic. 
+Check out [Software Design(Back End)](#software-design) section for more details for these two functions.
+
+#### Major components for the backend: 
+
+Controller layer, Service layer and the data access layer. 
+
+The requests will be processed by the controller and sent to the service layer to handle the logic. 
 The data access layer talks to PostgreSQL database using calls from the JPA API.
 
 <img src="./images/api_diagram.png" alt="server API diagram">
 
-### Database and Schema  
-In our database we mainly have 2 entities:
-* Quiz Questions: This entity in the database stores the information for 
-the quizzes. “QID” is the primary key that assigns an ID to each question, 
-“Category” represents what topic the question belongs to, “Question” 
-attribute stores the question and “Answer” stores the answer to the question. 
-“Options” stores the multiple choices for the question.
-
-<img src="./images/quizSchema.png" alt="quiz schema">
-
-* Topic content/Description: This entity in the database stores the topic 
-summaries for each topic that will be displayed on the homepage. 
-“TID” is the primary key that assigns an ID to each topic. 
-“Topic Category” represents the topic that the description belongs to. 
-“Description” stores the summaries for each topic on the homepage.
-
-<img src="./images/topicSchema.png" alt="topic schema">
 
 ### Architecture Assumptions
 * We do not assume any requirements in terms of using the app from the user. 
@@ -557,7 +513,25 @@ has a change friendly design that enables you to  make changes to the database
 without disrupting webpage operation. The cons is MongoDB uses high memory 
 for data storage.
 
+## Software Design
+
+### Toolset
+* Version Control: Git - well documented standard for version control
+* REACT Build System: NPM - standard solution for Node Development
+
+### Front End
+* React - widely used, well documented, scalable library for front end web development.
+* Javascript, CSS - standard web development languages
+* Team members are free to develop using whichever code editor they are most familiar.
+
+### Back End 
+* Java Spring Boot framework
+* Algorithms like sorting and pathfinding will be implemented in the 
+backend of our program with Java.
+
 ## Software Design (Front End)
+
+
 **React Components:**  
 Each React component has its own modifiable state, and static props.  
  
@@ -567,12 +541,12 @@ topics we have to study from and the type of content we offer.
 	* SiteSummary: A general summary of our website and how it works. Also, has 
     a cool visual image (website logo)
 	* Topic: The content offered by Algo Wiz is broken down into 3 main 
-    sections, Graph, Sorting and Search Algorithms. So the home page contains 
-    a section which lets the user toggle between the different offerings 
-    amongst these 3 sections. Each of these 3 topics then have subtopics under 
-    them that redirect users to the lesson content/ quiz content. 
+    sections, Graph algorithms section, Sorting algorithms section and Search Algorithms section.
+    So the home page contains these 3 sections with each section contains sub-topics under 
+    them that redirect users to the lesson content/ quiz content. For example: Graph algorithms section
+    will have Breadth First Search (BFS), Dijkstra algorithm, and etc.
 		* LessonSummary: Each of the sub topics in this section will have a 
-        small  lesson summary which describes what that particular sub topic 
+        small lesson summary which describes what that particular sub topic 
         is teaching. Eg.  Under Graphs as the main topic, BFS may be a subtopic 
         which would contain a small summary of what BFS is.
 * LessonPage: This is the page displayed to the user once they decide on a 
@@ -585,11 +559,11 @@ to teach the given topic to the user.
     about the topic tailor made to aid user understanding and learning.
 	*Image: Extra images that might be helpful visual aids to the users.
 * QuizPage: This will be an interactive quiz section with a format similar to 
-Duilingo, where we give immediate input per quiz question the user answers. 
+Duilingo, Where we give immediate feedback when a user answers a question. 
 We believe this will help provide a stress free and low stakes testing 
 environment which will aid user experience.
 	* Question: The quiz page will display 1 question at a time to the user. 
-    This will be an MCQ format question and could possibly have an visual 
+    This will be an multiple choice question format question and could possibly have an visual 
     element to help visualise the situation presented to the user
     * Result: 2 outputs 
     * Correct Answer: A green colored screen will be displayed to the user 
@@ -603,22 +577,45 @@ environment which will aid user experience.
 ## Software Design (Back End)
 **Responsibilities**  
 The Spring Boot Server is responsible for handling the backend business logic 
-of the application and connect/access information from our database. 
+of the application(explained below) and connect/access information from our database. 
 The design of the spring boot application has the following layers:
 
 First, the requests like GET and POST, received from the client will be 
 processed by the controller component(API layer) of our application. 
 The data from these requests will then be sent to the service component by 
-the controller. The service layer handles the logic of the application. 
-Here we implement various functions to validate the information sent from 
-the client or perform any of the CRUD actions(Create, Read, Update and Delete) 
-based on the request. The service layer also has access to the information 
-sent by the data access layer. The data access layer is implemented using 
+the controller. The service layer handles the business logic. The business logic
+is the part of the application that stores a certain set of rules on how the data 
+should be created, stored or changed. It may involve performing any of the 
+CRUD(Create, Read, Update, Delete) actions or simple validation of user data. 
+For the most part, the main logic in our application is to read relevant information 
+from the database and output to the client. The service layer also has access to the 
+information sent by the data access layer. The data access layer is implemented using 
 Spring JPA. The purpose of this layer is to connect to the PostgreSQL database. 
 Once connected, we can query the desired information from the entities in 
 the database and send it back to the service layer. The output from the service 
 layer will be passed back to the controller and from there, the response 
 will be returned to the client.
+
+**Database and Schema** 
+In our database we mainly have 2 entities:
+* Quiz Questions: This entity in the database stores the information for 
+the quizzes. “QID” is the primary key that assigns an ID to each question, 
+“Category” represents what topic the question belongs to, “Question” 
+attribute stores the question and “Answer” stores the answer to the question. 
+“Options” stores the multiple choices for the question.
+
+<img src="./images/quizSchema.png" alt="quiz schema">
+
+* Topic content/Description: This entity in the database stores the topic 
+summaries for each topic that will be displayed on the homepage. 
+“TID” is the primary key that assigns an ID to each topic. 
+“Topic Category” represents the topic that the description belongs to. 
+“Description” stores the summaries for each topic on the homepage.
+
+<img src="./images/topicSchema.png" alt="topic schema">
+
+
+
 
 **Component Abstractions**  
 We will create two packages. One package called topic, will contain algorithm.java 
@@ -657,32 +654,146 @@ implement the code.
 * Links: 
     * https://google.github.io/styleguide/javaguide.html
 
-### Test Plan & Bugs
-**Front End Tests**
-* Use Jest unit tests to render component trees in a simplified test 
-environment and assert their output. This should allow for quick one step 
-testing throughout the development process to ensure new changes do not 
-break existing React Components and Layouts. 
-* Use Jest integration tests so that we can check that different components 
-are interacting properly with the backend via http requests. 
-This helps us in making our application reliable and isolates potential errors. 
-Integration tests will also help in checking if we are making the correct API calls.
-* Useability testing to gather user feedback using Google Form Surveys, as well 
-as informal “Hallway Tests”. We will begin collecting feedback as soon as a 
-version of the App is available via public URL. This should assist with creating 
-a more intuitive UI and allow us to make changes throughout the development process.  
-* End-To-End Tests (E2E) : We will use puppeteer for End-To-End Testing. 
-It will help us in  validating the full flow of our application. 
-It can also help us check that different components are displaying the 
-correct functionality.
+## Test Plan & Bugs
 
-**Back End Tests**
+### Continuous Integration & Deployment
+* We will be using [GitHub Actions](https://docs.github.com/en/actions) 
+to incorporate Continuous Integration (CI) workflows for both front and 
+back end. The CI workflow can be modified by editing the `.yml` files 
+that live in the AlgoWiz repo at [.github/workflows](../.github/workflows)
+* To view CI runs or add a new CI workflow using GitHub Actions click 
+on the [Actions tab](https://github.com/aadijain725/AlgoWiz/actions) 
+at the top of the AlgoWiz Repo.
+* CI Runs are triggered by `push` or `pull requests` to the main branch
+and dev branch.
+* In addition to building and deploying, the CI workflow will run the entire
+test suite outlined in [Front End Tests](#front-end-tests) and
+[Back End Tests](#back-end-tests) (with the exception of usability testing)
+including unit tests, integration tests, End-to-End (E2E) tests, and storing
+code coverage reports at [Codecov](https://about.codecov.io/).
+* We chose to use GitHub Actions as our CI platform to try and consolidate 
+our development tools. Github Actions has been gaining popularity recently 
+and there are many reusable open source workflows/plugins available to 
+help customize your CI. We are already using github to host our code so it 
+makes sense to keep the CI development tools in the same spot. 
+
+    <table>
+        <tr>
+            <th colspan="2"> GitHub Actions </th>
+        </tr>
+        <tr>
+            <td>Pros</td><td>Cons</td>
+        </tr>
+        <tr>
+            <td>
+                <p>No need for an outside CI vendor</p>
+                <p>Store and edit CI config in the repo</p>
+                <p>Comunity workflows</p>
+                <p>Caching Dependencies</p>
+                <p>Free for public Repos</p>
+            </td>
+            <td>
+                <p>Not as established as other CI solutions</p>
+                <p>Documentation not as extensive</p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th colspan="2">Travis CI</th>
+        </tr>
+        <tr>
+            <td>Pros</td><td>Cons</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Good Documentation</p>
+                <p>Integrates with Slack and VS Code</p>
+            </td>
+            <td>
+                <p>Can be slow</p>
+                <p>No concurent jobs on free tier</p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th colspan="2">CircleCI</th>
+        </tr>
+        <tr>
+            <td>Pros</td><td>Cons</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Intigrates with Github</p>
+                <p>Highly Configurable</p>
+            </td>
+            <td>
+                <p>Steep learning curve</p>
+                <p>No caching on free tier</p>
+                <p>Weekly limits on free tier</p>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+### Front End Tests 
+* We will be using the [Jest Testing Framework](https://jestjs.io/) for the 
+front end portion of our app. Jest is the most popular React testing
+framwork with great documentation and is already incorporated into new 
+React projects at set up.
+* To add a new unit test simply create a new js file inside the 
+[algowiz-app/src/tests](../algowiz-app/src/tests) 
+directory with the `.test.js` extension. 
+(Though tests can be located at any depth under the src top level folder.)
+See the [Jest documentation](https://jestjs.io/docs/snapshot-testing)
+for more information on writing snapshot tests. 
+    * Jest unit tests can render React components in a simplified test 
+environment and assert their output. This allows for quick one step 
+testing throughout the development process.
+    * Jest integration tests can check that different components 
+are interacting properly with the backend via http requests. Integration tests 
+will also ensure the correct API calls are being made.
+    * Jest can generate code coverage reports over an entire node project,
+    including untested files with no additional setup. 
+* Useability Testing: User feedback will be collected using Google Form Surveys.
+We will begin collecting feedback as soon as a version of the App is available via
+public URL. This should lead to a more intuitive UI by the end of the 
+development process.
+
+### Back End Tests
+
+1. Your test-automation infrastructure (e.g., JUnit, Mocha, Pytest, etc).
+We will be using JUnit test (https://junit.org/junit4/) for Java Spring Boot Framework.
+2. A brief justification for why you chose that test-automation infrastructure.
+Junit is an open source Unit testing framework for Java and there are good documentation
+available on how to write JUnit tests for Java code. 
+3. How to add a new test to the code base.
+For Spring Boot Framework, JUnit is a part of test package. The test is in algorithms/src/test folder.
+    * Junit tests can test different part of Java classes within API package where all the algorithms code are located
+    * We will be creating separate tests in a separate file within the test folder for Java classes we implemented
+    * write tests using assert equals
+
 * Unit tests as well as output tests to the localhost port 8080, to check 
 expected output of methods, proper data retrieval from the database, and 
 testing if the port works.  We’ll test for both algorithm class and quiz class. 
-Once the backend logic works, we’ll connect with the front end and test each 
-button; button for lessons, button for quiz etc, to check if they return the 
-correct page and content back from the backend server.  
+Once the backend logic works, we’ll connect with the front end.
+
+### System Tests:
+1. We will use system tests to validate end to end system specifications. We will write exhaustive tests for testing functionality of our software. Validation for different buttons on an homepage, quiz page, lesson page, visualizer components will be done through system tests
+
+2. End-To-End Tests (E2E) : These test are usally done after system tests and are considered subset of System tests. 
+
+    * [Puppeteer](https://developers.google.com/web/tools/puppeteer) is a automated test environment
+that simulates user interaction inside a chrome browser environment. We will use Puppeteer tests to validate the flow of our applications UI for front end side.
+    * Finally we use End to End test to the behavioral flow of our whole application. This includes testing all software interfaces and connected systems
+    * We are using puppeteer because of its good control over chrome which is better than many other testing tools like selenium.
+    * To add a new unit test simply create a new js file inside the 
+[algowiz-app/src/tests](../algowiz-app/src/tests)
+
+
 
 ## Documentation Plan
 * Root directory of the repository must contain a Readme<area>.md kept up to 
