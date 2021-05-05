@@ -413,9 +413,11 @@ separately on the front and backend of our product.
 ## Major Risks
 
 * Insufficient user feedback
-    * We are looking to make a highly interactive app and hence upon beta release are looking to get and leverage large amounts of user feeback to increase app usability. Insufficient user feedback means not getting enough quality user feeback that allows us to maximise usability and user satisfaction.  
-	* This has medium risk, depending on the kind and quality of 
-    user feedbacks we get.
+    * We are looking to make a highly interactive app and hence upon beta release 
+    are looking to get and leverage large amounts of user feeback to increase 
+    app usability. Insufficient user feedback means not getting enough quality 
+    user feeback that allows us to maximise usability and user satisfaction.  
+	* This has medium risk, depending on the kind and quality of user feedbacks we get.
     * This can have a high impact on our apps usability and UI experience 
     which is the main incentive for the app. Since, the app is a study tool 
     for a variety of users we need feedback from different groups  of people 
@@ -425,8 +427,8 @@ separately on the front and backend of our product.
     only amongst our peers within the class but within our network. 
     Since the app will be hosted online and be accessible to everyone we plan 
     on getting a lot of feedback and fixing any bugs and making improvements to the UI. 
-    In case we don’t get enough user feedback, we plan on working and thoroughly testing the app ourselves to 
-    identify issues.
+    In case we don’t get enough user feedback, we plan on working and thoroughly 
+    testing the app ourselves to identify issues.
 * Failure to complete visualization tool
     * Medium risk of occurring - since no team members has experience working 
     on a similar concept it is likely we will change implementation details or 
@@ -457,7 +459,6 @@ as we have a working demo. As the target demographic is individuals with
 previous computer science exposure, we will be recruiting classmates and 
 instructors/TA’s to test the app and fill out surveys throughout the development process.  
 
-
 ## Software Architecture
 ### Major Components and Functionality
 Our web-based application consists of three main components, a frontend 
@@ -470,25 +471,25 @@ for AlgoWiz. All routing is handled by the React application on the client side.
 JSON data is sent to and from the server via asynchronous http requests. 
 A react application is made up of individual components, which can be reused 
 throughout the application. Each react component has its own modifiable state, 
-and static props. We will have 3 main pages, the HomePage, the LessonPage and the QuizPage, more details. on this can be found in the  [Software Design(Frontend)](#software-design) section later in this document.
-
-
-
+and static props. We will have 3 main pages, the HomePage, the LessonPage and the 
+QuizPage, more details. on this can be found in the  
+[Software Design(Frontend)](#software-design) section later in this document.
 
 **UI Wireframe**
 <img src="./images/algowiz_wireframe.png" alt="Algowiz wireframe diagram">
-
-
 
 ### Backend Structure:
 
 **Java Spring Server**   
 We will use the Spring Boot framework in Java to handle the backend portion 
-of the application. In combination with this we use  Spring Web  (for building RESTful web apps) and PostgreSQL driver (driver to connect to our database). The backend API serves 2 main functions:
+of the application. In combination with this we use  Spring Web  
+(for building RESTful web apps) and PostgreSQL driver 
+(driver to connect to our database). The backend API serves 2 main functions:
 1. To handle client HTTP requests to server
 2. To allow access to database information. 
 
-Check out [Software Design(Backend)](#software-design) section for more details for these two functions.
+Check out [Software Design(Backend)](#software-design) section for more details 
+for these two functions.
 
 #### Major components for the backend: 
 
@@ -498,7 +499,6 @@ The requests will be processed by the controller and sent to the service layer t
 The data access layer talks to PostgreSQL database using calls from the JPA API.
 
 <img src="./images/api_diagram.png" alt="server API diagram">
-
 
 ### Architecture Assumptions
 * We do not assume any requirements in terms of using the app from the user. 
@@ -557,7 +557,6 @@ backend of our program with Java.
 
 ## Software Design (Frontend)
 
-
 **React Components:**  
 Each React component has its own modifiable state, and static props.  
  
@@ -569,7 +568,8 @@ topics we have to study from and the type of content we offer.
 	* Topic: The content offered by Algo Wiz is broken down into 3 main 
     sections, Graph algorithms section, Sorting algorithms section and Search Algorithms section.  
     So the home page contains these 3 sections with each section contains sub-topics under 
-    them that redirect users to the lesson content/ quiz content. For example: Graph algorithms section  
+    them that redirect users to the lesson content/ quiz content. 
+    For example: Graph algorithms section  
     will have Breadth First Search (BFS), Dijkstra algorithm, and etc.  
 		* LessonSummary: Each of the sub topics in this section will have a 
         small lesson summary which describes what that particular sub topic 
@@ -639,9 +639,6 @@ summaries for each topic that will be displayed on the homepage.
 “Description” stores the summaries for each topic on the homepage.
 
 <img src="./images/topicSchema.png" alt="topic schema">
-
-
-
 
 **Component Abstractions (Backend)**  
 * We will create two packages. One package called topic, will contain algorithm.java 
@@ -762,9 +759,6 @@ makes sense to keep the CI development tools in the same spot.
         </tr>
     </table>
 
-
-
-
 ### Front End Tests 
 * We will be using the [Jest Testing Framework](https://jestjs.io/) for the 
 frontend portion of our app. Jest is the most popular React testing
@@ -796,10 +790,14 @@ development process.
 * Junit is an open source Unit testing framework for Java and there are good documentation
 available on how to write JUnit tests for Java code. 
 
-* For Spring Boot Framework, JUnit is a part of test package. The test is in algorithms/src/test folder.  
-    * Junit tests can test different part of Java classes within API package where all the algorithms code are located  
-    * We will be creating separate tests in a separate file within the test folder for Java classes we implemented  
-    * write tests such as get method to fetch data from the database and compare expected output using assert equals  
+* For Spring Boot Framework, JUnit is a part of test package. 
+The test is in algorithms/src/test folder.  
+    * Junit tests can test different part of Java classes within API package 
+    where all the algorithms code are located  
+    * We will be creating separate tests in a separate file within the test 
+    folder for Java classes we implemented  
+    * write tests such as get method to fetch data from the database and compare 
+    expected output using assert equals  
 
 * Unit tests as well as output tests to the localhost port 8080, to check 
 expected output of methods, proper data retrieval from the database, and 
@@ -807,18 +805,24 @@ testing if the port works.  We’ll test for both algorithm class and quiz class
 Once the backend logic works, we’ll connect with the frontend.  
 
 ### System Tests:  
-1. We will use system tests to validate end to end system specifications. We will write exhaustive tests for testing functionality of our software. Validation for different buttons on an homepage, quiz page, lesson page, visualizer components will be done through system tests
+1. We will use system tests to validate end to end system specifications. 
+We will write exhaustive tests for testing functionality of our software. 
+Validation for different buttons on an homepage, quiz page, lesson page, 
+visualizer components will be done through system tests
 
-2. End-To-End Tests (E2E) : These test are usally done after system tests and are considered subset of System tests. 
+2. End-To-End Tests (E2E) : These test are usally done after system tests and 
+are considered subset of System tests. 
 
-    * [Puppeteer](https://developers.google.com/web/tools/puppeteer) is a automated test environment
-that simulates user interaction inside a chrome browser environment. We will use Puppeteer tests to validate the flow of our applications UI for frontend side.
-    * Finally we use End to End test to the behavioral flow of our whole application. This includes testing all software interfaces and connected systems
-    * We are using puppeteer because of its good control over chrome which is better than many other testing tools like selenium.
+    * [Puppeteer](https://developers.google.com/web/tools/puppeteer) is an 
+    automated test environment that simulates user interaction inside a chrome 
+    browser environment. We will use Puppeteer tests to validate the flow of our 
+    applications UI for frontend side.
+    * Finally we use End to End test to the behavioral flow of our whole application. 
+    This includes testing all software interfaces and connected systems
+    * We are using puppeteer because of its good control over chrome which is 
+    better than many other testing tools like selenium.
     * To add a new unit test simply create a new js file inside the 
 [algowiz-app/src/tests](../algowiz-app/src/tests)
-
-
 
 ## Documentation Plan
 * Root directory of the repository must contain a Readme<area>.md kept up to 
