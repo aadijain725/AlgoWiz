@@ -50,3 +50,7 @@ Michael Wen:
 - Research which provider / Architecture we decide for our database + server 
 - Research MVP / MVVM models
 - Research on making a JAVA API 
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTQ2NzMxMzc3OF19
+-->
