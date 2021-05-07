@@ -45,3 +45,10 @@ integrate more content and features.
 ## Git Workflow / Guide
 [Read our Git Guide](/documentation/gitguide.md) if you want to start 
 contributing to the repo but feel lost!
+
+## Important Frontend Dependencies
+
+* [Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/) - 
+for responsive css
+* [Framer Motion](https://github.com/framer/motion) - 
+for Visualizer Animation
