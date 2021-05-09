@@ -18,10 +18,10 @@ Click Generate and it will package up in a zip file which you can unzip and open
 
 ## Working with Spring Boot
 Starter code of Spring Boot has been generated, and it is placed in the API folder
-Start by:
-    - Cloning the repo
-    - Create a separate branch 
-    - Run the code to make sure it compiles
+Start by:  
+    - Cloning the repo  
+    - Create a separate branch   
+    - Run the code to make sure it compiles  
     
  
  
