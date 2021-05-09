@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+#quiz-submit-btn {
+  width: 100%;
+  margin-top: 5%;
+}
+
+.quiz-question-card {
+}
+
+/* .quiz-page {
+
+}
+
+.quiz-question {
+
+} */
