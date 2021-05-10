@@ -2,7 +2,10 @@
 # Setting up Spring Boot backend API for web application
 
 ## Getting Started Guides
+
 Go to Spring Boot initializer [here] (https://start.spring.io/) and select the following tabs
+=======
+
 - Project: Maven Project
 - Language: Java
 - Spring Boot: 2.4.5
@@ -18,10 +21,13 @@ Click Generate and it will package up in a zip file which you can unzip and open
 
 ## Working with Spring Boot
 Starter code of Spring Boot has been generated, and it is placed in the API folder
+
 Start by:  
     - Cloning the repo  
     - Create a separate branch   
     - Run the code to make sure it compiles  
+=======
+
     
  
  
