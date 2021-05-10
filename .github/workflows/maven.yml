@@ -5,12 +5,18 @@ name: Github Actions Java CI with Maven
 # Controls when the action will run. Triggers the workflow on push
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, main]
+  pull_request:
+    branches: [dev, main]
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    default:
+      run:
+        working-directory: ./api
 
     steps:
     - name: Step 1 - chechout dev branch from Github
@@ -23,7 +29,7 @@ jobs:
         distribution: 'adopt'
         
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file ./algorithms/pom.xml
       
     - name: Step 4 - List the current directory
       run: ls -a
