@@ -22,8 +22,7 @@ public class HomepageTopics {
     private String homepageDescription;
     private String imageURL;
 
-    public HomepageTopics(Long id, String topic, String algorithmName, String homepageDescription, String imageURL) {
-        this.id = id;
+    public HomepageTopics(String topic, String algorithmName, String homepageDescription, String imageURL) {
         this.topic = topic;
         this.algorithmName = algorithmName;
         this.homepageDescription = homepageDescription;
@@ -82,11 +81,5 @@ public class HomepageTopics {
     }
 
     public HomepageTopics(){}
-
-    public HomepageTopics(Long id, String algorithmName, String homepageDescription) {
-        this.id = id;
-        this.algorithmName = algorithmName;
-        this.homepageDescription = homepageDescription;
-    }
 
 }

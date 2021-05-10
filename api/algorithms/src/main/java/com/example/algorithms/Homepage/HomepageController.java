@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path="api/v1/homepage")
@@ -21,73 +23,96 @@ public class HomepageController {
     @GetMapping
     public List<CustomJSON> getTopics() {
 
-        List<CustomJSON> returnList = new ArrayList<>();
 
+        Map<String, List<Data>> topicToDataMap = new HashMap<>();
         for (HomepageTopics hp: algoHomeService.getTopics()) {
-            CustomJSON c = new CustomJSON(hp.getId(), hp.getTopic(), List.of(
-                    hp.getAlgorithmName()),
-                    List.of(hp.getHomepageDescription()), List.of(hp.getImageURL()));
+            String topic = hp.getTopic();
+            Data topicData = new Data(hp.getId(),
+                                      hp.getAlgorithmName(),
+                                      hp.getHomepageDescription(),
+                                      hp.getImageURL());
 
-            returnList.add(c);
-
+            if (!topicToDataMap.containsKey(topic)) {
+                topicToDataMap.put(topic, new ArrayList<>(List.of(topicData)));
+            } else {
+                List<Data> currDataList = topicToDataMap.get(topic);
+                currDataList.add(topicData);
+                topicToDataMap.put(topic, currDataList);
+            }
         }
+
+        List<CustomJSON> returnList = new ArrayList<>();
+        for (String topic: topicToDataMap.keySet()) {
+            CustomJSON customJSON = new CustomJSON(topic, topicToDataMap.get(topic));
+            returnList.add(customJSON);
+        }
+
         return returnList;
     }
 
-    public static class CustomJSON {
-        private long id;
-        private String topic;
-        private List<String> algoName;
-        private List<String> homePageDescription;
-        private List<String> url;
+    private static class CustomJSON {
+        private final String topicName;
+        private final List<Data> data;
 
+        public CustomJSON(String topicName, List<Data> data) {
+            this.topicName = topicName;
+            this.data = data;
+        }
 
-        public CustomJSON(long id, String topic, List<String> algoName, List<String> homePageDescription, List<String> url) {
+        public String getTopicName() {
+            return topicName;
+        }
+
+        public List<Data> getData() {
+            return data;
+        }
+
+        @Override
+        public String toString() {
+            return "CustomJSON{" +
+                    "topicName='" + topicName + '\'' +
+                    ", data=" + data +
+                    '}';
+        }
+    }
+
+    private static class Data {
+        private final long id;
+        private final String algorithmName;
+        private final String homePageDescription;
+        private final String imageURL;
+
+        public Data (long id, String algorithmName, String homePageDescription, String imageURL) {
             this.id = id;
-            this.topic = topic;
-            this.algoName = algoName;
+            this.algorithmName = algorithmName;
             this.homePageDescription = homePageDescription;
-            this.url = url;
+            this.imageURL = imageURL;
         }
 
         public long getId() {
             return id;
         }
 
-        public void setId(long id) {
-            this.id = id;
+        public String getAlgorithmName() {
+            return algorithmName;
         }
 
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public List<String> getAlgoName() {
-            return algoName;
-        }
-
-        public void setAlgoName(List<String> algoName) {
-            this.algoName = algoName;
-        }
-
-        public List<String> getHomePageDescription() {
+        public String getHomePageDescription() {
             return homePageDescription;
         }
 
-        public void setHomePageDescription(List<String> homePageDescription) {
-            this.homePageDescription = homePageDescription;
+        public String getImageURL() {
+            return imageURL;
         }
 
-        public List<String> getUrl() {
-            return url;
-        }
-
-        public void setUrl(List<String> url) {
-            this.url = url;
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "id=" + id +
+                    ", algorithmName='" + algorithmName + '\'' +
+                    ", homePageDescription='" + homePageDescription + '\'' +
+                    ", imageURL='" + imageURL + '\'' +
+                    '}';
         }
     }
 

@@ -17,7 +17,6 @@ public class QuizConfig {
         return args -> {
 
             HomepageTopics dijkstrasAlgorithm = new HomepageTopics(
-                    1l,
                     "Graph",
                     "Dijkstra's Algorithm",
                     "Algorithm for finding the shortest path from start node to end node\n" +
@@ -25,7 +24,6 @@ public class QuizConfig {
                     "https://i1.faceprep.in/companies/selection-sort-2.PNG"
             );
             HomepageTopics dijkstrasAlgorithm2 = new HomepageTopics(
-                    1l,
                     "Graph",
                     "bfs",
                     "Algorithm for finding the shortest path from start node to end node\n" +
@@ -33,7 +31,6 @@ public class QuizConfig {
                     "https://i1.faceprep.in/companies/selection-sort-2.PNG"
             );
             HomepageTopics selectionSort = new HomepageTopics(
-                    2l,
                     "Sorting",
                     "Selection Sort",
                     "The selection sort algorithm sorts an array by repeatedly finding the " +
@@ -42,7 +39,6 @@ public class QuizConfig {
             );
 
             HomepageTopics binarySearch = new HomepageTopics(
-                    3l,
                     "Search",
                     "Binary Search",
                     " Search a sorted array by repeatedly dividing the search interval in half",
