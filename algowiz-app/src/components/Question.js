@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ListGroup, Col, Row, Container, Button } from "react-bootstrap";
+import { Card, ListGroup, Container } from "react-bootstrap";
 
 export class Question extends React.Component {
   constructor(props) {
@@ -8,20 +8,19 @@ export class Question extends React.Component {
     this.state = {ans:  null};
   }
 
-  selectButton(value) {
-    // console.log(value);
-    // console.log(this.props.options[value]);
-    this.setState({
-        ans: this.props.options[value]
-    });
-  }
+  // selectButton(value) {
+  //   // console.log(value);
+  //   // console.log(this.props.options[value]);
+  //   this.setState({
+  //       ans: this.props.options[value]
+  //   });
+  // }
 
   
 
   render() {
     return (
       <Container>
-        <Row>
           <Card className="quiz-question-card">
             <Card.Body>
               <Card.Title> Question #{this.props.qnum} </Card.Title>
@@ -31,44 +30,23 @@ export class Question extends React.Component {
                 {/* https://react-bootstrap.github.io/components/list-group/ */}
                 <ListGroup.Item
                   action
-                  onClick={() => {this.selectButton(0)}}
+                  onClick={() => {this.props.onSelect(this.props.options[0])}}
                 >
                   {this.props.options[0]}
                 </ListGroup.Item>
                 <ListGroup.Item 
                     action 
-                    onClick={() => {this.selectButton(1)}}>
+                    onClick={() => {this.props.onSelect(this.props.options[1])}}>
                   {this.props.options[1]}
                 </ListGroup.Item>
                 <ListGroup.Item 
                     action
-                    onClick={() => {this.selectButton(2)}}>
+                    onClick={() => {this.props.onSelect(this.props.options[2])}}>
                   {this.props.options[2]}
                 </ListGroup.Item>
               </ListGroup>
             </Card.Body>
           </Card>
-        </Row>
-        <Row>
-          <Col sm={3}></Col>
-          <Col>
-            <Button
-              id="quiz-submit-btn"
-              variant="outline-primary"
-              size="lg"
-              onClick={()=> {
-                  this.props.onSubmit(this.state.ans)
-                  this.setState({
-                    ans: null
-                });
-                }}
-            >
-              {" "}
-              Submit{" "}
-            </Button>
-          </Col>
-          <Col sm={3}></Col>
-        </Row>
       </Container>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import Question from '../components/Question'
 import Progress from './Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Container, Row, Col, Alert} from 'react-bootstrap'
+import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 
 
 function getUserFeedback(props, ans) {
@@ -45,6 +45,8 @@ export class QuizPage extends React.Component {
         };
     }
 
+
+
     // Fetches the question details for the current topic
     getQuestion (topic) {
         // TODO:  add fecth call  
@@ -52,10 +54,17 @@ export class QuizPage extends React.Component {
         return "Test Info";
     }
 
+    handleSelect = (ans) => {
+        console.log("Selection recieved ", ans);
+        this.setState({
+            qnum: this.state.qnum, 
+            ans: ans,
+            submitted: false
+        })
+    }
+
     handleSubmit = (ans) => {
         console.log("Submission recieved ", ans);
-        const curr_state = this.state.qnum;
-        console.log(curr_state);
         
         if (ans == null) {
             this.setState({
@@ -91,14 +100,15 @@ export class QuizPage extends React.Component {
                 {/* Top row -- topic + progress bar */}
                 <Row>
                     <Col sm= {6}> <h2>Quiz Page: {this.props.topic}</h2> </Col>
-                    <Col sm = {6}> <Progress id = "quiz-progress-bar" value = {60}></Progress> </Col>
+                    <Col sm = {6}> <Progress id = "quiz-progress-bar" value = {(this.state.qnum/this.props.num)*100}></Progress> </Col>
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>
                     <Col sm = {6}><Question 
                     value = {this.getQuestion(this.props.topic)} 
                     qnum = {this.state.qnum}
-                    onSubmit = {this.handleSubmit}
+                    onSelect = {this.handleSelect}
+                    // onSubmit = {this.handleSubmit}
                     options = {["test 1", "test2", "test3"]}
                     ></Question> </Col>
                 </Row>
@@ -108,6 +118,26 @@ export class QuizPage extends React.Component {
                     </Row>
                 }
                 {/* Bottom row -- submit */}
+                <Row>
+                    <Col sm={3}></Col>
+                    <Col>
+                        <Button
+                        id="quiz-submit-btn"
+                        variant="outline-primary"
+                        size="lg"
+                        onClick={()=> {
+                            this.handleSubmit(this.state.ans)
+                            this.setState({
+                                ans: null
+                            });
+                            }}
+                        >
+                        {" "}
+                        Submit{" "}
+                        </Button>
+                    </Col>
+                    <Col sm={3}></Col>
+                </Row>
                 
             </Container>
         )
