@@ -1,0 +1,42 @@
+[
+  {
+    "qId": 1,
+    "category": "Dijkstra's algorithm",
+    "question": "Which of the following type of graphs work(s) with Dijkstra's algorithm?",
+    "answer": "Both directed and undirected graphs",
+    "options": [
+      "Both directed and undirected graphs",
+      "Directed graph only",
+      "Undirected graph only"
+    ],
+    "feedbacks": [
+      "Woohoo! Great job!",
+      "That is true, but there is a better answer",
+      "Sorry, that is incorrect. Try again"
+    ]
+  },
+  {
+    "qId": 2,
+    "category": "Dijkstra's algorithm",
+    "question": "What is the best time complexity for Dijkstra's algorithm?",
+    "answer": "O(V + E log V)",
+    "options": ["O(log n)", "O(V^2)", "O(V + E log V)"],
+    "feedbacks": [
+      "Nope, think about edges and vertices. Try again",
+      "Oops! nice try but that is incorrect. Try again",
+      "That is correct. Great job"
+    ]
+  },
+  {
+    "qId": 3,
+    "category": "Dijkstra's algorithm",
+    "question": "Which of the following is incorrect weight for the edge of the graph used by Dijkstra's?",
+    "answer": "-200",
+    "options": ["200", "-200", "1"],
+    "feedbacks": [
+      "Nope, think about incorrect weight, try again",
+      "Awesome! Great job",
+      "Oops! nice try but that is incorrect. Try again"
+    ]
+  }
+]

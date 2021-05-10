@@ -2,8 +2,7 @@ import React from 'react';
 import Question from '../components/Question'
 import Progress from './Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Container, Button, Row, Col} from 'react-bootstrap'
-
+import {Container, Row, Col, Alert} from 'react-bootstrap'
 
 
 export class QuizPage extends React.Component {
@@ -13,14 +12,34 @@ export class QuizPage extends React.Component {
         console.log(topic);
         let test = this.getQuestion(topic);
         console.log(test);
-        this.state = {qnum : 0};
+        this.state = {
+            qnum : 0,
+            ans: null
+        };
     }
 
     // Fetches the question details for the current topic
     getQuestion (topic) {
-        // TODO:  add fecth call
-        // TODO: add json parser
+        // TODO:  add fecth call  
+        // TODO: add json parser -- SHIVAMS
         return "Test Info";
+    }
+
+    handleSubmit = (ans) => {
+        console.log("Submission recieved ", ans);
+        const curr_state = this.state.qnum;
+        console.log(curr_state);
+        
+        if (ans == null) {
+            return <Alert 
+            variant = "warning">
+                Please Select 1 option before submitting
+            </Alert>;
+        } else  {
+            this.setState({
+                qnum: this.state.qnum + 1
+            })
+        }
     }
 
     render() {
@@ -33,26 +52,17 @@ export class QuizPage extends React.Component {
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>
-                    <Col sm = {6}><Question value = {this.getQuestion(this.props.topic)} qnum = {this.state.qnum}></Question> </Col>
+                    <Col sm = {6}><Question 
+                    value = {this.getQuestion(this.props.topic)} 
+                    qnum = {this.state.qnum}
+                    onSubmit = {this.handleSubmit}
+                    options = {["test 1", "test2", "test3"]}
+                    ></Question> </Col>
                 </Row>
                 {/* Bottom row -- submit */}
-                <Row>  
-                    <Col sm = {3}></Col>
-                    <Col>
-                        <Button id= "quiz-submit-btn" variant = "outline-primary" size = "lg" onClick={()=>{
-                            this.setState((state) => ({
-                                qnum: state.qnum + 1
-                              }))
-                            }
-                        }
-                        > Submit </Button>
-                    </Col>
-                    <Col sm = {3}></Col>
-                    
-                </Row>
+                
             </Container>
         )
-
     }
 }
 

@@ -1,1 +1,35 @@
-[{"qId":1,"category":"Dijkstra's algorithm","question":"Which of the following type of graphs work(s) with Dijkstra's algorithm?","answer":"Both directed and undirected graphs","option1":"Both directed and undirected graphs","option2":"Directed graph only","option3":"Undirected graph only","posFeedback":"Woohoo! Great job!","negFeedback":"Sorry, that is incorrect. Try again"},{"qId":2,"category":"Dijkstra's algorithm","question":"What is the best time complexity for Dijkstra's algorithm?","answer":"O(V + E log V)","option1":"O(log n)","option2":"O(V^2)","option3":"O(V + E log V)","posFeedback":"That is correct. Great job","negFeedback":"Oops! nice try but that is incorrect. Try again"},{"qId":3,"category":"Dijkstra's algorithm","question":"Which of the following is incorrect weight for the edge of the graph used by Dijkstra's?","answer":"-200","option1":"200","option2":"-200","option3":"1","posFeedback":"Awesome! Great job","negFeedback":"Oops! nice try but that is incorrect. Try again"}]
+[
+  {
+    "qId": 1,
+    "category": "Dijkstra's algorithm",
+    "question": "Which of the following type of graphs work(s) with Dijkstra's algorithm?",
+    "answer": "Both directed and undirected graphs",
+    "option1": "Both directed and undirected graphs",
+    "option2": "Directed graph only",
+    "option3": "Undirected graph only",
+    "posFeedback": "Woohoo! Great job!",
+    "negFeedback": "Sorry, that is incorrect. Try again"
+  },
+  {
+    "qId": 2,
+    "category": "Dijkstra's algorithm",
+    "question": "What is the best time complexity for Dijkstra's algorithm?",
+    "answer": "O(V + E log V)",
+    "option1": "O(log n)",
+    "option2": "O(V^2)",
+    "option3": "O(V + E log V)",
+    "posFeedback": "That is correct. Great job",
+    "negFeedback": "Oops! nice try but that is incorrect. Try again"
+  },
+  {
+    "qId": 3,
+    "category": "Dijkstra's algorithm",
+    "question": "Which of the following is incorrect weight for the edge of the graph used by Dijkstra's?",
+    "answer": "-200",
+    "option1": "200",
+    "option2": "-200",
+    "option3": "1",
+    "posFeedback": "Awesome! Great job",
+    "negFeedback": "Oops! nice try but that is incorrect. Try again"
+  }
+]
