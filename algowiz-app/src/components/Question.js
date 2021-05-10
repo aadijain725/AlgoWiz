@@ -4,17 +4,19 @@ import { Card, ListGroup, Col, Row, Container, Button } from "react-bootstrap";
 export class Question extends React.Component {
   constructor(props) {
     super(props);
-    console.log("From question, ", this.props.value);
+    // console.log("From question, ", this.props.value);
     this.state = {ans:  null};
   }
 
   selectButton(value) {
-    console.log(value);
-    console.log(this.props.options[value]);
+    // console.log(value);
+    // console.log(this.props.options[value]);
     this.setState({
         ans: this.props.options[value]
     });
   }
+
+  
 
   render() {
     return (
