@@ -4,6 +4,14 @@
 
 In the project directory, you can run:
 
+### npm install
+
+To settup the initial package manager, run this command first.
+
+### npm install react-bootstrap
+
+To install bootstrap dependencies 
+
 ### `npm start`
 
 Runs the app in the development mode.\
