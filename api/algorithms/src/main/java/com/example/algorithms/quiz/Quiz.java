@@ -1,8 +1,6 @@
 package com.example.algorithms.quiz;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table
@@ -25,9 +23,9 @@ public class Quiz {
     private String option1;
     private String option2;
     private String option3;
-    private String feedbackOpt1;
-    private String feedbackOpt2;
-    private String feedbackOpt3;
+    private String posFeedback;
+    private String negFeedback;
+
 
     public Quiz() {
 
@@ -39,9 +37,8 @@ public class Quiz {
                 String option1,
                 String option2,
                 String option3,
-                String feedbackOpt1,
-                String feedbackOpt2,
-                String feedbackOpt3) {
+                String posFeedback,
+                String negFeedback) {
         this.qId = qId;
         this.category = category;
         this.question = question;
@@ -49,11 +46,10 @@ public class Quiz {
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
-        this.feedbackOpt1 = feedbackOpt1;
-        this.feedbackOpt2 = feedbackOpt2;
-        this.feedbackOpt3 = feedbackOpt3;
-    }
+        this.posFeedback = posFeedback;
+        this.negFeedback = negFeedback;
 
+    }
 
     public int getqId() {
         return qId;
@@ -111,43 +107,19 @@ public class Quiz {
         this.option3 = option3;
     }
 
-    public String getFeedbackOpt1() {
-        return feedbackOpt1;
+    public String getPosFeedback() {
+        return posFeedback;
     }
 
-    public void setFeedbackOpt1(String feedbackOpt1) {
-        this.feedbackOpt1 = feedbackOpt1;
+    public void setPosFeedback(String posFeedback) {
+        this.posFeedback = posFeedback;
     }
 
-    public String getFeedbackOpt2() {
-        return feedbackOpt2;
+    public String getNegFeedback() {
+        return negFeedback;
     }
 
-    public void setFeedbackOpt2(String feedbackOpt2) {
-        this.feedbackOpt2 = feedbackOpt2;
-    }
-
-    public String getFeedbackOpt3() {
-        return feedbackOpt3;
-    }
-
-    public void setFeedbackOpt3(String feedbackOpt3) {
-        this.feedbackOpt3 = feedbackOpt3;
-    }
-
-    @Override
-    public String toString() {
-        return "Quiz{" +
-                "qId=" + qId +
-                ", category='" + category + '\'' +
-                ", question='" + question + '\'' +
-                ", answer='" + answer + '\'' +
-                ", option1='" + option1 + '\'' +
-                ", option2='" + option2 + '\'' +
-                ", option3='" + option3 + '\'' +
-                ", feedbackOpt1='" + feedbackOpt1 + '\'' +
-                ", feedbackOpt2='" + feedbackOpt2 + '\'' +
-                ", feedbackOpt3='" + feedbackOpt3 + '\'' +
-                '}';
+    public void setNegFeedback(String negFeedback) {
+        this.negFeedback = negFeedback;
     }
 }
