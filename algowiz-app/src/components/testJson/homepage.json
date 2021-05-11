@@ -4,12 +4,16 @@
     "data": [
       {
         "id": 1,
+        "lessonID": "l1",
+        "quizID": "q1",
         "algorithmName": "Dijkstra's Algorithm",
         "homePageDescription": "Algorithm for finding the shortest path from start node to end node\nin a weighted graph.",
         "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"
       },
       {
         "id": 2,
+        "lessonID": "l2",
+        "quizID": "q2",
         "algorithmName": "bfs",
         "homePageDescription": "Algorithm for finding the shortest path from start node to end node\nin a weighted graph.",
         "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"
@@ -21,6 +25,8 @@
     "data": [
       {
         "id": 4,
+        "lessonID": "l4",
+        "quizID": "q4",
         "algorithmName": "Binary Search",
         "homePageDescription": " Search a sorted array by repeatedly dividing the search interval in half",
         "imageURL": "https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png"
@@ -32,6 +38,8 @@
     "data": [
       {
         "id": 3,
+        "lessonID": "l3",
+        "quizID": "q3",
         "algorithmName": "Selection Sort",
         "homePageDescription": "The selection sort algorithm sorts an array by repeatedly finding the minimum element from unsorted part and putting it at the beginning.",
         "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"

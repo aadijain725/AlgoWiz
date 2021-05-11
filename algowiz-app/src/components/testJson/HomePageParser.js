@@ -21,7 +21,9 @@ export default class HomePageParser {
       var topic_details = {
         "title" : info2["algorithmName"],
         "description"  :info2["homePageDescription"], 
-        "imageURL": info2["imageURL"]
+        "imageURL": info2["imageURL"],
+        "quizID": info2["quizID"],
+        "lessonID":info2["lessonID"]
       }
       all_information.push(topic_details)
     }

@@ -60,7 +60,11 @@
 
 .tab {
 width: "30%";
-color: #000;
+color: rgb(181, 213, 255);
+}
+
+.gutter {
+  background-color: rgb(240, 240, 240);
 }
 
 #introFont {
@@ -74,4 +78,8 @@ color: #000;
   font-style: italic;
   font-variant: normal;
   text-transform: none;
-  }
+}
+
+#appBody {
+  background-color: white;
+}

@@ -14,7 +14,7 @@ export class HomePageTopicsTabs extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <Tabs
@@ -25,19 +25,16 @@ export class HomePageTopicsTabs extends React.Component {
               >
                   
                 <Tab eventKey="Search" title="Search" key = "a" >
-                  <HomePageTopicsTab topic="Search"> </HomePageTopicsTab>
+                  <HomePageTopicsTab topic="Search" />
                 </Tab>
 
                 <Tab eventKey="home" title="Graph" key = "b">
-                  <HomePageTopicsTab topic="Graph"> </HomePageTopicsTab>
+                  <HomePageTopicsTab topic="Graph" /> 
                 </Tab>
 
                 <Tab eventKey="Sorting" title="Sorting" key = "c">
-                  <HomePageTopicsTab topic="Sorting">
-                    {" "}
-                  </HomePageTopicsTab>
+                  <HomePageTopicsTab topic="Sorting" />
                 </Tab>
-
               </Tabs>
             </Col>
           </Row>
