@@ -22,7 +22,7 @@ render() {
         <Card.Body>    
           <Card.Title>Here are your resuts for the quiz</Card.Title>
           
-          <Progress type ="Your Score :" curr ={2} total ={3}></Progress>
+          <Progress type ="Your Score :" curr ={this.props.curr} total ={this.props.total}></Progress>
           
           <Button  href="/" className="btn btn-primary btn-m m-5">Go Back to Home</Button>
           
