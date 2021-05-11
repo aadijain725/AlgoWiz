@@ -15,7 +15,6 @@ public class Quiz {
             strategy = GenerationType.SEQUENCE,
             generator = "quiz_sequence"
     )
-
     private int qId;
     private String category;
     private String question;
@@ -25,7 +24,6 @@ public class Quiz {
     private String option3;
     private String posFeedback;
     private String negFeedback;
-
 
     public Quiz() {
 
