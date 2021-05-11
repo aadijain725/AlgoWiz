@@ -23,9 +23,9 @@ export class Question extends React.Component {
       <Container>
           <Card className="quiz-question-card">
             <Card.Body>
-              <Card.Title> Question #{this.props.qnum} </Card.Title>
+              <Card.Title> {this.props.value} </Card.Title>
               <Card.Subtitle className="mb-2 text-muted"> </Card.Subtitle>
-              <Card.Text>Question Goes Here</Card.Text>
+              <Card.Text>Question #{this.props.qnum + 1} </Card.Text>
               <ListGroup variant="flush">
                 {/* https://react-bootstrap.github.io/components/list-group/ */}
                 <ListGroup.Item
