@@ -27,7 +27,7 @@ function App() {
 					<LessonPage/>
 				</Route>
 				<Route path="/quiz">
-					<QuizPage/>
+					<QuizPage topic={"Testing Topic"} correct_ans={"test 1"} num ={10}/>
 				</Route>
 				<Route path="*">
 					<h2>Bad Route</h2>

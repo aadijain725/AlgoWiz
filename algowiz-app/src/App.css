@@ -37,6 +37,11 @@
   }
 }
 
+#quiz-submit-btn {
+  width: 100%;
+  margin-top: 5%;
+}
+
 .card {
   border-radius: 4px;
   background: #fff;
@@ -70,5 +75,3 @@ color: #000;
   font-variant: normal;
   text-transform: none;
   }
-
-  
