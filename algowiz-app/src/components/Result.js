@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Button, Col, Card, Container } from "react-bootstrap";
+import { Row, Button,Card, Container } from "react-bootstrap";
 import Progress from "./Progress"
 export class Result extends React.Component {
 displayResults(correct, incorrect) {

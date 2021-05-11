@@ -31,7 +31,7 @@ export class HomePageIntroduction extends React.Component {
             <img
               src={logo}
               className="img-fluid"
-              alt="Responsive image"
+              alt ="intro logo"
               width="50%"
             ></img>{" "}
           </Col>

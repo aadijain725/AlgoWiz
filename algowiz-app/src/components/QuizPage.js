@@ -1,5 +1,4 @@
 import React from "react";
-import Result from "./Result";
 
 export class QuizPage extends React.Component {
   render() {
