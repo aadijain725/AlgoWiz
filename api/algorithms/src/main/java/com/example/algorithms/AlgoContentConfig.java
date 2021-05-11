@@ -1,18 +1,18 @@
-package com.example.algorithms.quiz;
+package com.example.algorithms;
 
 import com.example.algorithms.Homepage.HomepageRepository;
 import com.example.algorithms.Homepage.HomepageTopics;
 import com.example.algorithms.LessonPage.Lesson;
 import com.example.algorithms.LessonPage.LessonRepository;
+import com.example.algorithms.quiz.Quiz;
+import com.example.algorithms.quiz.QuizRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
 import java.util.List;
-
 @Configuration
-public class QuizConfig {
+public class AlgoContentConfig {
     // a bean, inject quiz, homepage, and lesson repository
     @Bean
     CommandLineRunner commandLineRunner(HomepageRepository homepageRepository, LessonRepository lessonRepository, QuizRepository repository) {
@@ -115,5 +115,4 @@ public class QuizConfig {
             );
         };
     }
-
 }

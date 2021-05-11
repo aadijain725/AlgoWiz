@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path="api/v1/homepage")
+@RequestMapping(path="api/v1/home")
 public class HomepageController {
     private final HomepageService algoHomeService;
 
