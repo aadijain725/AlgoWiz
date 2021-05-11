@@ -10,8 +10,6 @@ import Result from './Result';
 function getUserFeedback(correct_ans, ans, feedbacks) {
     console.log("ans in getUserFeedback is:", ans );
     console.log("props in getUserFeedback is:",  correct_ans);
-    let posFeeback = "Great Job!";
-    let negFeeback = "Oops, that was wrong";
     if (!ans) {
         return <Alert 
             className = "mt-5"
@@ -127,7 +125,7 @@ export class QuizPage extends React.Component {
                 {/* Top row -- topic + progress bar */}
                 <Row>
                     <Col sm= {6}> <h2>Quiz Page: {this.props.topic}</h2> </Col>
-                    <Col sm = {6}> <Progress id = "quiz-progress-bar" value = {(this.state.qnum/window.info.length)*100}></Progress> </Col>
+                    <Col sm = {6}> <Progress id = "quiz-progress-bar" type = "Questions Answered" curr = {this.state.qnum} total = {window.info.length}></Progress> </Col>
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>

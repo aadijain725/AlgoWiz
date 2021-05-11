@@ -1,6 +1,5 @@
 import data from "./quiz.json";
 export default class QuizPageParser {
-    constructor() { }
     /* this method returns an array of maps that conatins all the information regarding the question to be displayed
     // the map layout
     // {
