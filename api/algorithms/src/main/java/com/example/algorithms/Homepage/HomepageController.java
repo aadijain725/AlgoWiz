@@ -23,7 +23,7 @@ public class HomepageController {
     @GetMapping
     public List<CustomJSON> getTopics() {
 
-
+        // mapping topic to list of data containing algorithms
         Map<String, List<Data>> topicToDataMap = new HashMap<>();
         for (HomepageTopics hp: algoHomeService.getTopics()) {
             String topic = hp.getTopic();
@@ -115,6 +115,4 @@ public class HomepageController {
                     '}';
         }
     }
-
-
 }

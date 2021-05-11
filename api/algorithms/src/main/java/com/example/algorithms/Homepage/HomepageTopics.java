@@ -56,8 +56,8 @@ public class HomepageTopics {
         return homepageDescription;
     }
 
-    public void setHomepageDescription(String homePageDescription) {
-        this.homepageDescription = homePageDescription;
+    public void setHomepageDescription(String homepageDescription) {
+        this.homepageDescription = homepageDescription;
     }
 
     public String getImageURL() {
