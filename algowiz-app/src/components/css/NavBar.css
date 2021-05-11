@@ -1,0 +1,13 @@
+#nav {
+	background-color: rgb(215, 215, 215);
+}
+
+#navLogo {
+	text-decoration: none;
+	color:black;
+	font-weight: bold;
+	font-size: 2rem;
+}
+#navLogo:hover {
+	color:grey;
+}

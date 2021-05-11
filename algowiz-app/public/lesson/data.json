@@ -1,0 +1,14 @@
+{
+	"lessonID": "les1",
+	"quizID": "quiz1",
+	"title": "Binary Search",
+	"description": "Binary search is a search algorithm used to find the location of a particular element within a sorted array. The main principle behind this is the repeated division of search interval in half. Binary search is faster than linear search on sorted arrays because of its logarithmic runtime. B-tree and binary search trees are two data structures that are based on binary search.",
+	"rows": [
+		{"cols": [
+			{"xs":6, "type": "p", "text": "Here is some example text"},
+			{"xs":6, "type": "img", "src":"https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png",
+				 "alt": "Here is some alt text"}
+		]}
+	]
+
+}
