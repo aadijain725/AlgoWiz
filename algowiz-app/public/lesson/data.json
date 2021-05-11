@@ -1,13 +1,19 @@
 {
-	"lessonID": "les1",
-	"quizID": "quiz1",
+	"lessonID": "l1",
+	"quizID": "q1",
 	"title": "Binary Search",
 	"description": "Binary search is a search algorithm used to find the location of a particular element within a sorted array. The main principle behind this is the repeated division of search interval in half. Binary search is faster than linear search on sorted arrays because of its logarithmic runtime. B-tree and binary search trees are two data structures that are based on binary search.",
 	"rows": [
 		{"cols": [
-			{"xs":6, "type": "p", "text": "Here is some example text"},
+			{"xs":6, "type": "p", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis ut diam quam nulla porttitor massa id. Ultrices gravida dictum fusce ut placerat. Sit amet porttitor eget dolor morbi. Luctus venenatis lectus magna fringilla urna. Vitae congue mauris rhoncus aenean vel. Diam vulputate ut pharetra sit amet aliquam id. Turpis egestas pretium aenean pharetra magna. Urna neque viverra justo nec ultrices dui sapien eget mi. Arcu felis bibendum ut tristique et. A erat nam at lectus urna duis convallis. Faucibus pulvinar elementum integer enim. Porttitor rhoncus dolor purus non enim. Non odio euismod lacinia at quis risus sed vulputate odio. Sed arcu non odio euismod lacinia. Platea dictumst quisque sagittis purus sit amet volutpat. Consequat mauris nunc congue nisi vitae."},
 			{"xs":6, "type": "img", "src":"https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png",
 				 "alt": "Here is some alt text"}
+		]},
+		{"cols": [
+			{"xs":12, "type": "h2", "text": "Section Header"}
+		]},
+		{"cols": [
+			{"xs":12, "type": "p", "text": "Sit amet facilisis magna etiam tempor orci eu lobortis. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Sit amet nisl purus in mollis nunc sed. Nisl nisi scelerisque eu ultrices vitae auctor. In est ante in nibh mauris cursus mattis molestie a. Egestas congue quisque egestas diam in arcu. Integer enim neque volutpat ac tincidunt vitae. Tincidunt augue interdum velit euismod in. Ut lectus arcu bibendum at varius. Urna neque viverra justo nec ultrices dui sapien eget mi. Urna molestie at elementum eu facilisis. Purus semper eget duis at tellus at urna condimentum. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. Molestie at elementum eu facilisis sed odio morbi quis commodo. Mauris augue neque gravida in fermentum. Pharetra sit amet aliquam id diam maecenas. Rhoncus dolor purus non enim praesent elementum. Vitae nunc sed velit dignissim sodales. Egestas sed tempus urna et pharetra pharetra massa.s"}
 		]}
 	]
 

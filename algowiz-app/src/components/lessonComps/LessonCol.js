@@ -10,7 +10,9 @@ export class LessonCol extends React.Component {
 			cont = <Image src={data.src} alt={data.alt} fluid/>
 		} else if (data.type === "p") { 
 			cont = <p>{data.text}</p>
-		} else {
+		} else if (data.type === "h2") {
+			cont = <h2>{data.text}</h2>
+		}else {
 			cont = <p>Malformed Column Content</p>
 		}
 		return(  

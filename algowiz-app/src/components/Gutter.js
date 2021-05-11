@@ -9,7 +9,7 @@ import {Col} from 'react-bootstrap';
 export class Gutter extends React.Component {
 	render() {
 			return(
-				<Col xs='1' style={{backgroundColor:'red'}}></Col>
+				<Col xs='1' className='gutter'></Col>
 			);
 	}
 }

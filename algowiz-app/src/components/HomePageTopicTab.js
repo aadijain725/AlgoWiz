@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import { Row, Button, Col, Card, Container,} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,11 +13,13 @@ export class HomePageTopicsTab extends React.Component {
     const allCards = this.getAllCards(parsedData.getInfo());
 
     return (
-      <ul class="list-group">
+      <Container fluid>
+      {/* <ul class="list-group"> */}
         {allCards.map((counter, idx) => (
           <>{counter} </>
         ))}
-      </ul>
+      {/*</Container></ul>*/}
+      </Container>
     );
   }
 
@@ -25,7 +28,7 @@ export class HomePageTopicsTab extends React.Component {
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
       cardsArray.push(
-        this.getCard(arr[i]["title"], arr[i]["description"], arr[i]["imageURL"])
+        this.getCard(arr[i])
       );
     }
     return cardsArray;
@@ -43,25 +46,25 @@ export class HomePageTopicsTab extends React.Component {
     );
   }
 
-  getCard(title, description, imageURL) {
+  getCard(cardData) {
     let cards = (
       <Card
         style={{
-          width: "75rem",
-          height: "22rem",
+          /*width: "75rem",
+          height: "22rem",*/
           border: "9px solid #1C6EA4",
           "border-radius": "4px",
         }}
         className="card"
       >
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>{cardData.title}</Card.Title>
                 <Card.Img
                   variant="top"
-                  src={imageURL}
+                  src={cardData.imageURL}
                   className="img-fluid"
                   alt="Responsive image"
                   style={{ width: "80%", height: "70%" }}
@@ -70,23 +73,26 @@ export class HomePageTopicsTab extends React.Component {
             </Col>
             <Col>
               <Card.Body>
-                <Card.Text>{this.styleDescription(description)}</Card.Text>
+                <Card.Text>{this.styleDescription(cardData.description)}</Card.Text>
               </Card.Body>
               <Card.Body>
-                <Button
-                  href="/lesson"
-                  variant="primary"
-                  className="btn btn-danger btn-sm m-5 stretched"
-                >
-                  <h4>Lesson</h4>
-                </Button>
-                <Button
-                  href="/quiz"
-                  variant="primary"
-                  className="btn btn-primary btn-sm m-5 stretched"
-                >
-                  <h4>Go to Quiz</h4>
-                </Button>
+                <Link to={`lesson/${cardData.lessonID}`}>
+                  <Button
+                    href="/lesson"
+                    variant="primary"
+                    className="btn btn-danger btn-sm m-5 stretched"
+                  >
+                    <h4>Lesson</h4>
+                  </Button>
+                </Link>
+                <Link to={`quiz/${cardData.quizID}`}>
+                  <Button
+                    variant="primary"
+                    className="btn btn-primary btn-sm m-5 stretched"
+                  >
+                    <h4>Go to Quiz</h4>
+                  </Button>
+                </Link>
               </Card.Body>
             </Col>
           </Row>

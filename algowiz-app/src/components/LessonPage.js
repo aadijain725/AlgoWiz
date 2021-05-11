@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {Row, Col, Container, Button} from 'react-bootstrap';
 import LessonRow from './lessonComps/LessonRow';
+import Visualizer from './Visualizer'
 export class LessonPage extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +39,7 @@ export class LessonPage extends React.Component {
             content = <p>Loading...</p>;
         } else {
             content = 
-            <div id='lessonContent'>
+            <Container fluid id='lessonContent'>
                 <Row><Col>
                     <h1>{data.title}</h1>
                     <p>{data.description}</p>
@@ -46,16 +47,18 @@ export class LessonPage extends React.Component {
                 {data.rows.map((row, i) => {
                     return <LessonRow key={i} cols={row.cols}/>
                 })}
+                <Row className='justify-content-md-center'><Visualizer /></Row>
                 <Row className='my-2'><Col className='text-center'>
                     <Link to={`/quiz/${data.quizID}`}><Button variant='primary'>Start Quiz</Button></Link>
                 </Col></Row>
-            </div>;
+            </Container>;
         }
 
         return(
             <div id='lesson'>
                 <Container fluid>
                     {content}
+                    
                 </Container>
             </div>
         )

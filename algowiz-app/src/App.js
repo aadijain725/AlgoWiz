@@ -20,7 +20,7 @@ function App() {
 			<Navbar/> 
 			<Container fluid h-100>
 				<Row h-100><Gutter/>
-				<Col xs='10' h-100 style={{backgroundColor:'grey'}}>
+				<Col xs='10' h-100 id='appBody'>
 					<Switch>
 						<Route exact path='/'>
 							<HomePage/>
