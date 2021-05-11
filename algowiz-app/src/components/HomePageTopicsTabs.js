@@ -3,36 +3,41 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Tabs,
   Tab,
-  Modal,
   Row,
-  Button,
   Col,
-  Form,
-  Card,
-  Container,
-  ListGroupItem,
-  ListGroup
+  Container
 } from "react-bootstrap";
 
-import HomePageTopicsTab from './HomePageTopicTab'
+import HomePageTopicsTab from "./HomePageTopicTab";
 
 export class HomePageTopicsTabs extends React.Component {
   render() {
     return (
       <div>
-        <Container >
+        <Container>
           <Row>
             <Col>
-              <Tabs defaultActiveKey="Graph" id="controlled-tab-example">
-                <Tab eventKey="home" title="Graph">
-                    <HomePageTopicsTab title ="Dijkstras">  </HomePageTopicsTab>
+              <Tabs
+                defaultActiveKey="Search"
+                id="uncontrolled-tab-example"
+                className="nav nav pills"
+                style={{ color: "red", "font-size": "150%", padding :"0.5em" }}
+              >
+                  
+                <Tab eventKey="Search" title="Search" key = "a" >
+                  <HomePageTopicsTab topic="Search"> </HomePageTopicsTab>
                 </Tab>
-                <Tab eventKey="profile" title="Sorting">
-                <HomePageTopicsTab title ="Selection Sort"> </HomePageTopicsTab>
+
+                <Tab eventKey="home" title="Graph" key = "b">
+                  <HomePageTopicsTab topic="Graph"> </HomePageTopicsTab>
                 </Tab>
-                <Tab eventKey="contact" title="Binary">
-                <HomePageTopicsTab title ="Binary Search">  </HomePageTopicsTab>
+
+                <Tab eventKey="Sorting" title="Sorting" key = "c">
+                  <HomePageTopicsTab topic="Sorting">
+                    {" "}
+                  </HomePageTopicsTab>
                 </Tab>
+
               </Tabs>
             </Col>
           </Row>

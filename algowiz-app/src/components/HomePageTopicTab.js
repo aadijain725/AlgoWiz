@@ -1,75 +1,91 @@
 import React from "react";
-import {
-  Tabs,
-  Tab,
-  Modal,
-  Row,
-  Button,
-  Col,
-  Form,
-  Card,
-  Container,
-  ListGroupItem,
-  ListGroup,
-} from "react-bootstrap";
+import { Row, Button, Col, Card, Container,} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+
+import HomePageParser from "./testJson/HomePageParser.js";
 
 export class HomePageTopicsTab extends React.Component {
   render() {
-    const allCards = this.getAllCards();
+    var parsedData = new HomePageParser(this.props.topic);
+
+    const allCards = this.getAllCards(parsedData.getInfo());
+
     return (
       <ul class="list-group">
-        {allCards.map((counter) => (
+        {allCards.map((counter, idx) => (
           <>{counter} </>
         ))}
       </ul>
     );
   }
 
-  getAllCards() {
+  getAllCards(arr) {
     let cardsArray = [];
-
-    for (let i = 0; i < 3; i++) {
-      cardsArray.push(this.getCard(i));
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+      cardsArray.push(
+        this.getCard(arr[i]["title"], arr[i]["description"], arr[i]["imageURL"])
+      );
     }
     return cardsArray;
   }
-  getCard(title) {
+
+  styleDescription(description) {
+    return (
+      <p
+        class="text-info"
+        style={{ color: "red", "font-size": "25px", padding: "0.5em" }}
+      >
+        {" "}
+        {description}
+      </p>
+    );
+  }
+
+  getCard(title, description, imageURL) {
     let cards = (
-      <Card style={{ width: "60rem" }} className="card">
+      <Card
+        style={{
+          width: "75rem",
+          height: "22rem",
+          border: "9px solid #1C6EA4",
+          "border-radius": "4px",
+        }}
+        className="card"
+      >
         <Container>
           <Row>
             <Col>
               <Card.Body>
-                <Card.Title>{this.props.title + " " + title}</Card.Title>
+                <Card.Title>{title}</Card.Title>
                 <Card.Img
                   variant="top"
-                  src="algowiz-app/src/components/pathfinding.png"
-                  alt="logo"
+                  src={imageURL}
+                  className="img-fluid"
+                  alt="Responsive image"
+                  style={{ width: "80%", height: "70%" }}
                 />
               </Card.Body>
             </Col>
             <Col>
               <Card.Body>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
+                <Card.Text>{this.styleDescription(description)}</Card.Text>
               </Card.Body>
               <Card.Body>
                 <Button
-                  href="/Lesson"
+                  href="/lesson"
                   variant="primary"
-                  class="btn btn-primary stretched-link"
+                  className="btn btn-danger btn-sm m-5 stretched"
                 >
-                  Lesson
+                  <h4>Lesson</h4>
                 </Button>
                 <Button
-                  href="/Quiz"
+                  href="/quiz"
                   variant="primary"
-                  class="btn btn-primary stretched-link"
+                  className="btn btn-primary btn-sm m-5 stretched"
                 >
-                  Go To Quiz
+                  <h4>Go to Quiz</h4>
                 </Button>
               </Card.Body>
             </Col>
