@@ -1,10 +1,17 @@
-import React from 'react';
+import React from "react";
+import HomePageTopicsTabs from "./HomePageTopicsTabs";
+import { HomePageIntroduction } from "./HomePageIntroduction";
+import { Container } from "react-bootstrap";
 
 export class HomePage extends React.Component {
     render() {
-        return(
-            <h2>Home Page</h2>
-        )
+        return (
+            <Container>
+                <HomePageIntroduction></HomePageIntroduction>
+                <HomePageTopicsTabs></HomePageTopicsTabs>
+                
+            </Container>
+        );
     }
 }
 
