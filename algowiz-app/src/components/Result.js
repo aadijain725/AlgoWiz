@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Row, Button,Card, Container } from "react-bootstrap";
 import Progress from "./Progress"
 export class Result extends React.Component {
@@ -23,9 +24,9 @@ render() {
           <Card.Title>Here are your resuts for the quiz</Card.Title>
           
           <Progress type ="Your Score :" curr ={this.props.curr} total ={this.props.total}></Progress>
-          
-          <Button  href="/" className="btn btn-primary btn-m m-5">Go Back to Home</Button>
-          
+          <Link to='/'>
+            <Button className="btn btn-primary btn-m m-5">Go Back to Home</Button>
+          </Link>
         </Card.Body>
       </Card>
       </Row>

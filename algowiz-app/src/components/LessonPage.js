@@ -18,7 +18,9 @@ export class LessonPage extends React.Component {
     }
 
     getData() {
-        fetch('data.json',{
+        // for browser router use this instead
+        // fetch('data.json',{
+        fetch(`./lesson/${this.props.match.params.lessonID}.json`, {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
@@ -47,7 +49,7 @@ export class LessonPage extends React.Component {
                 {data.rows.map((row, i) => {
                     return <LessonRow key={i} cols={row.cols}/>
                 })}
-                <Row className='justify-content-md-center'><Visualizer /></Row>
+                <Row className='justify-content-md-center'><Visualizer imgSrc={data.vizSrc}/></Row>
                 <Row className='my-2'><Col className='text-center'>
                     <Link to={`/quiz/${data.quizID}`}><Button variant='primary'>Start Quiz</Button></Link>
                 </Col></Row>

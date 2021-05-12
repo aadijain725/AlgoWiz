@@ -8,15 +8,15 @@
         "quizID": "q1",
         "algorithmName": "Dijkstra's Algorithm",
         "homePageDescription": "Algorithm for finding the shortest path from start node to end node\nin a weighted graph.",
-        "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"
+        "imageURL": "https://miro.medium.com/max/446/1*X0JmdE2g25qt0nRvnztbQw.png"
       },
       {
         "id": 2,
-        "lessonID": "l2",
-        "quizID": "q2",
+        "lessonID": "l1",
+        "quizID": "q1",
         "algorithmName": "bfs",
         "homePageDescription": "Algorithm for finding the shortest path from start node to end node\nin a weighted graph.",
-        "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"
+        "imageURL": "https://www.researchgate.net/profile/Azam-Khan-22/publication/262729027/figure/fig5/AS:296382285008897@1447674451305/Pathfinding-example-computed-path-from-waypoint-C-to-A.png"
       }
     ]
   },
@@ -38,8 +38,8 @@
     "data": [
       {
         "id": 3,
-        "lessonID": "l3",
-        "quizID": "q3",
+        "lessonID": "l4",
+        "quizID": "q4",
         "algorithmName": "Selection Sort",
         "homePageDescription": "The selection sort algorithm sorts an array by repeatedly finding the minimum element from unsorted part and putting it at the beginning.",
         "imageURL": "https://i1.faceprep.in/companies/selection-sort-2.PNG"
