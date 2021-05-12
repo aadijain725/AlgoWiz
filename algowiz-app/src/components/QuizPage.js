@@ -7,23 +7,26 @@ import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './Result';
 
 
-function getUserFeedback(correct_ans, ans, feedbacks) {
+export function getUserFeedback(correct_ans, ans, feedbacks) {
     console.log("ans in getUserFeedback is:", ans );
     console.log("props in getUserFeedback is:",  correct_ans);
     if (!ans) {
         return <Alert 
+            id = "feedback" 
             className = "mt-5"
             variant = 'warning'> 
             Please select an answer before submitting 
         </Alert>
     } else if (correct_ans === ans){
         return <Alert 
+            id = "feedback" 
             className = "mt-5"
             variant = 'success'> 
             {feedbacks[0]}
         </Alert>
     } else {
         return <Alert 
+            id = "feedback" 
             className = "mt-5"
             variant = 'danger'> 
             {feedbacks[1]}
