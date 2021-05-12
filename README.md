@@ -69,19 +69,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Setting up backend Spring boot
-- Go to Spring Boot initializer website https://start.spring.io/ and make the following selections
-- Project: Maven Project
-- Language: Java
-- Spring Boot: 2.4.5
-- Project Metadata: give a name to your project
-- Packaging: Jar
-- Java: 11
-- Dependencies: we will be working with 3 dependencies
-- Web: select Spring web
-- SQL: Spring Data JPA
-- Driver: PostgreSQL Driver
-Click Generate and it will package up in a zip file
-
+git clone from algowiz repo
 
 ### Configuring the PostgreSQL Database
 
