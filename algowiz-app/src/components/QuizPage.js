@@ -46,7 +46,8 @@ export class QuizPage extends React.Component {
             qnum : 0,
             ans: null,
             submitted: false,
-            showSubmit: true, 
+            showSubmit: true,
+            numCorrect: 0 
         };
     }
 
@@ -57,7 +58,8 @@ export class QuizPage extends React.Component {
             qnum: this.state.qnum, 
             ans: ans,
             submitted: false,
-            showSubmit: true
+            showSubmit: true,
+            numCorrect: this.state.numCorrect
         })
     }
 
@@ -69,14 +71,24 @@ export class QuizPage extends React.Component {
                 qnum: this.state.qnum, 
                 ans: ans,
                 submitted: true,
-                showSubmit: false
+                showSubmit: false,
+                numCorrect: this.state.numCorrect
             })
-        } else  {
+        } else  if (ans === this.getAnswer(this.state.qnum)) {
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
                 submitted: true,
-                showSubmit: false
+                showSubmit: false,
+                numCorrect: this.state.numCorrect + 1
+            })
+        } else {
+            this.setState({
+                qnum: this.state.qnum, 
+                ans: ans,
+                submitted: true,
+                showSubmit: false,
+                numCorrect: this.state.numCorrect
             })
         }
         console.log("Submission updated to ", this.state.ans);
@@ -89,14 +101,16 @@ export class QuizPage extends React.Component {
                 qnum: this.state.qnum, 
                 ans: ans,
                 submitted: true,
-                showSubmit: true
+                showSubmit: true,
+                numCorrect: this.state.numCorrect
             })
         } else  {
             this.setState({
                 qnum: this.state.qnum + 1, 
                 ans: ans,
                 submitted: true,
-                showSubmit: true
+                showSubmit: true,
+                numCorrect: this.state.numCorrect
             })
         }
     }
@@ -170,7 +184,8 @@ export class QuizPage extends React.Component {
                                     qnum: this.state.qnum + 1, 
                                     ans: this.ans,
                                     submitted : false,
-                                    showSubmit: true
+                                    showSubmit: true,
+                                    numCorrect: this.state.numCorrect
                                     });
                                 }}
                             >
@@ -185,7 +200,8 @@ export class QuizPage extends React.Component {
             </Container>
         )
         } else {
-            return <Result numc = {this.state.qnum}> </Result>
+            console.log("Num Correct is:");
+            return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
         }
     }
 
