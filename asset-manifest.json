@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/AlgoWiz/static/css/main.14c7e8ec.chunk.css",
-    "main.js": "/AlgoWiz/static/js/main.706f56d7.chunk.js",
-    "main.js.map": "/AlgoWiz/static/js/main.706f56d7.chunk.js.map",
+    "main.js": "/AlgoWiz/static/js/main.c62e46b2.chunk.js",
+    "main.js.map": "/AlgoWiz/static/js/main.c62e46b2.chunk.js.map",
     "runtime-main.js": "/AlgoWiz/static/js/runtime-main.f9ade479.js",
     "runtime-main.js.map": "/AlgoWiz/static/js/runtime-main.f9ade479.js.map",
     "static/css/2.800be05e.chunk.css": "/AlgoWiz/static/css/2.800be05e.chunk.css",
-    "static/js/2.36351549.chunk.js": "/AlgoWiz/static/js/2.36351549.chunk.js",
-    "static/js/2.36351549.chunk.js.map": "/AlgoWiz/static/js/2.36351549.chunk.js.map",
+    "static/js/2.e6f0903e.chunk.js": "/AlgoWiz/static/js/2.e6f0903e.chunk.js",
+    "static/js/2.e6f0903e.chunk.js.map": "/AlgoWiz/static/js/2.e6f0903e.chunk.js.map",
     "static/js/3.c60b5d35.chunk.js": "/AlgoWiz/static/js/3.c60b5d35.chunk.js",
     "static/js/3.c60b5d35.chunk.js.map": "/AlgoWiz/static/js/3.c60b5d35.chunk.js.map",
     "index.html": "/AlgoWiz/index.html",
     "static/css/2.800be05e.chunk.css.map": "/AlgoWiz/static/css/2.800be05e.chunk.css.map",
     "static/css/main.14c7e8ec.chunk.css.map": "/AlgoWiz/static/css/main.14c7e8ec.chunk.css.map",
-    "static/js/2.36351549.chunk.js.LICENSE.txt": "/AlgoWiz/static/js/2.36351549.chunk.js.LICENSE.txt",
+    "static/js/2.e6f0903e.chunk.js.LICENSE.txt": "/AlgoWiz/static/js/2.e6f0903e.chunk.js.LICENSE.txt",
     "static/media/AlgoWiz Logo.556a20a2.png": "/AlgoWiz/static/media/AlgoWiz Logo.556a20a2.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f9ade479.js",
     "static/css/2.800be05e.chunk.css",
-    "static/js/2.36351549.chunk.js",
+    "static/js/2.e6f0903e.chunk.js",
     "static/css/main.14c7e8ec.chunk.css",
-    "static/js/main.706f56d7.chunk.js"
+    "static/js/main.c62e46b2.chunk.js"
   ]
 }
