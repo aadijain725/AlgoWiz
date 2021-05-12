@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './css/NavBar.css';
+import {Nav, Navbar} from 'react-bootstrap';
 
 export class NavBar extends React.Component {
     render() {
-        return(
-            <div id="nav">
-                <h2>This is the Navbar</h2>
-                <Link to="/">Home</Link>
-                <Link to="/quiz">Quiz</Link>
-                <Link to="/lesson">Lesson</Link>
-            </div>
+        return(  
+            <Navbar id='nav' className='px-5'>
+                <Nav.Item><Link to='/' id="navLogo">
+                AlgoWiz
+                </Link></Nav.Item>
+            </Navbar>
         );
     }
 }
