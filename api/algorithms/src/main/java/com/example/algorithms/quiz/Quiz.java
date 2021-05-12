@@ -24,7 +24,7 @@ public class Quiz {
     private String option3;
     private String posFeedback;
     private String negFeedback;
-=======
+
 
 
     public Quiz() {
