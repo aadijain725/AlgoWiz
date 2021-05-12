@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React from 'react';
 import {
-	BrowserRouter as Router,
+	// BrowserRouter as Router, using Hash Router for github pages
+	HashRouter as Router,
 	Switch,
 	Route
 } from 'react-router-dom';
@@ -16,7 +17,7 @@ import Gutter from './components/Gutter';
 
 function App() {
 	return (
-		<Router>
+		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar/> 
 			<Container fluid h-100>
 				<Row h-100><Gutter/>

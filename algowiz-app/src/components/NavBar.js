@@ -10,10 +10,6 @@ export class NavBar extends React.Component {
                 <Nav.Item><Link to='/' id="navLogo">
                 AlgoWiz
                 </Link></Nav.Item>
-                <Navbar.Collapse className='justify-content-end'>
-                <Navbar.Text >
-                    Right aligned content
-                </Navbar.Text></Navbar.Collapse>
             </Navbar>
         );
     }

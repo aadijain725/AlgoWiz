@@ -10,7 +10,7 @@ export class Visualizer extends React.Component {
                 <Image 
                     style={{margin:'0 auto', display:'block'}}
                     fluid
-                    src='https://blog.penjee.com/wp-content/uploads/2015/04/binary-and-linear-search-animations.gif' 
+                    src={this.props.imgSrc} 
                     alt='Placeholder Viz'
                 />
             </Col>
