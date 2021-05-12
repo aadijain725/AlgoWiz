@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/AlgoWiz/static/css/main.14c7e8ec.chunk.css",
-    "main.js": "/AlgoWiz/static/js/main.772fc163.chunk.js",
-    "main.js.map": "/AlgoWiz/static/js/main.772fc163.chunk.js.map",
+    "main.js": "/AlgoWiz/static/js/main.accadec9.chunk.js",
+    "main.js.map": "/AlgoWiz/static/js/main.accadec9.chunk.js.map",
     "runtime-main.js": "/AlgoWiz/static/js/runtime-main.f9ade479.js",
     "runtime-main.js.map": "/AlgoWiz/static/js/runtime-main.f9ade479.js.map",
     "static/css/2.800be05e.chunk.css": "/AlgoWiz/static/css/2.800be05e.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.800be05e.chunk.css",
     "static/js/2.a5ed5d3e.chunk.js",
     "static/css/main.14c7e8ec.chunk.css",
-    "static/js/main.772fc163.chunk.js"
+    "static/js/main.accadec9.chunk.js"
   ]
 }
