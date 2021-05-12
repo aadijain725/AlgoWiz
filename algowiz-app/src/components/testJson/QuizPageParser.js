@@ -14,6 +14,7 @@ export default class QuizPageParser {
         for (let i = 0; i < data.length; i++) {
             var info2 = data[i];
             var topic_details = {
+                category: info2["category"],
                 question: info2["question"],
                 answer: info2["answer"],
                 option: [info2["option1"], info2["option2"], info2["option3"]],

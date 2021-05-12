@@ -1,11 +1,17 @@
-import {getUserFeedback} from '../components/QuizPage';
+import QuizPage from '../components/QuizPage';
+import { render } from '@testing-library/react';
 
-test('Output check getUserFeedback', () => {
-    let result = getUserFeedback("1", "1", ["good job", "bad job"]);
-    let check = result != null;
-    expect(check).toBe(true);
+test('render question card', () => {
+    render(<QuizPage/>);
+    const quizCard = document.querySelector("#question-card");
+    expect(quizCard).toBeInTheDocument();
 })
 
-test('Positive getUserFeedback', () => {
-    
+test('render progress bar', () => {
+    render(<QuizPage/>);
+    const progressBar = document.querySelector("#progress-bar");
+    expect(progressBar).toBeInTheDocument();
 })
+
+
+

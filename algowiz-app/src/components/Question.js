@@ -21,7 +21,7 @@ export class Question extends React.Component {
   render() {
     return (
       <Container>
-          <Card className="quiz-question-card">
+          <Card id = "question-card" className="quiz-question-card">
             <Card.Body>
               <Card.Title> {this.props.value} </Card.Title>
               <Card.Subtitle className="mb-2 text-muted"> </Card.Subtitle>

@@ -8,8 +8,6 @@ import Result from './Result';
 
 
 export function getUserFeedback(correct_ans, ans, feedbacks) {
-    console.log("ans in getUserFeedback is:", ans );
-    console.log("props in getUserFeedback is:",  correct_ans);
     if (!ans) {
         return <Alert 
             id = "feedback" 
@@ -38,11 +36,8 @@ export function getUserFeedback(correct_ans, ans, feedbacks) {
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        let topic = props.topic;
-        console.log(topic);
         let parser = new Parser();
         let data = parser.getInfo();
-        console.log("data ", data[0]["question"]);
         window.info = data;
         // console.log("length of data", window.info.length);
         this.state = {
@@ -56,7 +51,6 @@ export class QuizPage extends React.Component {
 
 
     handleSelect = (ans) => {
-        console.log("Selection recieved ", ans);
         this.setState({
             qnum: this.state.qnum, 
             ans: ans,
@@ -67,7 +61,6 @@ export class QuizPage extends React.Component {
     }
 
     handleSubmit = (ans) => {
-        console.log("Submission recieved ", ans);
         
         if (ans == null) {
             this.setState({
@@ -94,11 +87,9 @@ export class QuizPage extends React.Component {
                 numCorrect: this.state.numCorrect
             })
         }
-        console.log("Submission updated to ", this.state.ans);
     }
 
     handleContinue =  (ans) => {
-        console.log("handle continue ans ", ans);
         if (ans == null) {
             this.setState({
                 qnum: this.state.qnum, 
@@ -141,7 +132,7 @@ export class QuizPage extends React.Component {
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
                 <Row>
-                    <Col sm= {6}> <h2>Quiz Page: {this.props.topic}</h2> </Col>
+                    <Col sm= {6}> <h2>Quiz Page: {this.getCategory(this.state.qnum)}</h2> </Col>
                     <Col sm = {6}> <Progress id = "quiz-progress-bar" type = "Questions Answered" curr = {this.state.qnum} total = {window.info.length}></Progress> </Col>
                 </Row>
                 <Row>
@@ -203,7 +194,6 @@ export class QuizPage extends React.Component {
             </Container>
         )
         } else {
-            console.log("Num Correct is:");
             return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
         }
     }
@@ -213,13 +203,19 @@ export class QuizPage extends React.Component {
         // TODO:  add fecth call  
         // TODO: add json parser -- SHIVAMS
         
-        console.log("question data", window.info[qnum]["question"]);
         // console.log("topic", window.info[qnum]["question"]);
         return window.info[qnum]["question"];
     }
 
+    getCategory (qnum) {
+        // TODO:  add fecth call  
+        // TODO: add json parser -- SHIVAMS
+        
+        // console.log("topic", window.info[qnum]["question"]);
+        return window.info[qnum]["category"];
+    }
+
     getOptions (qnum) {
-        console.log("question data", window.info[qnum]["option"]);
         return window.info[qnum]["option"];
     }
 
@@ -228,7 +224,6 @@ export class QuizPage extends React.Component {
     }
 
     getFeedback(qnum) {
-        console.log("question data", window.info[qnum]["feebacks"]);
         return window.info[qnum]["feebacks"];
     }
 }

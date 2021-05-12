@@ -15,7 +15,7 @@ displayResults(correct, incorrect) {
 
 render() {
     return (
-    <Container>
+    <Container id = "results-page">
     <Row>
       <Card style={{ width: "40rem" }}>
         <Card.Img variant="top" src="https://bsmedia.business-standard.com/_media/bs/img/article/2018-06/14/full/1528966655-8748.jpg" />
