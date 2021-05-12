@@ -23,10 +23,9 @@ export class HomePageTopicsTabs extends React.Component {
                 className="nav nav pills"
                 style={{ color: "red", "font-size": "150%", padding :"0.5em" }}
               >
-                  
                 <Tab eventKey="Search" title="Search" key = "a" >
                   <HomePageTopicsTab topic="Search" />
-                </Tab>
+                </Tab>                  
 
                 <Tab eventKey="home" title="Graph" key = "b">
                   <HomePageTopicsTab topic="Graph" /> 
