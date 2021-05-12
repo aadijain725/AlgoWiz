@@ -8,7 +8,7 @@ export class Progress extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container id = "progress-bar">
                 <Row>
                     <h3> {this.props.type} {this.props.curr}/{this.props.total} </h3>
                 </Row>
