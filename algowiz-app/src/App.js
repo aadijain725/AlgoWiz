@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React from 'react';
 import {
-	BrowserRouter as Router,
+	// BrowserRouter as Router, using Hash Router for github pages
+	HashRouter as Router,
 	Switch,
 	Route
 } from 'react-router-dom';

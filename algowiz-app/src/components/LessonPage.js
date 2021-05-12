@@ -18,7 +18,9 @@ export class LessonPage extends React.Component {
     }
 
     getData() {
-        fetch('data.json',{
+        // for browser router use this instead
+        // fetch('data.json',{
+        fetch('./lesson/data.json', {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
