@@ -16,7 +16,7 @@ import Gutter from './components/Gutter';
 
 function App() {
 	return (
-		<Router>
+		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar/> 
 			<Container fluid h-100>
 				<Row h-100><Gutter/>
