@@ -69,19 +69,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Setting up backend Spring boot
-- Go to Spring Boot initializer website https://start.spring.io/ and make the following selections
-- Project: Maven Project
-- Language: Java
-- Spring Boot: 2.4.5
-- Project Metadata: give a name to your project
-- Packaging: Jar
-- Java: 11
-- Dependencies: we will be working with 3 dependencies
-- Web: select Spring web
-- SQL: Spring Data JPA
-- Driver: PostgreSQL Driver
-Click Generate and it will package up in a zip file
-
+git clone from algowiz repo
 
 ### Configuring the PostgreSQL Database
 
@@ -110,9 +98,17 @@ Click Generate and it will package up in a zip file
 ### Install Java 11 and latest version of Maven
 
 ### Run Spring Boot in command line
-1. Run the following command in a terminal  
+1. cd api/algorithms
+
+2. Run the following command in a terminal  
     ./mvnw spring-boot:run  
-2. Run the service with curl  
+
+3. Open in the browser and typed
+    localhost:8080/api/v1/home for the homepage
+    localhost:8080/api/v1/lesson for the lesson page
+    localhost:8080/api/v1/quiz for the quiz page
+ 
+  or you can run the service with curl  
     $ curl localhost:8080/api/v1/home  
     $ curl localhost:8080/api/v1/lesson  
     $ curl localhost:8080/api/v1/quiz  
