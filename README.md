@@ -98,9 +98,17 @@ git clone from algowiz repo
 ### Install Java 11 and latest version of Maven
 
 ### Run Spring Boot in command line
-1. Run the following command in a terminal  
+1. cd api/algorithms
+
+2. Run the following command in a terminal  
     ./mvnw spring-boot:run  
-2. Run the service with curl  
+
+3. Open in the browser and type
+    localhost:8080/api/v1/home for the homepage
+    localhost:8080/api/v1/lesson for the lesson page
+    localhost:8080/api/v1/quiz for the quiz page
+ 
+  or you can run the service with curl  
     $ curl localhost:8080/api/v1/home  
     $ curl localhost:8080/api/v1/lesson  
     $ curl localhost:8080/api/v1/quiz  
