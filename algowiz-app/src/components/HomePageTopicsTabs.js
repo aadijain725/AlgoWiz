@@ -12,6 +12,10 @@ import HomePageTopicsTab from "./HomePageTopicTab";
 
 export class HomePageTopicsTabs extends React.Component {
   render() {
+    /* TODO: These should not be hardcoded, they should be built from the built 
+     * from the fetched JSON data
+     */
+
     return (
       <div>
         <Container fluid>

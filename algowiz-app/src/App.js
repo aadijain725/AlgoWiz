@@ -16,6 +16,7 @@ import LessonPage from './components/LessonPage';
 import Gutter from './components/Gutter';
 
 function App() {
+	console.log(process.env.REACT_APP_API_URL);
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar/> 
