@@ -16,55 +16,140 @@ public class Quiz {
             generator = "quiz_sequence"
     )
 
-    private int qId;
-    private String category;
+    // Unique Id for each question
+    private int questionId;
+
+    // quizId that the questions belongs to
+    private String quizId;
+
+    // lessonId of the quiz topic
+    private String lessonId;
+
+    // Title of the quiz
+    private String title;
+
+    // Question
+    @Column(nullable = false, length = 4096)
     private String question;
-    private String answer;
+
+    // First answer option
+    @Column(nullable = false, length = 4096)
     private String option1;
+
+    // Second answer option
+    @Column(nullable = false, length = 4096)
     private String option2;
+
+    // Third answer option
+    @Column(nullable = false, length = 4096)
     private String option3;
-    private String posFeedback;
-    private String negFeedback;
+
+    // Index of the correct answer in the options list
+    // If correctAnswer = 0, option1 is the right answer
+    //    correctAnswer = 1, option2 is the right answer
+    //    correctAnswer = 2, option3 is the right answer
+    private int correctAnswer;
+
+    // Feedback for option1
+    @Column(nullable = false, length = 4096)
+    private String feedback1;
+
+    // Feedback for option2
+    @Column(nullable = false, length = 4096)
+    private String feedback2;
+
+    // Feedback for option3
+    @Column(nullable = false, length = 4096)
+    private String feedback3;
 
 
     public Quiz() {
 
     }
-    public Quiz(int qId,
-                String category,
+
+    public Quiz(int questionId,
+                String quizId,
+                String lessonId,
+                String title,
                 String question,
-                String answer,
                 String option1,
                 String option2,
                 String option3,
-                String posFeedback,
-                String negFeedback) {
-        this.qId = qId;
-        this.category = category;
+                int correctAnswer,
+                String feedback1,
+                String feedback2,
+                String feedback3) {
+
+        this.questionId = questionId;
+        this.quizId = quizId;
+        this.lessonId = lessonId;
+        this.title = title;
         this.question = question;
-        this.answer = answer;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
-        this.posFeedback = posFeedback;
-        this.negFeedback = negFeedback;
+        this.correctAnswer = correctAnswer;
+        this.feedback1 = feedback1;
+        this.feedback2 = feedback2;
+        this.feedback3 = feedback3;
 
     }
 
-    public int getqId() {
-        return qId;
+    public Quiz(String quizId,
+                String lessonId,
+                String title,
+                String question,
+                String option1,
+                String option2,
+                String option3,
+                int correctAnswer,
+                String feedback1,
+                String feedback2,
+                String feedback3) {
+
+        this.quizId = quizId;
+        this.lessonId = lessonId;
+        this.title = title;
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.correctAnswer = correctAnswer;
+        this.feedback1 = feedback1;
+        this.feedback2 = feedback2;
+        this.feedback3 = feedback3;
     }
 
-    public void setqId(int qId) {
-        this.qId = qId;
+    public String getLessonId() {
+        return lessonId;
     }
 
-    public String getCategory() {
-        return category;
+    public void setLessonId(String lessonId) {
+        this.lessonId = lessonId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(String quizId) {
+        this.quizId = quizId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getQuestion() {
@@ -73,14 +158,6 @@ public class Quiz {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public String getOption1() {
@@ -107,19 +184,53 @@ public class Quiz {
         this.option3 = option3;
     }
 
-    public String getPosFeedback() {
-        return posFeedback;
+    public int getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setPosFeedback(String posFeedback) {
-        this.posFeedback = posFeedback;
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
-    public String getNegFeedback() {
-        return negFeedback;
+    public String getFeedback1() {
+        return feedback1;
     }
 
-    public void setNegFeedback(String negFeedback) {
-        this.negFeedback = negFeedback;
+    public void setFeedback1(String feedback1) {
+        this.feedback1 = feedback1;
+    }
+
+    public String getFeedback2() {
+        return feedback2;
+    }
+
+    public void setFeedback2(String feedback2) {
+        this.feedback2 = feedback2;
+    }
+
+    public String getFeedback3() {
+        return feedback3;
+    }
+
+    public void setFeedback3(String feedback3) {
+        this.feedback3 = feedback3;
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "questionId=" + questionId +
+                ", quizId='" + quizId + '\'' +
+                ", lessonId='" + lessonId + '\'' +
+                ", title='" + title + '\'' +
+                ", question='" + question + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", correctAnswer=" + correctAnswer +
+                ", feedback1='" + feedback1 + '\'' +
+                ", feedback2='" + feedback2 + '\'' +
+                ", feedback3='" + feedback3 + '\'' +
+                '}';
     }
 }

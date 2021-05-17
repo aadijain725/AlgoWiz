@@ -17,8 +17,11 @@ public class QuizService {
         this.quizRepository = quizRepository;
     }
 
-    public List<Quiz> getQuiz() {
-        return quizRepository.findAll();
-}
+    // Returns Quiz objects with the given quizId
+    public List<Quiz> getQuiz(String quizId) {
+        return quizRepository.findAllByQuizId(quizId);
+    }
+
+
 
 }
