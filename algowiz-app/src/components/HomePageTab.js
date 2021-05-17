@@ -54,7 +54,7 @@ export class HomePageTab extends React.Component {
           /*width: "75rem",
           height: "22rem",*/
           border: "9px solid #1C6EA4",
-          "border-radius": "4px",
+          borderRadius: "4px",
         }}
         className="card"
       >
@@ -74,12 +74,11 @@ export class HomePageTab extends React.Component {
             </Col>
             <Col>
               <Card.Body>
-                <Card.Text>{this.styleDescription(cardData.description)}</Card.Text>
+                <Card.Text>{cardData.description}</Card.Text>
               </Card.Body>
               <Card.Body>
                 <Link to={`lesson/${cardData.lessonID}`}>
                   <Button
-                    href="/lesson"
                     variant="primary"
                     className="btn btn-danger btn-sm m-5 stretched"
                   >
