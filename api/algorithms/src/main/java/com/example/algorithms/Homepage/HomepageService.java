@@ -14,10 +14,8 @@ public class HomepageService {
         this.homepageRepository = homepageRepository;
     }
 
-
+    // Gets all the rows with each algorithm from the homepageRepository.
     public List<HomepageTopics> getTopics() {
         return homepageRepository.findAll();
-
-
     }
 }
