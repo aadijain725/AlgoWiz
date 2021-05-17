@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePageTopicsTabs from './HomePageTopicsTabs';
+import HomePageTopics from './HomePageTopics';
 import { HomePageIntroduction } from './HomePageIntroduction';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -29,11 +29,11 @@ export class HomePage extends React.Component {
     render() {
         return (
             <Container fluid>
-                <Row><Col auto>
+                <Row><Col xs='auto'>
                     <HomePageIntroduction />
                 </Col></Row>
-                <Row><Col auto>
-                    <HomePageTopicsTabs />
+                <Row><Col xs='auto'>
+                    <HomePageTopics/>
                 </Col></Row>
             </Container>
         );
