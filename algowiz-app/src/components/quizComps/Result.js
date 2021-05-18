@@ -27,6 +27,14 @@ render() {
           <Link to='/'>
             <Button className="btn btn-primary btn-m m-5">Go Back to Home</Button>
           </Link>
+          <Link to="/lesson/l1">
+                  <Button
+                    href="/lesson"
+                    className="btn btn-danger btn-m m-5"
+                  >
+                    Go to corresponding Lesson Page
+                  </Button>
+          </Link>
         </Card.Body>
       </Card>
       </Row>

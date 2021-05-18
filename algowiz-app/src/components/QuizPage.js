@@ -1,12 +1,14 @@
 import React from 'react';
-import Question from '../components/Question'
-import Progress from './Progress'
+import Question from '../components/quizComps/Question'
+import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Parser from "./testJson/QuizPageParser.js"
+import P2 from "./testJson/QuizPageParser_1";
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
-import Result from './Result';
+import Result from './quizComps/Result';
 
-
+// Functional component for getting correct user feedback depending on the 
+// User's answer and the correct answer 
 export function getUserFeedback(correct_ans, ans, feedbacks) {
     if (!ans) {
         return <Alert 
@@ -37,6 +39,8 @@ export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
         let parser = new Parser();
+        let p2 = new P2().getInfo();
+        console.log("questionsList", p2[0]);
         let data = parser.getInfo();
         window.info = data;
         // console.log("length of data", window.info.length);
@@ -49,7 +53,7 @@ export class QuizPage extends React.Component {
         };
     }
 
-
+    // Function that handles selecting buttons 
     handleSelect = (ans) => {
         this.setState({
             qnum: this.state.qnum, 
@@ -59,7 +63,7 @@ export class QuizPage extends React.Component {
             numCorrect: this.state.numCorrect
         })
     }
-
+    // Function that handles user submissions
     handleSubmit = (ans) => {
         
         if (ans == null) {
@@ -89,6 +93,7 @@ export class QuizPage extends React.Component {
         }
     }
 
+    // Function that handles continue functionality
     handleContinue =  (ans) => {
         if (ans == null) {
             this.setState({
@@ -202,8 +207,6 @@ export class QuizPage extends React.Component {
     getQuestion (qnum) {
         // TODO:  add fecth call  
         // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
         return window.info[qnum]["question"];
     }
 
