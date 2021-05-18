@@ -4,7 +4,7 @@ import { Card, ListGroup, Container } from "react-bootstrap";
 export class Question extends React.Component {
   constructor(props) {
     super(props);
-    console.log("submit in curr", this.props.submit);
+    console.log("submit in curr ", this.props.submit);
     this.state = {}
     // console.log("From question, ", this.props.value);
   }
@@ -18,8 +18,15 @@ export class Question extends React.Component {
   // }
 
   toggleClass(i) {
-    console.log("toggling for i: ", i);
+    console.log("toggling for i: ", this.state.selected);
     this.setState({ selected: i });
+  }
+
+  setClasses(i) {
+    let classList = "";
+    this.state.selected && this.state.selected == i + 1? classList += "active " : classList ="";
+    console.log("class List: ", classList);
+    return classList;
   }
 
   // Funtion to get the different questions in the card
@@ -28,7 +35,7 @@ export class Question extends React.Component {
     for (let i = 0; i < this.props.options.length; i++) {
       let option = (<ListGroup.Item
         action
-        className = {this.state.selected && this.state.selected == i + 1? "active" : null}
+        className = {this.setClasses(i) } // this.state.selected && this.state.selected == i + 1?  "active" : ""
         onClick={() => {
           this.props.onSelect(this.props.options[i], i);
           this.toggleClass(i + 1);

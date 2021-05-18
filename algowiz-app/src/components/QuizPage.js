@@ -124,23 +124,6 @@ export class QuizPage extends React.Component {
         }
     }
 
-    // componentDidMount() {
-
-    // }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.submitted === true) {
-    //         console.log("submission was successful");
-    //         this.setState({
-    //             qnum: this.state.qnum + 1, 
-    //             ans: this.ans,
-    //             submitted : false,
-    //             showSubmit: true
-    //         })
-    //     }
-    // }
-
-
     render() {
         if (window.info.length > this.state.qnum) {
         return(
@@ -152,14 +135,15 @@ export class QuizPage extends React.Component {
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>
-                    <Col sm = {6}><Question 
+                    <Col sm = {6}>
+                        {!this.state.submitted &&
+                        <Question 
                     value = {this.getQuestion(this.state.qnum)} 
                     qnum = {this.state.qnum}
                     onSelect = {this.handleSelect}
-                    submit = {this.submitted}
-                    // onSubmit = {this.handleSubmit}
                     options = {this.getOptions(this.state.qnum)}
-                    ></Question> </Col>
+                    ></Question>}
+                     </Col>
                 </Row>
                 {this.state.submitted === true &&
                     <Row>
@@ -216,23 +200,19 @@ export class QuizPage extends React.Component {
 
     // Fetches the question details for the current topic
     getQuestion (qnum) {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
         return window.info[qnum]["question"];
     }
-
+    // Fetches the title name for the current topic
     getCategory () {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
         return window.title;
     }
 
+    // Fetches the question options list for the current question that is selected
     getOptions (qnum) {
         return window.info[qnum]["option"];
     }
 
+    // Fetches the correct answer for the current question that is selected
     getAnswer(qnum) {
         let index = window.info[qnum]["answer"];
         console.log("answer idx is ", index);
@@ -240,6 +220,8 @@ export class QuizPage extends React.Component {
         return window.info[qnum]["option"][index];
     }
 
+
+    // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
         return window.info[qnum]["feebacks"];
     }
@@ -248,38 +230,3 @@ export class QuizPage extends React.Component {
 export default QuizPage;
 
 
-
-// // TODO: Need to pass state to this and add buttons accordingly 
-// function showButton(showSubmit) {
-//     if(showSubmit) {
-//         return <Button
-//         id="quiz-submit-btn"
-//         variant="outline-primary"
-//         size="lg"
-//         onClick={()=> {
-//             this.handleSubmit(this.state.ans)
-//             this.setState({
-//                 ans: null
-//             });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     } else  {
-//         return <Button
-//             id="quiz-submit-btn"
-//             variant="outline-primary"
-//             size="lg"
-//             onClick={()=> {
-//                 this.handleSubmit(this.state.ans)
-//                 this.setState({
-//                     ans: null
-//                 });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     }
-// }
