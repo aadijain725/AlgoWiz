@@ -103,7 +103,7 @@ git clone from algowiz repo
 2. Run the following command in a terminal  
     ./mvnw spring-boot:run  
 
-3. Open in the browser and type
+3. Open in the browser and typed
     localhost:8080/api/v1/home for the homepage
     localhost:8080/api/v1/lesson for the lesson page
     localhost:8080/api/v1/quiz for the quiz page

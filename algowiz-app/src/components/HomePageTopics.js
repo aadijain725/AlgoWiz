@@ -8,10 +8,15 @@ import {
   Container
 } from "react-bootstrap";
 
-import HomePageTopicsTab from "./HomePageTopicTab";
+import HomePageTab from "./HomePageTab";
 
-export class HomePageTopicsTabs extends React.Component {
+export class HomePageTopics extends React.Component {
   render() {
+    /* TODO: 1. These should not be hardcoded, they should be built from the built 
+     * from the fetched JSON data
+     * 2. avoid inline styles
+     */
+
     return (
       <div>
         <Container fluid>
@@ -21,19 +26,19 @@ export class HomePageTopicsTabs extends React.Component {
                 defaultActiveKey="Search"
                 id="uncontrolled-tab-example"
                 className="nav nav pills"
-                style={{ color: "red", "font-size": "150%", padding :"0.5em" }}
+                style={{ color: "red", fontSize: "150%", padding :"0.5em" }}
               >
                   
                 <Tab eventKey="Search" title="Search" key = "a" >
-                  <HomePageTopicsTab topic="Search" />
+                  <HomePageTab topic="Search" />
                 </Tab>
 
                 <Tab eventKey="home" title="Graph" key = "b">
-                  <HomePageTopicsTab topic="Graph" /> 
+                  <HomePageTab topic="Graph" /> 
                 </Tab>
 
                 <Tab eventKey="Sorting" title="Sorting" key = "c">
-                  <HomePageTopicsTab topic="Sorting" />
+                  <HomePageTab topic="Sorting" />
                 </Tab>
               </Tabs>
             </Col>
@@ -44,4 +49,4 @@ export class HomePageTopicsTabs extends React.Component {
   }
 }
 
-export default HomePageTopicsTabs;
+export default HomePageTopics;

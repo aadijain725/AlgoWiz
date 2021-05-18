@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import HomePageParser from "./testJson/HomePageParser.js";
 
-export class HomePageTopicsTab extends React.Component {
+export class HomePageTab extends React.Component {
   render() {
     var parsedData = new HomePageParser(this.props.topic);
 
@@ -16,7 +16,7 @@ export class HomePageTopicsTab extends React.Component {
       <Container fluid>
       {/* <ul class="list-group"> */}
         {allCards.map((counter, idx) => (
-          <>{counter} </>
+          <div key={idx}>{counter} </div>
         ))}
       {/*</Container></ul>*/}
       </Container>
@@ -33,12 +33,13 @@ export class HomePageTopicsTab extends React.Component {
     }
     return cardsArray;
   }
-
+  
   styleDescription(description) {
+    // TODO: should try to avoid inline styles style the class instead
     return (
       <p
         class="text-info"
-        style={{ color: "red", "font-size": "25px", padding: "0.5em" }}
+        style={{ color: "green", fontSize: "1.6rem", padding: "0.5rem" }}
       >
         {" "}
         {description}
@@ -53,7 +54,7 @@ export class HomePageTopicsTab extends React.Component {
           /*width: "75rem",
           height: "22rem",*/
           border: "9px solid #1C6EA4",
-          "border-radius": "4px",
+          borderRadius: "4px",
         }}
         className="card"
       >
@@ -73,12 +74,11 @@ export class HomePageTopicsTab extends React.Component {
             </Col>
             <Col>
               <Card.Body>
-                <Card.Text>{this.styleDescription(cardData.description)}</Card.Text>
+                <Card.Text>{cardData.description}</Card.Text>
               </Card.Body>
               <Card.Body>
                 <Link to={`lesson/${cardData.lessonID}`}>
                   <Button
-                    href="/lesson"
                     variant="primary"
                     className="btn btn-danger btn-sm m-5 stretched"
                   >
@@ -102,4 +102,4 @@ export class HomePageTopicsTab extends React.Component {
     return cards;
   }
 }
-export default HomePageTopicsTab;
+export default HomePageTab;

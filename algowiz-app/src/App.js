@@ -16,12 +16,13 @@ import LessonPage from './components/LessonPage';
 import Gutter from './components/Gutter';
 
 function App() {
+	console.log(process.env.REACT_APP_API_URL);
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar/> 
-			<Container fluid h-100>
-				<Row h-100><Gutter/>
-				<Col xs='10' h-100 id='appBody'>
+			<Container fluid >
+				<Row><Gutter/>
+				<Col xs='10' id='appBody'>
 					<Switch>
 						<Route exact path='/'>
 							<HomePage/>

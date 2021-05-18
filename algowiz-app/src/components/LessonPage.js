@@ -20,18 +20,21 @@ export class LessonPage extends React.Component {
     getData() {
         // for browser router use this instead
         // fetch('data.json',{
-        fetch(`./lesson/${this.props.match.params.lessonID}.json`, {
+        fetch(`./lesson/${this.props.match.params.lessonID}`, {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
             }
         })
-            .then(response => response.json())
-            .then(lessonData => {
-                this.setState({
-                    lessonData
-                })
+        .then(response => response.json())
+        .then(lessonData => {
+            this.setState({
+                lessonData
             })
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
