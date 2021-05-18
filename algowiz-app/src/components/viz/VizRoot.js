@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Image} from 'react-bootstrap';
 
-export class Visualizer extends React.Component {
+export class VizRoot extends React.Component {
     render() {
         return(
         <Row>
@@ -19,4 +19,4 @@ export class Visualizer extends React.Component {
     }
 }
 
-export default Visualizer;
+export default VizRoot;

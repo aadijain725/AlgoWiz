@@ -1,8 +1,8 @@
 import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {Row, Col, Container, Button} from 'react-bootstrap';
-import LessonRow from './lessonComps/LessonRow';
-import Visualizer from './Visualizer'
+import LessonRow from './LessonRow';
+import VizRoot from '../viz/VizRoot'
 export class LessonPage extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +54,7 @@ export class LessonPage extends React.Component {
                     // create a row for each element in array and pass them params
                     return <LessonRow key={i} cols={row.cols}/>
                 })}
-                <Row className='justify-content-md-center'><Visualizer imgSrc={data.vizSrc}/></Row>
+                <Row className='justify-content-md-center'><VizRoot imgSrc={data.vizSrc}/></Row>
                 <Row className='my-2'><Col className='text-center'>
                     <Link to={`/quiz/${data.quizID}`}><Button variant='primary'>Start Quiz</Button></Link>
                 </Col></Row>
