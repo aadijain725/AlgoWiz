@@ -1,4 +1,5 @@
 import data from "./graph_dijks.json";
+import APIHelper from '../helpers/APIHelper'
 export default class QuizPageParser_1 {
     /* this method returns an array of maps that conatins all the information regarding the question to be displayed
     // the map layout

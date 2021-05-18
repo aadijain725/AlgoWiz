@@ -2,7 +2,6 @@ import React from 'react';
 import Question from '../components/quizComps/Question'
 import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Parser from "./testJson/QuizPageParser.js"
 import P2 from "./testJson/QuizPageParser_1";
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './quizComps/Result';
@@ -40,10 +39,8 @@ export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        let parser = new Parser();
         let data2 = new P2().getInfo();
         console.log("questionsList", data2["questions"][0]);
-        let data = parser.getInfo();
         window.info = data2["questions"];
         window.title = data2["title"];
         // console.log("length of data", window.info.length);
@@ -54,6 +51,10 @@ export class QuizPage extends React.Component {
             showSubmit: true,
             numCorrect: 0 
         };
+    }
+
+    componentDidMount() {
+
     }
 
     // Function that handles selecting buttons 
