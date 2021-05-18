@@ -39,10 +39,6 @@ export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        let data2 = new P2().getInfo();
-        console.log("questionsList", data2["questions"][0]);
-        window.info = data2["questions"];
-        window.title = data2["title"];
         // console.log("length of data", window.info.length);
         this.state = {
             qnum : 0,
@@ -54,7 +50,11 @@ export class QuizPage extends React.Component {
     }
 
     componentDidMount() {
-
+        console.log("Hi");
+        let data2 = new P2().getInfo("graph_dijkstra_quiz");
+        console.log("questionsList", data2["questions"][0]);
+        window.info = data2["questions"];
+        window.title = data2["title"];
     }
 
     // Function that handles selecting buttons 
@@ -126,7 +126,7 @@ export class QuizPage extends React.Component {
     }
 
     render() {
-        if (window.info.length > this.state.qnum) {
+        if (window.info && window.info.length > this.state.qnum) {
         return(
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
@@ -194,8 +194,10 @@ export class QuizPage extends React.Component {
                 
             </Container>
         )
-        } else {
+        } else if (window.info){
             return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
+        } else {
+            return (<h1>Loading ... </h1>)
         }
     }
 

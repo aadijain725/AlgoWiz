@@ -1,4 +1,4 @@
-import data from "./graph_dijks.json";
+// import data from "./graph_dijks.json";
 import APIHelper from '../helpers/APIHelper'
 export default class QuizPageParser_1 {
     /* this method returns an array of maps that conatins all the information regarding the question to be displayed
@@ -10,8 +10,21 @@ export default class QuizPageParser_1 {
     //     posFeedback: string -- the positive feedback to be given if right answer was submitted,
     //     negFeedback: string -- the negative feedback to be given if wrong answer was submitted,,
     // }*/
-    getInfo() {
+    getInfo(quizID) {
+        let data = "";
+
+        new APIHelper('quiz/', quizID)
+        .then(homeData => {
+            this.data = homeData;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
         var questions = [];
+        console.log("data is: ", data);
+
+
         let questionsList = data["questionsList"];
         for (let i = 0; i < questionsList.length; i++) {
             var info2 = questionsList[i];
