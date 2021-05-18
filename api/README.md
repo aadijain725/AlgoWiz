@@ -27,21 +27,30 @@
 1. - cd into AlgoWiz/api/algorithms 
 
 2. Run the following command in the terminal  
-        ./mvnw spring-boot:run  
+        `./mvnw spring-boot:run` on a bash based shell.  
    
    For Mac user might encounter permission denied when running maven command  
-        do "chmod a+x mvnmw" to grant permission
+        do `chmod a+x mvnmw` to grant permission
     
-3. Open the browser and type
-   - localhost:8080/api/v1/home for the homepage
-   - localhost:8080/api/v1/lesson for the lesson page
-   - localhost:8080/api/v1/quiz for the quiz page  
+3. Open the browser  
+   For homepage, type  
+   ```localhost:8080/api/v1/home```  
    
-   you can run the service with curl  
-    $ curl localhost:8080/api/v1/home  
-    $ curl localhost:8080/api/v1/lesson  
-    $ curl localhost:8080/api/v1/quiz  
-    
+   For lesson page, type    
+   ```localhost:8080/api/v1/lesson```  
+   
+   For quiz page, type  
+   ```localhost:8080/api/v1/quiz```  
+  
+   
+   
+   You can choose to run the service with curl  
+   
+   ```$ curl localhost:8080/api/v1/home```  
+   
+   ```$ curl localhost:8080/api/v1/lesson```  
+   
+   ```$ curl localhost:8080/api/v1/quiz```  
+        
  
- 
-Resource of Spring Boot framework can be found [here](https://start.spring.io/).
+### Resource of Spring Boot framework can be found [here](https://start.spring.io/)
