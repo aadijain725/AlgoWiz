@@ -9,17 +9,17 @@ export class LessonPage extends React.Component {
         this.state = {
             lessonData: null
         }
+        // TODO: once local backend serves lesson properly then change this
         this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
-        // TODO: make async fetch here using 
+        // TODO: change to APIHelper once backend fixed
         this.getData();
     }
 
+    // TODO: once backend fixed this can be replaced with APIHelper
     getData() {
-        // for browser router use this instead
-        // fetch('data.json',{
         fetch(`./lesson/${this.props.match.params.lessonID}`, {
             headers : { 
               'Content-Type': 'application/json',
@@ -39,7 +39,8 @@ export class LessonPage extends React.Component {
 
     render() {
         let content;
-        let data = this.state.lessonData;
+        const data = this.state.lessonData;
+        // conditionally render loading bar or content
         if (this.state.lessonData == null) {
             content = <p>Loading...</p>;
         } else {
@@ -50,6 +51,7 @@ export class LessonPage extends React.Component {
                     <p>{data.description}</p>
                 </Col></Row>
                 {data.rows.map((row, i) => {
+                    // create a row for each element in array and pass them params
                     return <LessonRow key={i} cols={row.cols}/>
                 })}
                 <Row className='justify-content-md-center'><Visualizer imgSrc={data.vizSrc}/></Row>
@@ -60,12 +62,9 @@ export class LessonPage extends React.Component {
         }
 
         return(
-            <div id='lesson'>
-                <Container fluid>
-                    {content}
-                    
-                </Container>
-            </div>
+            <Container fluid id='lesson'>
+                {content}
+            </Container>
         )
     }
 }
