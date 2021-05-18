@@ -10,7 +10,7 @@
         "Both directed and undirected graphs",
         "Directed graph only"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "responses": [
         "Feedback for option 1",
         "Feedback for option 2",

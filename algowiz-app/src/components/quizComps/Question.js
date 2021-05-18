@@ -4,8 +4,9 @@ import { Card, ListGroup, Container } from "react-bootstrap";
 export class Question extends React.Component {
   constructor(props) {
     super(props);
+    console.log("submit in curr", this.props.submit);
+    this.state = {}
     // console.log("From question, ", this.props.value);
-    this.state = {ans:  null};
   }
 
   // selectButton(value) {
@@ -15,6 +16,30 @@ export class Question extends React.Component {
   //       ans: this.props.options[value]
   //   });
   // }
+
+  toggleClass(i) {
+    console.log("toggling for i: ", i);
+    this.setState({ selected: i });
+  }
+
+  // Funtion to get the different questions in the card
+  getOptions() {
+    let options = [];
+    for (let i = 0; i < this.props.options.length; i++) {
+      let option = (<ListGroup.Item
+        action
+        className = {this.state.selected && this.state.selected == i + 1? "active" : null}
+        onClick={() => {
+          this.props.onSelect(this.props.options[i], i);
+          this.toggleClass(i + 1);
+        }}
+      >
+        {this.props.options[i]}
+      </ListGroup.Item>);
+      options.push(option)
+    }
+    return options;
+  }
 
   
 
@@ -26,24 +51,11 @@ export class Question extends React.Component {
               <Card.Title> {this.props.value} </Card.Title>
               <Card.Subtitle className="mb-2 text-muted"> </Card.Subtitle>
               <Card.Text>Question #{this.props.qnum + 1} </Card.Text>
-              <ListGroup variant="flush">
-                {/* https://react-bootstrap.github.io/components/list-group/ */}
-                <ListGroup.Item
-                  action
-                  onClick={() => {this.props.onSelect(this.props.options[0])}}
-                >
-                  {this.props.options[0]}
-                </ListGroup.Item>
-                <ListGroup.Item 
-                    action 
-                    onClick={() => {this.props.onSelect(this.props.options[1])}}>
-                  {this.props.options[1]}
-                </ListGroup.Item>
-                <ListGroup.Item 
-                    action
-                    onClick={() => {this.props.onSelect(this.props.options[2])}}>
-                  {this.props.options[2]}
-                </ListGroup.Item>
+              <ListGroup 
+                className = {!this.props.submit ? "Disabled":""}
+                variant="flush"
+              >
+                {this.getOptions()}
               </ListGroup>
             </Card.Body>
           </Card>

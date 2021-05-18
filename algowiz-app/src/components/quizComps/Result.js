@@ -10,10 +10,6 @@ export class Result extends React.Component {
     }
 */
 
-displayResults(correct, incorrect) {
-
-}
-
 render() {
     return (
     <Container id = "results-page">

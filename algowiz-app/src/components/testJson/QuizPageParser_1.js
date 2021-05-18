@@ -15,14 +15,18 @@ export default class QuizPageParser_1 {
         for (let i = 0; i < questionsList.length; i++) {
             var info2 = questionsList[i];
             var topic_details = {
-                category: data["title"],
                 question: info2["question"],
-                answer: info2["answer"],
+                answer: info2["correctAnswer"],
                 option: info2["options"],
                 feebacks: info2["responses"]
             };
-            all_information.push(topic_details);
+            questions.push(topic_details);
         }
+        let all_information = [];
+        all_information["title"] = data["title"];
+        all_information["quizId"]= data["quizId"];
+        all_information["lessonId"] = data["lessonId"];
+        all_information["questions"] = questions;
         console.log("testing all_information: ", all_information);
         return all_information;
     }
