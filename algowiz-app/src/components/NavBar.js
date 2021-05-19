@@ -1,6 +1,8 @@
+import './css/NavBar.css';
+import '../index.css';
+
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './css/NavBar.css';
 import {Nav, Navbar} from 'react-bootstrap';
 
 export class NavBar extends React.Component {
