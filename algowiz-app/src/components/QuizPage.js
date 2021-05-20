@@ -52,9 +52,6 @@ export class QuizPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Hi");
-        let data2 = "";
-        console.log("")
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
             console.log("data: ", homeData);
