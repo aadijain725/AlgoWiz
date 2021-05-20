@@ -11,3 +11,17 @@
 	background-color: lightgrey;
 }
 
+.array {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.rec {
+  width: 1rem;
+  background-color: green;
+}
+
+
+
