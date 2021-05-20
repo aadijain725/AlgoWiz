@@ -69,7 +69,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Setting up backend Spring boot
-git clone from algowiz repo
+- Clone from AlgoWiz repository     
+```git clone https://github.com/aadijain725/AlgoWiz.git```  
+- Set up the PostgresSQL Database account with provided instructions below  
 
 ### Configuring the PostgreSQL Database
 
@@ -82,36 +84,41 @@ git clone from algowiz repo
 - If you changed the port number during installation, update it in spring.datasource.url, else leave it as it is.
 
 #### 3. Creating the database
-- Open postgresql shell and login as “postgres” user.
-- Type in `CREATE DATABASE algowiz;`
-- Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`
+- Open postgresql shell and login as “postgres” user.  
+- Type in `CREATE DATABASE algowiz;`  
+- Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`  
 
-#### 4. Connect to the datasource
-- While connecting to the datasource from your code editor, make sure the database is named `algowiz`, port is `5432`, URL is `jdbc:postgresql://localhost:5432/algowiz`, username is `postgres`.
-- On IntelliJ, when you go to Database -> Create New -> Datasource -> PostgreSQL, we get the window below. Make sure to have similar settings in your code editor.
-
-![](https://i.imgur.com/xj8EkAJ.png)
-
-
-- We have now configured the database!
+We have now configured the database!  
 
 ### Install Java 11 and latest version of Maven
 
 ### Run Spring Boot in command line
-1. cd api/algorithms
+1. Cd into AlgoWiz/api/algorithms  
+```cd AlgoWiz/api/algorithms```  
 
-2. Run the following command in a terminal  
-    ./mvnw spring-boot:run  
-
-3. Open in the browser and type
-    localhost:8080/api/v1/home for the homepage
-    localhost:8080/api/v1/lesson for the lesson page
-    localhost:8080/api/v1/quiz for the quiz page
- 
-  or you can run the service with curl  
-    $ curl localhost:8080/api/v1/home  
-    $ curl localhost:8080/api/v1/lesson  
-    $ curl localhost:8080/api/v1/quiz  
+2. Run the following command in the terminal  
+        `./mvnw spring-boot:run` on a bash based shell.  
+   
+   For Mac user might encounter permission denied when running maven command  
+        do `chmod a+x mvnmw` to grant permission
+    
+3. Open the browser  
+   For homepage, type  
+   ```localhost:8080/api/v1/home```  
+   
+   For lesson page, type    
+   ```localhost:8080/api/v1/lesson```  
+   
+   For quiz page, type  
+   ```localhost:8080/api/v1/quiz```  
+   
+   You can choose to run the service with curl  
+   
+   ```$ curl localhost:8080/api/v1/home```  
+   
+   ```$ curl localhost:8080/api/v1/lesson```  
+   
+   ```$ curl localhost:8080/api/v1/quiz```  
 
 
 ## Working Use Case:
