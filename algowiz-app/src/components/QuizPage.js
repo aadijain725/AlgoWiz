@@ -2,7 +2,7 @@ import React from 'react';
 import Question from '../components/quizComps/Question'
 import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './quizComps/Result';
