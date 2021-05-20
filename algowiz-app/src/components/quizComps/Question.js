@@ -24,7 +24,7 @@ export class Question extends React.Component {
 
   setClasses(i) {
     let classList = "";
-    this.state.selected && this.state.selected == i + 1? classList += "active " : classList ="";
+    this.state.selected && this.state.selected === i + 1? classList += "active " : classList ="";
     console.log("class List: ", classList);
     return classList;
   }
