@@ -2,7 +2,8 @@ import React from 'react';
 import Question from '../components/quizComps/Question'
 import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import P2 from "./testJson/QuizPageParser_1";
+import {withRouter, Link} from 'react-router-dom';
+import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './quizComps/Result';
 
@@ -45,16 +46,32 @@ export class QuizPage extends React.Component {
             ans: null,
             submitted: false,
             showSubmit: true,
-            numCorrect: 0 
+            numCorrect: 0,
+            data: null 
         };
     }
 
     componentDidMount() {
         console.log("Hi");
-        let data2 = new P2().getInfo("graph_dijkstra_quiz");
-        console.log("questionsList", data2["questions"][0]);
-        window.info = data2["questions"];
-        window.title = data2["title"];
+        let data2 = "";
+        console.log("")
+        APIHelper(`quiz/${this.props.match.params.quizID}`)
+        .then(homeData => {
+            console.log("data: ", homeData);
+            window.info = homeData["questionsList"];
+            window.title = homeData["title"];
+            this.setState({
+                data: homeData 
+            });
+
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        // window.info = data2["questions"];
+        // window.title = data2["title"];
     }
 
     // Function that handles selecting buttons 
@@ -212,24 +229,24 @@ export class QuizPage extends React.Component {
 
     // Fetches the question options list for the current question that is selected
     getOptions (qnum) {
-        return window.info[qnum]["option"];
+        return window.info[qnum]["options"];
     }
 
     // Fetches the correct answer for the current question that is selected
     getAnswer(qnum) {
-        let index = window.info[qnum]["answer"];
+        let index = window.info[qnum]["correctAnswer"];
         console.log("answer idx is ", index);
-        console.log("answer is ", window.info[qnum]["option"][index]);
-        return window.info[qnum]["option"][index];
+        console.log("answer is ", window.info[qnum]["options"][index]);
+        return window.info[qnum]["options"][index];
     }
 
 
     // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
-        return window.info[qnum]["feebacks"];
+        return window.info[qnum]["responses"];
     }
 }
 
-export default QuizPage;
+export default withRouter(QuizPage);
 
 
