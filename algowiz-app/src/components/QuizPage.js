@@ -1,13 +1,17 @@
 import React from 'react';
-import Question from '../components/Question'
-import Progress from './Progress'
+import Question from '../components/quizComps/Question'
+import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Parser from "./testJson/QuizPageParser.js"
+import {withRouter} from 'react-router-dom';
+import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
-import Result from './Result';
+import Result from './quizComps/Result';
 
-
-export function getUserFeedback(correct_ans, ans, feedbacks) {
+// Functional component for getting correct user feedback depending on the 
+// User's answer and the correct answer 
+export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
+    console.log(feedbacks);
+    console.log(option_index)
     if (!ans) {
         return <Alert 
             id = "feedback" 
@@ -20,14 +24,14 @@ export function getUserFeedback(correct_ans, ans, feedbacks) {
             id = "feedback" 
             className = "mt-5"
             variant = 'success'> 
-            {feedbacks[0]}
+            {feedbacks[option_index]}
         </Alert>
     } else {
         return <Alert 
             id = "feedback" 
             className = "mt-5"
             variant = 'danger'> 
-            {feedbacks[1]}
+            {feedbacks[option_index]}
         </Alert>
     }
 }
@@ -36,38 +40,62 @@ export function getUserFeedback(correct_ans, ans, feedbacks) {
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        let parser = new Parser();
-        let data = parser.getInfo();
-        window.info = data;
         // console.log("length of data", window.info.length);
         this.state = {
             qnum : 0,
             ans: null,
             submitted: false,
             showSubmit: true,
-            numCorrect: 0 
+            numCorrect: 0,
+            data: null 
         };
     }
 
+    componentDidMount() {
+        console.log("Hi");
+        let data2 = "";
+        console.log("")
+        APIHelper(`quiz/${this.props.match.params.quizID}`)
+        .then(homeData => {
+            console.log("data: ", homeData);
+            window.info = homeData["questionsList"];
+            window.title = homeData["title"];
+            this.setState({
+                data: homeData 
+            });
 
-    handleSelect = (ans) => {
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        // window.info = data2["questions"];
+        // window.title = data2["title"];
+    }
+
+    // Function that handles selecting buttons 
+    handleSelect = (ans, idx) => {
+        console.log("index in handleSelect is:", idx);
         this.setState({
             qnum: this.state.qnum, 
             ans: ans,
             submitted: false,
             showSubmit: true,
-            numCorrect: this.state.numCorrect
+            numCorrect: this.state.numCorrect,
+            idx: idx
         })
     }
-
+    // Function that handles user submissions
     handleSubmit = (ans) => {
-        
+        console.log("index in handleSubmit is:", this.state.idx);
         if (ans == null) {
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
                 submitted: true,
                 showSubmit: false,
+                idx: this.state.idx,
                 numCorrect: this.state.numCorrect
             })
         } else  if (ans === this.getAnswer(this.state.qnum)) {
@@ -76,6 +104,7 @@ export class QuizPage extends React.Component {
                 ans: ans,
                 submitted: true,
                 showSubmit: false,
+                idx: this.state.idx,
                 numCorrect: this.state.numCorrect + 1
             })
         } else {
@@ -84,11 +113,13 @@ export class QuizPage extends React.Component {
                 ans: ans,
                 submitted: true,
                 showSubmit: false,
+                idx: this.state.idx,
                 numCorrect: this.state.numCorrect
             })
         }
     }
 
+    // Function that handles continue functionality
     handleContinue =  (ans) => {
         if (ans == null) {
             this.setState({
@@ -96,6 +127,7 @@ export class QuizPage extends React.Component {
                 ans: ans,
                 submitted: true,
                 showSubmit: true,
+                idx: this.idx,
                 numCorrect: this.state.numCorrect
             })
         } else  {
@@ -104,50 +136,36 @@ export class QuizPage extends React.Component {
                 ans: ans,
                 submitted: true,
                 showSubmit: true,
+                idx: this.idx,
                 numCorrect: this.state.numCorrect
             })
         }
     }
 
-    // componentDidMount() {
-
-    // }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.submitted === true) {
-    //         console.log("submission was successful");
-    //         this.setState({
-    //             qnum: this.state.qnum + 1, 
-    //             ans: this.ans,
-    //             submitted : false,
-    //             showSubmit: true
-    //         })
-    //     }
-    // }
-
-
     render() {
-        if (window.info.length > this.state.qnum) {
+        if (window.info && window.info.length > this.state.qnum) {
         return(
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
                 <Row>
-                    <Col sm= {6}> <h2>Quiz Page: {this.getCategory(this.state.qnum)}</h2> </Col>
+                    <Col sm= {6}> <h2>Quiz Page: {this.getCategory()}</h2> </Col>
                     <Col sm = {6}> <Progress id = "quiz-progress-bar" type = "Questions Answered" curr = {this.state.qnum} total = {window.info.length}></Progress> </Col>
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>
-                    <Col sm = {6}><Question 
+                    <Col sm = {6}>
+                        {!this.state.submitted &&
+                        <Question 
                     value = {this.getQuestion(this.state.qnum)} 
                     qnum = {this.state.qnum}
                     onSelect = {this.handleSelect}
-                    // onSubmit = {this.handleSubmit}
                     options = {this.getOptions(this.state.qnum)}
-                    ></Question> </Col>
+                    ></Question>}
+                     </Col>
                 </Row>
                 {this.state.submitted === true &&
                     <Row>
-                        {getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum))}
+                        {getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum), this.state.idx)}
                     </Row>
                 }
                 {/* Bottom row -- submit */}
@@ -193,76 +211,42 @@ export class QuizPage extends React.Component {
                 
             </Container>
         )
-        } else {
+        } else if (window.info){
             return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
+        } else {
+            return (<h1>Loading ... </h1>)
         }
     }
 
     // Fetches the question details for the current topic
     getQuestion (qnum) {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
         return window.info[qnum]["question"];
     }
-
-    getCategory (qnum) {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
-        return window.info[qnum]["category"];
+    // Fetches the title name for the current topic
+    getCategory () {
+        return window.title;
     }
 
+    // Fetches the question options list for the current question that is selected
     getOptions (qnum) {
-        return window.info[qnum]["option"];
+        return window.info[qnum]["options"];
     }
 
+    // Fetches the correct answer for the current question that is selected
     getAnswer(qnum) {
-        return window.info[qnum]["answer"];
+        let index = window.info[qnum]["correctAnswer"];
+        console.log("answer idx is ", index);
+        console.log("answer is ", window.info[qnum]["options"][index]);
+        return window.info[qnum]["options"][index];
     }
 
+
+    // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
-        return window.info[qnum]["feebacks"];
+        return window.info[qnum]["responses"];
     }
 }
 
-export default QuizPage;
+export default withRouter(QuizPage);
 
 
-
-// // TODO: Need to pass state to this and add buttons accordingly 
-// function showButton(showSubmit) {
-//     if(showSubmit) {
-//         return <Button
-//         id="quiz-submit-btn"
-//         variant="outline-primary"
-//         size="lg"
-//         onClick={()=> {
-//             this.handleSubmit(this.state.ans)
-//             this.setState({
-//                 ans: null
-//             });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     } else  {
-//         return <Button
-//             id="quiz-submit-btn"
-//             variant="outline-primary"
-//             size="lg"
-//             onClick={()=> {
-//                 this.handleSubmit(this.state.ans)
-//                 this.setState({
-//                     ans: null
-//                 });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     }
-// }
