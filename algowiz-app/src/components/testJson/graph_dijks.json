@@ -1,0 +1,41 @@
+{
+  "quizId": "graph_dijkstra_quiz",
+  "lessonId": "graph_dijkstra_lesson",
+  "title": "Dijkstra's algorithm",
+  "questionsList": [
+    {
+      "question": "Which of the following type of graphs work(s) with Dijkstra's algorithm?",
+      "options": [
+        "Undirected graph only",
+        "Both directed and undirected graphs",
+        "Directed graph only"
+      ],
+      "correctAnswer": 1,
+      "responses": [
+        "Feedback for option 1",
+        "Feedback for option 2",
+        "Feedback for option 3"
+      ]
+    },
+    {
+      "question": "What is the best time complexity for Dijkstra's algorithm?",
+      "options": ["O(V + E log V)", "O(log n)", "O(V^2)"],
+      "correctAnswer": 0,
+      "responses": [
+        "Feedback for option 1",
+        "Feedback for option 2",
+        "Feedback for option 3"
+      ]
+    },
+    {
+      "question": "\"Which of the following is incorrect weight for the edge of the graph used by Dijkstra's?",
+      "options": ["-200", "200", "-200"],
+      "correctAnswer": 1,
+      "responses": [
+        "Feedback for option 1",
+        "Feedback for option 2",
+        "Feedback for option 3"
+      ]
+    }
+  ]
+}

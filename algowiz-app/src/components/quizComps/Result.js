@@ -10,10 +10,6 @@ export class Result extends React.Component {
     }
 */
 
-displayResults(correct, incorrect) {
-
-}
-
 render() {
     return (
     <Container id = "results-page">
@@ -26,6 +22,14 @@ render() {
           <Progress type ="Your Score :" curr ={this.props.curr} total ={this.props.total}></Progress>
           <Link to='/'>
             <Button className="btn btn-primary btn-m m-5">Go Back to Home</Button>
+          </Link>
+          <Link to="/lesson/l1">
+                  <Button
+                    href="/lesson"
+                    className="btn btn-danger btn-m m-5"
+                  >
+                    Go to corresponding Lesson Page
+                  </Button>
           </Link>
         </Card.Body>
       </Card>
