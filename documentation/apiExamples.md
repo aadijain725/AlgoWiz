@@ -121,3 +121,51 @@ JSON Response
 }
 ```
 An example of a quiz with 2 questions.
+
+## Lesson
+Because the lesson JSON has to contain semantic
+information on how to render items on the page
+it is structured differently than other data.
+
+JSON Response
+```json
+{
+	"lessonID": "l1",
+	"quizID": "q1",
+	"title": "Dijkstra's Algorithm",
+	"description": "Algorithm for finding the shortest path from start node to end node\nin a weighted graph.",
+	"rows": [
+		{"cols": [
+			{"xs":6, "type": "img", "src":"https://www.geeksforgeeks.org/wp-content/uploads/Fig-11.jpg",
+				 "alt": "Here is some alt text"},
+			{"xs":6, "type": "p", "text": "Lorem Ipsum is that you have to take out its family. Lorem Ispum is a choke artist. It chokes! "}
+		]},
+		{"cols": [
+			{"xs":12, "type": "h2", "text": "Dijkstra's Section Header"}
+		]},
+		{"cols": [
+			{"xs":12, "type": "p", "text": "Example Lorem Ipsum text"}
+		]}
+	]
+}
+```
+### Static Lesson Fields
+* lessonID - Database lesson id
+* quizID - Database quiz id
+* title - the title (string) at the top of the page
+* description - a short description (string) of the lesson 
+### Rows and Cols
+The Rows and columns are rendered according to the [Bootstrap Grid System](https://getbootstrap.com/docs/4.0/layout/grid/)
+
+The rows field must be an array of objects. Each row gets rendered on the 
+lesson page one after the other top to bottom as you would expect in a table.
+
+Each object inside the row  array represents the contents of one row. This object has one field: cols.
+
+cols is an array of one or more column objects. 
+Each column object contains the actual data that will be rendered on the page.
+
+* xs - The width of the column. This is based on the [Bootstrap Grid System](https://getbootstrap.com/docs/4.0/layout/grid/) and must be a number in the range of 1-12 (inclusive). 
+For example a row with two columns each of xs:'6' will result in two side by side columns each half the size of the page.
+* type: The HTML tag to be rendered. ('img', 'p', 'h1', 'h2', etc.)
+  
