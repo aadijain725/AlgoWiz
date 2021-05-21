@@ -168,4 +168,9 @@ Each column object contains the actual data that will be rendered on the page.
 * xs - The width of the column. This is based on the [Bootstrap Grid System](https://getbootstrap.com/docs/4.0/layout/grid/) and must be a number in the range of 1-12 (inclusive). 
 For example a row with two columns each of xs:'6' will result in two side by side columns each half the size of the page.
 * type: The HTML tag to be rendered. ('img', 'p', 'h1', 'h2', etc.)
-  
+* Other Fields: Depending on the type field there may be additional fields included. For example; h1, h2, and p tags should also include a text field. img tags require a src and alt tag. 
+
+Checkout the Following JSON files: 
+[lesson1](../algowiz-app/public/lesson/l1), 
+[lesson2](../algowiz-app/public/lesson/l2)
+as examples of how a lesson page might look.
