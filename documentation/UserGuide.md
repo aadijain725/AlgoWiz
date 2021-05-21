@@ -16,7 +16,7 @@ On Algowiz homepage, there are several algorithm topics to choose from. You can 
 
 **Github Issue Tracker**
 
-Setps to report a bug:
+Steps to report a bug:
 
 1. The user must first naviagte to the Algowiz root repository on Github: https://github.com/aadijain725/AlgoWiz
 2. Once on the repository page, click the issues tab to navigate to the issues page :
