@@ -86,8 +86,7 @@ We will use Maven Wrapper included in the project to build the backend.
 3. In some systems like Mac, you might encounter a permission denied error. In that case run `chmod a+x mvnw`. Then again run the command in step 2 to build the project.
 
 
-## How to Run Tests  
-Provide clear instructions for how to run the system’s test cases. In some cases, the instructions may need to include information such as how to access data sources or how to interact with external systems. You may reference the user documentation (e.g., prerequisites) to avoid duplication.
+## How to Run Tests
 
 ### Run Frontend Tests  
 
