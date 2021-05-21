@@ -12,23 +12,23 @@ in the [How to Build AlgoWiz](#How-to-Build-AlgoWiz) section.
 
 ## Directory Layout  
 
-📦 AlgoWiz
-┣ 📂 [.github/workflows](/.github/workflows) - Github Actions CI .yml code
-┣ 📂 [algowiz-app](/algowiz-app) - Frontend source code
-┃ ┣ 📂 [public](/algowiz-app/public) - Static files served during frontend build
-┃ ┗ 📂 [src](/algowiz-app/src) - React code
-┃ &nbsp; &nbsp; ┣ 📂 [components](/algowiz-app/src/components) - React Components
-┃ &nbsp; &nbsp; ┗  📂 [tests](/algowiz-app/src/tests) - Frontend Tests
-┣ 📂 [api](/api) - Backend source code
-┃ ┗ 📂 [algorithms](/api/algorithms) - Spring server root directory
-┃ &nbsp; &nbsp; ┗ 📂 [src](/api/algorithms/src) - Spring server source code
-┃ &nbsp; &nbsp; &nbsp; &nbsp; ┣ 📂 [main](/api/algorithms/src/main) - Spring server source code
-┃ &nbsp; &nbsp; &nbsp; &nbsp; ┃ ┣ 📂 [java/com/example/algorithms](/api/algorithms/src/main/java/com/example/algorithms) - Spring server routes and components
-┃ &nbsp; &nbsp; &nbsp; &nbsp; ┃ ┗ 📂 [resources](/api/algorithms/src/main/resources) - Spring server resources and properties
-┃ &nbsp; &nbsp; &nbsp; &nbsp; ┗ 📂 [test/java/com/example/algorithms](/api/algorithms/src/test/java/com/example/algorithms) - Spring server tests
-┣ 📂 [documentation](/documentation) - Living documentation, policies and guides
-┃ ┗ 📂 [images](/documentation/images) - Documentation related images
-┗ 📂 [status-reports](/status-reports) - Weekly team status reports
+📦 AlgoWiz<br/>
+┣ 📂 [.github/workflows](/.github/workflows) - Github Actions CI .yml code<br/>
+┣ 📂 [algowiz-app](/algowiz-app) - Frontend source code<br/>
+┃ ┣ 📂 [public](/algowiz-app/public) - Static files served during frontend build<br/>
+┃ ┗ 📂 [src](/algowiz-app/src) - React code<br/>
+┃ &nbsp; &nbsp; ┣ 📂 [components](/algowiz-app/src/components) - React Components<br/>
+┃ &nbsp; &nbsp; ┗  📂 [tests](/algowiz-app/src/tests) - Frontend Tests<br/>
+┣ 📂 [api](/api) - Backend source code<br/>
+┃ ┗ 📂 [algorithms](/api/algorithms) - Spring server root directory<br/>
+┃ &nbsp; &nbsp; ┗ 📂 [src](/api/algorithms/src) - Spring server source code<br/>
+┃ &nbsp; &nbsp; &nbsp; &nbsp; ┣ 📂 [main](/api/algorithms/src/main) - Spring server source code<br/>
+┃ &nbsp; &nbsp; &nbsp; &nbsp; ┃ ┣ 📂 [java/com/example/algorithms](/api/algorithms/src/main/java/com/example/algorithms) - Spring server routes and components<br/>
+┃ &nbsp; &nbsp; &nbsp; &nbsp; ┃ ┗ 📂 [resources](/api/algorithms/src/main/resources) - Spring server resources and properties<br/>
+┃ &nbsp; &nbsp; &nbsp; &nbsp; ┗ 📂 [test/java/com/example/algorithms](/api/algorithms/src/test/java/com/example/algorithms) - Spring server tests<br/>
+┣ 📂 [documentation](/documentation) - Living documentation, policies and guides<br/>
+┃ ┗ 📂 [images](/documentation/images) - Documentation related images<br/>
+┗ 📂 [status-reports](/status-reports) - Weekly team status reports<br/>
 
 
 
