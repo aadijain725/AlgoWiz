@@ -1,10 +1,8 @@
 import './viz.css';
 import React from 'react';
-// import { useState } from "react"; // for testing framer motion
 import {Row, Col, Button} from 'react-bootstrap';
-import VizArray from './VizArray';
-import VizRect from './VizRect';
-import { motion, AnimateSharedLayout } from "framer-motion";
+// TODO: find way to import specific engines
+import VizSelectionSort from './VizSelectionSort';
 
 /**
  * This component is the root for all Visualizers.
@@ -14,7 +12,8 @@ import { motion, AnimateSharedLayout } from "framer-motion";
 export class VizRoot extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {it : [1, 2, 3, 4, 5]}
+        // create a ref to call playback on the viz engine
+        this.engineRef = React.createRef();
     }
 
     // Render for root component
@@ -22,36 +21,26 @@ export class VizRoot extends React.Component {
         return(
             <>
             <Row className='vizRow'>
-            <Col xs='3' >
-                <p>left</p>
-            </Col>
-            <Col xs='6' className='text-center justify-content-center vizRow'>
-            <AnimateSharedLayout>
-            <motion.div className='array' layout>
-                {this.state.it.map(item => (
-                    <VizRect key={item} s={item}/>
-                ))}
-            </motion.div>
-            </AnimateSharedLayout>
-            </Col>
-            
-            <Col xs='3' >
-                <p>right</p>
-            </Col>
+                <VizSelectionSort ref={this.engineRef}/>
             </Row>
             <Row className='vizRow'>
                 <Col xs='12' className='text-center justify-content-centers'>
-                    <Button variant='primary' className='round tst'><i className="fa fa-undo" /></Button>
-                    <Button variant='primary' className='round'><i className="fa fa-play" /></Button>
-                    <Button variant='primary' className='round'><i className="fa fa-pause" /></Button>
                     <Button variant='primary' 
-                        onClick={()=> {
-                            let arr = this.state.it;
-                            let last = arr.pop();
-                            arr.splice(0, 0, last);
-                            this.setState({it:arr});
-                        }}
-                        className='round'><i className="fa fa-step-forward" /></Button>
+                        onClick={()=> this.engineRef.current.reset()} className='round'>
+                        <i className="fa fa-undo" />
+                        </Button>
+                    <Button variant='primary' 
+                        onClick={()=> this.engineRef.current.play()} className='round'>
+                        <i className="fa fa-play" />
+                    </Button>
+                    <Button variant='primary' 
+                        onClick={()=> this.engineRef.current.pause()} className='round'>
+                        <i className="fa fa-pause" />
+                    </Button>
+                    <Button variant='primary' 
+                        onClick={()=> this.engineRef.current.step()} className='round'>
+                        <i className="fa fa-step-forward" />
+                    </Button>
                 </Col>
             </Row>
             </>
