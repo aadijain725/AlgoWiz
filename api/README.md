@@ -1,35 +1,57 @@
 # API Readme
-# Setting up Spring Boot backend API for web application
 
-## Getting Started Guides
+# Set up for Spring Boot backend API for web application
 
-Go to Spring Boot initializer [here] (https://start.spring.io/) and select the following tabs
-=======
+- Clone from AlgoWiz repository  
+```git clone https://github.com/aadijain725/AlgoWiz.git```  
+- Set up the PostgresSQL Database account with provided instructions below
 
-- Project: Maven Project
-- Language: Java
-- Spring Boot: 2.4.5
-- Project Metadata: give a name to your project
-- Packaging: Jar
-- Java: 11
-- Dependencies: we will be working with 3 dependencies
-    - Web: select Spring web
-    - SQL: Spring Data JPA
-    - Driver: PostgreSQL Driver
+### Configuring the PostgreSQL Database
 
-Click Generate and it will package up in a zip file which you can unzip and open up in any IDE of your choice.
+#### 1. Install PostgreSQL
+- Go to the website below and download the appropriate installer. https://www.enterprisedb.com/downloads/postgres-postgresql-downloads?quicktabs_postgres_plus_dwnlds=1 
+- During installation, set a password for the default superuser “postgres”.
 
-## Working with Spring Boot
-Starter code of Spring Boot has been generated, and it is placed in the API folder
+#### 2. Update application.properties file
+- Change the value for spring.datasource.username to `postgres`(default value) and  spring.datasource.password to the one you set up during installation.
+- If you changed the port number during installation, update it in spring.datasource.url, else leave it as it is.
 
-Start by:  
-    - Cloning the repo  
-    - Create a separate branch   
-    - Run the code to make sure it compiles  
-=======
+#### 3. Creating the database
+- Open postgresql shell and login as “postgres” user.
+- Type in `CREATE DATABASE algowiz;`
+- Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`
+- We have now configured the database!
 
+### Install Java 11 and latest version of Maven
+
+### How to run Spring Boot in command line
+1. - cd into AlgoWiz/api/algorithms 
+
+2. Run the following command in the terminal  
+        `./mvnw spring-boot:run` on a bash based shell.  
+   
+   For Mac user might encounter permission denied when running maven command  
+        do `chmod a+x mvnmw` to grant permission
     
+3. Open the browser  
+   For homepage, type  
+   ```localhost:8080/api/v1/home```  
+   
+   For lesson page, type    
+   ```localhost:8080/api/v1/lesson```  
+   
+   For quiz page, type  
+   ```localhost:8080/api/v1/quiz```  
+  
+   
+   
+   You can choose to run the service with curl  
+   
+   ```$ curl localhost:8080/api/v1/home```  
+   
+   ```$ curl localhost:8080/api/v1/lesson```  
+   
+   ```$ curl localhost:8080/api/v1/quiz```  
+        
  
- 
-
- 
+### Resource of Spring Boot framework can be found [here](https://start.spring.io/)
