@@ -11,7 +11,16 @@
 	background-color: lightgrey;
 }
 
+#vizEngine {
+  width: 100%;
+  background-color: lightgray;
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
 .array {
+  height: 15rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -19,8 +28,32 @@
 }
 
 .rec {
-  width: 1rem;
+  width: 1.5rem;
   background-color: green;
+}
+
+#indexArrow {
+  color:red;
+  position: relative;
+  display: block;
+}
+
+#indexArrow p {
+ margin: 0;
+ position: relative;
+ top:10px;
+}
+
+#minArrow p {
+  margin: -10px 0 0 0;
+  position: relative;
+  top:10px;
+ }
+
+#minArrow {
+  color:blue;
+  position: relative;
+  display: block;
 }
 
 

@@ -20,9 +20,7 @@ export class VizRoot extends React.Component {
     render() {
         return(
             <>
-            <Row className='vizRow'>
-                <VizSelectionSort ref={this.engineRef}/>
-            </Row>
+            <VizSelectionSort ref={this.engineRef}/>
             <Row className='vizRow'>
                 <Col xs='12' className='text-center justify-content-centers'>
                     <Button variant='primary' 

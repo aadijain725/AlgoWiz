@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion, AnimateSharedLayout } from "framer-motion";
-import { Col } from 'react-bootstrap';
+import { AnimateSharedLayout } from "framer-motion";
 import VizRect from './VizRect';
 
 export class VizSelectionSort extends React.Component {
@@ -10,7 +9,9 @@ export class VizSelectionSort extends React.Component {
 			default: [3, 2, 5, 1, 4],
 			current: [3, 2, 5, 1, 4],
 			i: 0,
-			j: 0
+			j: 0,
+			min: 0,
+			step: 0
 		}
 	}
 
@@ -19,9 +20,11 @@ export class VizSelectionSort extends React.Component {
 		// TODO: shuffle contents instead?
 		// TODO: reset messes up default?
 		this.setState({
-			current: this.state.default,
+			current: [...this.state.default],
 			i: 0,
-			j: 0
+			j: 0,
+			step: 0,
+			min: 0
 		})
 	}
 
@@ -35,49 +38,75 @@ export class VizSelectionSort extends React.Component {
 
 	step = () => {
 		console.log('pressed step');
+		// grab state (never mutate state directly)
 		let i = this.state.i;
 		let j = this.state.j;
-		let min = 0;
-		let arr = this.state.current;
-  
-    // One by one move boundary of unsorted subarray 
-    if (i < arr.length - 1) { 
-        // Find the minimum element in unsorted array 
+		let min = this.state.min;
+		let arr = [...this.state.current];
+		
+		// Do not step further if done sorting
+		if (i >= arr.length - 1) return;
+
+		// Break up the algorithm into steps so we can animate each independently
+		switch (this.state.step % 3) {
+			case 0:
+				// Find the minimum element in unsorted array 
         min = i; 
         for (j = i + 1; j < arr.length; j++) {
         	if (arr[j] < arr[min]) {
             min = j; 
 					}
 				}
-        // Swap the found minimum element with the first element 
+				break;
+			case 1:
+				// Swap the found minimum element with the first element 
 				let first = arr[i];
 				arr[i] = arr[min];
 				arr[min] = first;
+				// change min so the arrow moves with the element
+				min = i;
+				break;
+			case 2:
+				// increment i
 				i++;
-    } 
-		// move around the array
+				break;
+			default:
+				console.log('Something in step function broke.');
+		}
+		// update the state
 		this.setState({
 			i,
 			j,
+			min,
+			step: this.state.step + 1,
 			current: arr
 		})
 	}
 
 	render() {
+		const st = this.state;
 		return(
-			<>
-				<	Col xs='3' ><p>left</p></Col>
-				<Col xs='6' className='text-center justify-content-center vizRow'>
+			<div id='vizEngine'>
+				<div style={{width:'15%'}}><p>left</p></div>
+				<div style={{width:'70%' }}>
+					<p>mid</p>
+					{
 					<AnimateSharedLayout>
-						<motion.div className='array' layout>
+						<div className='array' >
 							{this.state.current.map(item => (
-									<VizRect key={item} s={item}/>
+									<VizRect 
+										key={item} 
+										s={item} 
+										isIndex={st.current[st.i] === item}
+										isMin={st.current[st.min] === item}
+									/>
 							))}
-						</motion.div>
+						</div>
 					</AnimateSharedLayout>
-				</Col>
-				<Col xs='3' ><p>right</p></Col>
-			</>
+							}
+				</div>
+				<div style={{width:'15%'}}><p>right</p></div>				
+			</div>
 		);
 	}
 }
