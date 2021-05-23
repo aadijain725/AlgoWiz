@@ -1,5 +1,4 @@
 // import logo from './logo.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React from 'react';
 import {
@@ -12,7 +11,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import Navbar from './components/NavBar';
 import HomePage from './components/HomePage';
 import QuizPage from './components/QuizPage';
-import LessonPage from './components/LessonPage';
+import LessonPage from './components/lessonComps/LessonPage';
 import Gutter from './components/Gutter';
 
 function App() {
