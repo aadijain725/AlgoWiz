@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 
-const VizRect = (props) => {
+const VizSelectionRect = (props) => {
 
 	return (
 		<div style={{textAlign:'center'}}>
@@ -24,4 +24,4 @@ const VizRect = (props) => {
 	);
 }
 
-export default VizRect;
+export default VizSelectionRect;

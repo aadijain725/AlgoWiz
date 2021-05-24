@@ -1,26 +1,31 @@
 import React from 'react';
 import { AnimateSharedLayout } from "framer-motion";
-import VizRect from './VizRect';
+import Rect  from './VizSelectionRect';
 
 export class VizSelectionSort extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			default: [3, 2, 5, 1, 4],
-			current: [3, 2, 5, 1, 4],
+			current: [3, 2, 5, 1, 4, 6, 9, 8, 7],
 			i: 0,
 			j: 0,
 			min: 0,
-			step: 0
+			step: 0,
+			intervalID: null
 		}
 	}
 
+	componentWillUnmount() {
+		// if a timer is running cancel it
+		this.cancelTimer();
+	}
+
+	// On reset, update state with default values and shuffle the array
 	reset = () => {
 		console.log('pressed reset');
-		// TODO: shuffle contents instead?
-		// TODO: reset messes up default?
+		this.cancelTimer();
 		this.setState({
-			current: [...this.state.default],
+			current: this.shuffle([...this.state.current]),
 			i: 0,
 			j: 0,
 			step: 0,
@@ -28,16 +33,32 @@ export class VizSelectionSort extends React.Component {
 		})
 	}
 
+	// On play state the timer for animation 
 	play = () =>  {
 		console.log('pressed play');
+		// Don't set a new timer if one already exists
+		if (this.state.intervalID !== null) return;
+		// TODO: check if should call step once first
+		let intervalID = setInterval(this.timer, 500);
+		this.setState({intervalID});
 	}
 
+	// 
 	pause = () => {
 		console.log('pressed pause');
+		this.cancelTimer();
 	}
 
+	/** Moves the state up 1 step in the algorithm
+	 * 	Returns true if algorithm has completed
+	*/
 	step = () => {
 		console.log('pressed step');
+		// do not allow step to be pressed if animation playing
+		if (this.state.intervalID === null) this.advanceAlgo();
+	}
+
+	advanceAlgo = () => {
 		// grab state (never mutate state directly)
 		let i = this.state.i;
 		let j = this.state.j;
@@ -45,7 +66,7 @@ export class VizSelectionSort extends React.Component {
 		let arr = [...this.state.current];
 		
 		// Do not step further if done sorting
-		if (i >= arr.length - 1) return;
+		if (i >= arr.length - 1) return true;
 
 		// Break up the algorithm into steps so we can animate each independently
 		switch (this.state.step % 3) {
@@ -81,31 +102,60 @@ export class VizSelectionSort extends React.Component {
 			step: this.state.step + 1,
 			current: arr
 		})
+		return false;
+	}
+
+	shuffle = (array) => {
+		let currentIndex = array.length, temporaryValue, randomIndex;
+	
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+	
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+		return array;
+	}
+
+	// timer callback, cancels timer when animation finishes
+	timer = () => {
+		if (this.advanceAlgo()) {
+			this.cancelTimer();
+		}
+	} 
+
+	// clears the timer and resets state
+	cancelTimer = () => {
+		if (this.state.intervalID === null) return;
+		clearInterval(this.state.intervalID);
+		this.setState({intervalID: null});
+		console.log('timer canceled');
 	}
 
 	render() {
 		const st = this.state;
 		return(
 			<div id='vizEngine'>
-				<div style={{width:'15%'}}><p>left</p></div>
-				<div style={{width:'70%' }}>
-					<p>mid</p>
-					{
+				<div style={{width:'70%' }}>{
 					<AnimateSharedLayout>
 						<div className='array' >
 							{this.state.current.map(item => (
-									<VizRect 
-										key={item} 
-										s={item} 
-										isIndex={st.current[st.i] === item}
-										isMin={st.current[st.min] === item}
-									/>
+								<Rect 
+									key={item} 
+									s={item} 
+									isIndex={st.current[st.i] === item}
+									isMin={st.current[st.min] === item}
+								/>
 							))}
 						</div>
 					</AnimateSharedLayout>
-							}
-				</div>
-				<div style={{width:'15%'}}><p>right</p></div>				
+				}</div>
+				<div style={{width:'30%'}}><p>right</p></div>				
 			</div>
 		);
 	}
