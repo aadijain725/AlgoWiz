@@ -1,0 +1,60 @@
+.round {
+	width: 2rem;
+  height: 2rem;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+	margin: .5rem;
+}
+
+.vizRow {
+	background-color: lightgrey;
+}
+
+#vizEngine {
+  width: 100%;
+  background-color: lightgray;
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.array {
+  height: 15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.rec {
+  width: 1.5rem;
+  background-color: green;
+}
+
+#indexArrow {
+  color:red;
+  position: relative;
+  display: block;
+}
+
+#indexArrow p {
+ margin: 0;
+ position: relative;
+ top:10px;
+}
+
+#minArrow p {
+  margin: -10px 0 0 0;
+  position: relative;
+  top:10px;
+ }
+
+#minArrow {
+  color:blue;
+  position: relative;
+  display: block;
+}
+
+
+
