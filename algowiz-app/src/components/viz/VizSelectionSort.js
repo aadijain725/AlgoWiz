@@ -7,13 +7,23 @@ export class VizSelectionSort extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			current: [3, 2, 5, 1, 4, 6, 9, 8, 7],
+			current: [
+				{v:3}, {v:2}, {v:5}, {v:1}, {v:4}, {v:6}, {v:9}, {v:8}, {v:7}
+			],
 			i: 0,
 			j: 0,
 			min: 0,
 			step: 0,
 			intervalID: null
 		}
+	}
+	componentDidMount() {
+		// Choose random colors for each bar, use H 0-360 in hsv format
+		const current = [...this.state.current];
+		for (let i = 0; i < current.length; i++) {
+			current[i].c = Math.floor(Math.random()*361);
+		}
+		this.setState({current});
 	}
 
 	componentWillUnmount() {
@@ -75,7 +85,7 @@ export class VizSelectionSort extends React.Component {
 				// Find the minimum element in unsorted array 
         min = i; 
         for (j = i + 1; j < arr.length; j++) {
-        	if (arr[j] < arr[min]) {
+        	if (arr[j].v < arr[min].v) {
             min = j; 
 					}
 				}
@@ -141,16 +151,16 @@ export class VizSelectionSort extends React.Component {
 	render() {
 		const st = this.state;
 		return(
-			<div id='vizEngine'>
+			<div id='vizSelectSortEngine'>
 				<div style={{width:'60%' }}>{
 					<AnimateSharedLayout>
 						<div className='array' >
-							{this.state.current.map(item => (
+							{this.state.current.map(elem => (
 								<Rect 
-									key={item} 
-									s={item} 
-									isIndex={st.current[st.i] === item}
-									isMin={st.current[st.min] === item}
+									key={elem.v} 
+									data={elem} 
+									isIndex={st.current[st.i] === elem}
+									isMin={st.current[st.min] === elem}
 								/>
 							))}
 						</div>

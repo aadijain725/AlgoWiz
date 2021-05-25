@@ -17,8 +17,11 @@ const VizSelectionRect = (props) => {
 					<i className='fa fa-chevron-down'/>
 				</motion.i> 
 			)}
-			<motion.div className='rec' layout style={{height:`${props.s}rem`}} >
-				<p>{props.s}</p>
+			<motion.div className='rec' layout style={{
+				height:`${props.data.v + 1}rem`, 
+				backgroundColor:`hsl(${props.data.c}, 100%, 50%)`
+			}}>
+				<p>{props.data.v}</p>
 			</motion.div>
 		</div>
 	);
