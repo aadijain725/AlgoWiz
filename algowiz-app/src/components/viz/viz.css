@@ -56,5 +56,11 @@
   display: block;
 }
 
+#vizCode {
+  margin-top: 1rem;
+  font-size: .8rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
 
 

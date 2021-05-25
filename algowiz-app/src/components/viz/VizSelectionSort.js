@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimateSharedLayout } from "framer-motion";
 import Rect  from './VizSelectionRect';
+import VizCode from './VizCode';
 
 export class VizSelectionSort extends React.Component {
 	constructor(props) {
@@ -141,7 +142,7 @@ export class VizSelectionSort extends React.Component {
 		const st = this.state;
 		return(
 			<div id='vizEngine'>
-				<div style={{width:'70%' }}>{
+				<div style={{width:'60%' }}>{
 					<AnimateSharedLayout>
 						<div className='array' >
 							{this.state.current.map(item => (
@@ -155,7 +156,7 @@ export class VizSelectionSort extends React.Component {
 						</div>
 					</AnimateSharedLayout>
 				}</div>
-				<div style={{width:'30%'}}><p>right</p></div>				
+				<div style={{width:'40%'}}><VizCode step={this.state.step}/></div>				
 			</div>
 		);
 	}
