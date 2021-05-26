@@ -20,6 +20,9 @@ export class VizRoot extends React.Component {
     render() {
         return(
             <>
+            {/** Viz Engine Goes here 
+             * TODO: add prop to conditionally render correct viz engine
+            */}
             <VizSelectionSort ref={this.engineRef}/>
             <Row className='vizRow'>
                 <Col xs='12' className='text-center justify-content-centers'>
