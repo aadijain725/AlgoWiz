@@ -25,7 +25,7 @@ public class AlgoContentConfig {
                     "Dijkstra's Algorithm",
                     "Algorithm for finding the shortest path from start node to end node\n" +
                             "in a weighted graph.",
-                    "https://i1.faceprep.in/companies/selection-sort-2.PNG"
+                    "https://miro.medium.com/max/446/1*X0JmdE2g25qt0nRvnztbQw.png"
             );
 
             HomepageTopics selectionSort = new HomepageTopics(
