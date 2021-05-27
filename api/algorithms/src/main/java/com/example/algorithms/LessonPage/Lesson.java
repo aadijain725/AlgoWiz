@@ -16,6 +16,8 @@ public class Lesson {
             generator = "lesson_sequence"
     )
 
+    private int id;
+
     // lessonId of the lesson
     private String lessonId;
 
