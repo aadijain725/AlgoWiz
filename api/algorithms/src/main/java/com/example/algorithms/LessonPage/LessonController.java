@@ -58,6 +58,7 @@ public class LessonController {
         String title = "dummyTitleContent";
         String quizID = "dummyQuizId";
         String description = "dummyDescription";
+        String vizSrc = "dummyVizSrc";
 
         Lesson l = lessonList.get(0);
         LessonController.Data content;
@@ -66,6 +67,7 @@ public class LessonController {
         lessonId = l.getLessonId();
         quizID = l.getQuizID();
         description = l.getDescription();
+        vizSrc = l.getVizSrc();
 
         // Generate the Questions object using the data
         content = new LessonController.Data(
@@ -73,6 +75,7 @@ public class LessonController {
                 quizID,
                 title,
                 description,
+                vizSrc,
                 l);
 
         // Create and return new Data object with the data
@@ -85,31 +88,21 @@ public class LessonController {
         private String quizId;
         private String title;
         private String description;
-        private Lesson lesson;
+        private String vizSrc;
         private ImageData imgData;
         private List<ContentData> contentData;
 
-        public Data(String lessonId, String quizId, String title, String description, Lesson lesson) {
+        public Data(String lessonId, String quizId, String title, String description, String vizSrc, Lesson lesson) {
             this.lessonId = lessonId;
             this.quizId = quizId;
             this.title = title;
             this.description = description;
-            this.lesson = lesson;
-            this.imgData = makeImageData();
-            this.contentData = makeContentData();
-        }
+            this.vizSrc = vizSrc;
+            this.imgData = new ImageData(lesson.getImageURL(), lesson.getAlt(), lesson.getImgDescription());
+            this.contentData = new ArrayList<>();
 
-        private ImageData makeImageData() {
-            return new ImageData(lesson.getImageURL(), lesson.getAlt(), lesson.getImgDescription());
-        }
-
-        private List<ContentData> makeContentData() {
-            List<ContentData> newContentData = new ArrayList<>();
-
-            newContentData.add(new ContentData("Pseudocode", lesson.getPseudocode()));
-            newContentData.add(new ContentData("Complexity", lesson.getComplexity()));
-
-            return newContentData;
+            contentData.add(new ContentData("Pseudocode", lesson.getPseudocode()));
+            contentData.add(new ContentData("Complexity", lesson.getComplexity()));
         }
     }
 

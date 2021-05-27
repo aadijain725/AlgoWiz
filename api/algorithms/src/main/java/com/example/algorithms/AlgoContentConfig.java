@@ -48,9 +48,12 @@ public class AlgoContentConfig {
                     "https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png"
             );
             Lesson dijkstrasLesson = new Lesson(
-                    3l,
-                    "Graph",
+                    "graph_dijkstra_lesson",
+                    "graph_dijkstra_quiz",
                     "Dijkstras",
+                    "Dijkstras alt placeholder",
+                    "Dijkstras img description placeholder",
+                    "Dijkstras vizSrc placeholder",
                     "Dijkstra's algorithm is a type of graph algorithm for finding the shortest paths between nodes in" +
                             "a graph. Dijkstra's algorithm was published in 1959 by a Dutch computer scientist Edsger Dijkstra." +
                             "The graph can be directed meaning the edges point in a direction or undirected. The weight" +

@@ -1,5 +1,8 @@
 package com.example.algorithms;
 
+import com.example.algorithms.LessonPage.Lesson;
+import com.example.algorithms.LessonPage.LessonRepository;
+import com.example.algorithms.LessonPage.LessonService;
 import com.example.algorithms.quiz.Quiz;
 import com.example.algorithms.quiz.QuizRepository;
 import com.example.algorithms.quiz.QuizService;
@@ -21,6 +24,9 @@ class AlgorithmsApplicationTests {
 	@Autowired
 	private QuizRepository quizRepository;
 
+	@Autowired
+	private LessonRepository lessonRepository;
+
 	@Test
 	public void testQuiz() {
 
@@ -33,6 +39,18 @@ class AlgorithmsApplicationTests {
 		Quiz res = lst1.get(0);
 		assertEquals(res.getQuizId(), quizID);
 
+	}
+
+	@Test
+	public void testLesson() {
+		String lessonID = "graph_dijkstra_lesson";
+		LessonService ls = new LessonService((lessonRepository));
+
+		List<Lesson> les1 = lessonRepository.findAllByLessonId(lessonID);
+		assertEquals(les1.size(), 1);
+
+		Lesson res = les1.get(0);
+		assertEquals(res.getAlt(), "Dijkstras alt placeholder");
 	}
 
 }
