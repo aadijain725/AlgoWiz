@@ -3,6 +3,7 @@ import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 // TODO: find way to import specific engines
 import VizSelectionSort from './VizSelectionSort';
+import VizDijsktra from './VizDijkstra';
 
 /**
  * This component is the root for all Visualizers.
@@ -22,8 +23,10 @@ export class VizRoot extends React.Component {
             <>
             {/** Viz Engine Goes here 
              * TODO: add prop to conditionally render correct viz engine
+            
+            <MyComponent ref={this.engineRef}/> 
             */}
-            <VizSelectionSort ref={this.engineRef}/>
+            <VizDijsktra ref={this.engineRef}> </VizDijsktra>
             <Row className='vizRow'>
                 <Col xs='12' className='text-center justify-content-centers'>
                     <Button variant='primary' 
