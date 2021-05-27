@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+// This is the main API Route for the quiz page
+// If running locally, the url would be:
+// "http://localhost:8080/api/v1/quiz"
 @RequestMapping(path = "api/v1/quiz")
 public class QuizController {
 
@@ -36,6 +39,8 @@ public class QuizController {
 
     // Returns the QuizContent object for the requested quizId in the URL path
     // If the quizId is not valid, we return a 404 not found HTTP response
+    // If running locally, the url would be:
+    // "http://localhost:8080/api/v1/quiz/{quizId}"
     @GetMapping(path = "/{quizId}")
     public QuizContent getQuizByID(@PathVariable String quizId) {
 
