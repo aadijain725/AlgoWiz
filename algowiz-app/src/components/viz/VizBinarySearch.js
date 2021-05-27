@@ -1,7 +1,6 @@
-import Button from 'react-bootstrap/Button';
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Bar , defaults} from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import VizCode from './VizCode';
 // import VizBarGraph from './VizBarGraph';
 
