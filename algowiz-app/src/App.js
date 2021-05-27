@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import {Container, Row, Col} from 'react-bootstrap';
 import Navbar from './components/NavBar';
-import HomePage from './components/HomePage';
+import HomePage from './components/homePageComps/HomePage';
 import QuizPage from './components/QuizPage';
 import LessonPage from './components/lessonComps/LessonPage';
 import Gutter from './components/Gutter';
