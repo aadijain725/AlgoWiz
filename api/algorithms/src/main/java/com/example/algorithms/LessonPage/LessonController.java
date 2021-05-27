@@ -30,17 +30,17 @@ public class LessonController {
         this.lessonService = lessonService;
     }
 
-    /*
-    @GetMapping
-    public List<LessonController.LessonContent> getAllLessons() {
-        List<LessonController.LessonContent> contentList = new ArrayList<>();
-        for (String id: this.lessonIDList) {
-            contentList.add(this.getLessonbyID(id));
-        }
-        return contentList;
-    }
 
-     */
+//    @GetMapping
+//    public List<LessonController.LessonContent> getAllLessons() {
+//        List<LessonController.LessonContent> contentList = new ArrayList<>();
+//        for (String id: this.lessonIDList) {
+//            contentList.add(this.getLessonbyID(id));
+//        }
+//        return contentList;
+//    }
+
+
 
     @GetMapping(path = "/{lessonID}")
     public LessonController.Data getLessonbyID(@PathVariable String lessonID) {
@@ -92,6 +92,62 @@ public class LessonController {
         private ImageData imgData;
         private List<ContentData> contentData;
 
+        public String getLessonId() {
+            return lessonId;
+        }
+
+        public void setLessonId(String lessonId) {
+            this.lessonId = lessonId;
+        }
+
+        public String getQuizId() {
+            return quizId;
+        }
+
+        public void setQuizId(String quizId) {
+            this.quizId = quizId;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getVizSrc() {
+            return vizSrc;
+        }
+
+        public void setVizSrc(String vizSrc) {
+            this.vizSrc = vizSrc;
+        }
+
+        public ImageData getImgData() {
+            return imgData;
+        }
+
+        public void setImgData(ImageData imgData) {
+            this.imgData = imgData;
+        }
+
+        public List<ContentData> getContentData() {
+            return contentData;
+        }
+
+        public void setContentData(List<ContentData> contentData) {
+            this.contentData = contentData;
+        }
+
         public Data(String lessonId, String quizId, String title, String description, String vizSrc, Lesson lesson) {
             this.lessonId = lessonId;
             this.quizId = quizId;
@@ -103,6 +159,7 @@ public class LessonController {
 
             contentData.add(new ContentData("Pseudocode", lesson.getPseudocode()));
             contentData.add(new ContentData("Complexity", lesson.getComplexity()));
+
         }
     }
 
@@ -117,8 +174,29 @@ public class LessonController {
             this.imgDescription = imgDescription;
         }
 
+        public void setImageURL(String imageURL) {
+            this.imageURL = imageURL;
+        }
+
+        public void setAlt(String alt) {
+            this.alt = alt;
+        }
+
+        public void setImgDescription(String imgDescription) {
+            this.imgDescription = imgDescription;
+        }
+
         public String getImageURL() {
             return imageURL;
+        }
+
+        @Override
+        public String toString() {
+            return "ImageData{" +
+                    "imageURL='" + imageURL + '\'' +
+                    ", alt='" + alt + '\'' +
+                    ", imgDescription='" + imgDescription + '\'' +
+                    '}';
         }
 
         public String getAlt() {
@@ -139,12 +217,28 @@ public class LessonController {
             this.content = content;
         }
 
+        @Override
+        public String toString() {
+            return "ContentData{" +
+                    "header='" + header + '\'' +
+                    ", content='" + content + '\'' +
+                    '}';
+        }
+
         public String getHeader() {
             return header;
         }
 
+        public void setHeader(String header) {
+            this.header = header;
+        }
+
         public String getContent() {
             return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
         }
     }
 
