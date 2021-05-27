@@ -161,10 +161,10 @@ export class VizDijsktra extends React.Component {
             // to copy the these changes into the graph
             copyGraph[nodeIndex] = nodeitem;
 
-            // updating the graph
-            this.setState({ graph: copyGraph });
-
-            this.state.lastExecutedStep = step
+            // updating the graph and last executed step
+            this.setState({ graph: copyGraph,  lastExecutedStep : step });
+            //this.state.lastExecutedStep = step was doing this before
+            
             
 
         }, this.state.speed * time_counter);
@@ -237,7 +237,8 @@ export class VizDijsktra extends React.Component {
             time_counter += 1;
 
             // TODO : should do this inside the set timeout for every method
-            this.state.play_timer_counter = time_counter
+            //this.state.play_timer_counter = time_counter
+            this.setState({play_timer_counter : time_counter})
         }
 
       
@@ -247,8 +248,8 @@ export class VizDijsktra extends React.Component {
         time_counter += 1;
 
         // TODO : should do this inside the set timeout for every method
-        this.state.play_timer_counter = time_counter
-            
+        // this.state.play_timer_counter = time_counter
+        this.setState({play_timer_counter : time_counter})   
             
         for (let info2 of neighbors_update) {
             
@@ -267,7 +268,8 @@ export class VizDijsktra extends React.Component {
             time_counter++
             
             // TODO :  should do this inside the set timeout for every method
-            this.state.play_timer_counter = time_counter // to make synchronous with play
+            //this.state.play_timer_counter = time_counter // to make synchronous with play
+            this.setState({play_timer_counter : time_counter})
         }
         
     }
@@ -277,12 +279,12 @@ export class VizDijsktra extends React.Component {
         this.pausePressed =  false; // this means that the pause button is not being pressed again
         
         
-        if(this.state.step == -1) {
+        if(this.state.step === -1) {
             this.step(0) // to do the initial step of initializing node weights
         }
         
-        this.state.play_timer_counter = 0 // whenever play button is pressed set this.state.play_timer_counter = 0 so that it doesn't take more time than usual
-        
+        //this.state.play_timer_counter = 0 // whenever play button is pressed set this.state.play_timer_counter = 0 so that it doesn't take more time than usual
+        this.setState({play_timer_counter : 0})
         
         for(let i =this.state.step; i <this.animations_info.main_exploration.length; i++) {
             setTimeout(()=> {
@@ -324,20 +326,28 @@ export class VizDijsktra extends React.Component {
     simulatestep(time_counter) {
         this.resetPressed = false; // The pressing of step button means that the reset isn't pressed hence we set the value of resetPressed = false
         
-        this.state.play_timer_counter = 0 // so that it doesn't take more time in the next step
+        //this.state.play_timer_counter = 0 // so that it doesn't take more time in the next step
+        this.setState({play_timer_counter : 0})
 
         this.pausePressed = false;
 
-        if (this.state.step  == -1) {
+        
+        if (this.state.step  === -1) {
+            
             this.getInitialDistanceAnimation(); // to do animation for initial distance
-            this.state.step++;
+            //this.state.step++;
+            this.setState({step : this.state.step +1})
         } else if(this.state.step  < this.animations_info.main_exploration.length){
             
             this.getNodeExplorationAndWeightUpdateAnimation(this.state.step, time_counter);
-            this.state.step++;
+            //this.state.step++  // will refer to this later
+
+            this.setState({step : this.state.step +1})
         } else  {
+            
             this.reset()
-            this.state.step =-1
+            //this.state.step =-1
+            this.setState({step : -1})
         }
        
     }
@@ -356,7 +366,9 @@ export class VizDijsktra extends React.Component {
             clearTimeout(intervals)
         }
         console.log("Inside Pause" + this.state.step + " " + this.state.lastExecutedStep)
-        this.state.step = this.state.lastExecutedStep + 1
+        
+        //this.state.step = this.state.lastExecutedStep + 1
+        this.setState({step : this.state.lastExecutedStep +1})
 
         this.listOfTimeouts =[] // since no more timeouts the list should be fine
 

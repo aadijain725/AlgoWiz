@@ -80,11 +80,11 @@ export function DijkstraAnimations(vertices, edges, start, end) {
 // to get the initial weight
 function getInititalDistance(distance, vertices) {
     let info = []
-    let count = -1;
+   
     for (let v of vertices.keys()) {
         let nodeLabel = ""
         let m = {}
-        if (v == 1) {
+        if (v === '1') {
             nodeLabel = 'S(' + distance.get(v) + ')'
             m = {
                 label: (
@@ -103,8 +103,9 @@ function getInititalDistance(distance, vertices) {
                 )
             }
         }
+        
         info.push(m)
-        count++;
+        
     }
     return info
 }
@@ -114,7 +115,7 @@ function getInititalDistance(distance, vertices) {
 function getUpdatedLabelWithWeight(v, distance) {
     let nodeLabel = ""
     let new_label_with_weight = ''
-    if (v == 1) {
+    if (v === '1') {
         nodeLabel = 'S(' + distance.get(v) + ')'
         new_label_with_weight = (
             <>

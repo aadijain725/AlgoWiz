@@ -25,7 +25,7 @@ let EdgeLabelBgStyle = {
 
 let is_animated_edge = false
 
-export default [
+let arr = [
   {
     id: "1",
     type: "input",
@@ -375,3 +375,5 @@ export default [
   },
 
 ];
+
+export default arr

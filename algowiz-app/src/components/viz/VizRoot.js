@@ -2,7 +2,7 @@ import './viz.css';
 import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 // TODO: find way to import specific engines
-import VizSelectionSort from './VizSelectionSort';
+//import VizSelectionSort from './VizSelectionSort';
 import VizDijsktra from './VizDijkstra';
 
 /**

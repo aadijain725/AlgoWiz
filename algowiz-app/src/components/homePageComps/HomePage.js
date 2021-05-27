@@ -8,6 +8,7 @@ import APIHelper from '../helpers/APIHelper';
 
 // Import the HomePageParser
 import HomePageParser from "../testJson/HomePageParser.js";
+import VizRoot from '../viz/VizRoot';
 
 
 
@@ -58,6 +59,9 @@ export class HomePage extends React.Component {
                         <Col xs='auto'>
                             <HomePageTopics data={this.state.homeData} topics={this.state.topics} />
                         </Col>
+                    </Row>
+                    <Row> 
+                        <VizRoot> </VizRoot>
                     </Row>
                   
                 </Container>
