@@ -7,26 +7,24 @@ import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './quizComps/Result';
 
-// Functional component for getting correct user feedback depending on the 
+// Functional component for generating ESX correct user feedback depending on the 
 // User's answer and the correct answer 
 export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
-    console.log(feedbacks);
-    console.log(option_index)
-    if (!ans) {
+    if (!ans) { // No answer is selected by user
         return <Alert 
             id = "feedback" 
             className = "mt-5"
             variant = 'warning'> 
             Please select an answer before submitting 
         </Alert>
-    } else if (correct_ans === ans){
+    } else if (correct_ans === ans){ // User selected the correct answer
         return <Alert 
             id = "feedback" 
             className = "mt-5"
             variant = 'success'> 
             {feedbacks[option_index]}
         </Alert>
-    } else {
+    } else { // User selected the incorrect answer
         return <Alert 
             id = "feedback" 
             className = "mt-5"
@@ -51,6 +49,8 @@ export class QuizPage extends React.Component {
         };
     }
 
+    // Fetching data from the backend API to populate current quiz page data 
+    // accordingly.
     componentDidMount() {
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
@@ -66,14 +66,10 @@ export class QuizPage extends React.Component {
         .catch(err => {
             console.log(err);
         })
-
-        // window.info = data2["questions"];
-        // window.title = data2["title"];
     }
 
-    // Function that handles selecting buttons 
+    // Function that handles user selecting buttons 
     handleSelect = (ans, idx) => {
-        console.log("index in handleSelect is:", idx);
         this.setState({
             qnum: this.state.qnum, 
             ans: ans,
@@ -83,10 +79,11 @@ export class QuizPage extends React.Component {
             idx: idx
         })
     }
+
     // Function that handles user submissions
-    handleSubmit = (ans) => {
-        console.log("index in handleSubmit is:", this.state.idx);
-        if (ans == null) {
+    handleSubmit = () => {
+        let ans = this.state.ans;
+        if (ans == null) { // No answer is selcted by user
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
@@ -95,7 +92,7 @@ export class QuizPage extends React.Component {
                 idx: this.state.idx,
                 numCorrect: this.state.numCorrect
             })
-        } else  if (ans === this.getAnswer(this.state.qnum)) {
+        } else  if (ans === this.getAnswer(this.state.qnum)) { // answer is correct
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
@@ -104,7 +101,7 @@ export class QuizPage extends React.Component {
                 idx: this.state.idx,
                 numCorrect: this.state.numCorrect + 1
             })
-        } else {
+        } else { // answer is incorrect 
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
@@ -116,9 +113,10 @@ export class QuizPage extends React.Component {
         }
     }
 
-    // Function that handles continue functionality
-    handleContinue =  (ans) => {
-        if (ans == null) {
+    // Function that handles continue button functionality
+    handleContinue =  () => {
+        let ans = this.state.ans;
+        if (ans == null) { // if no answer is selected, dont show next question
             this.setState({
                 qnum: this.state.qnum, 
                 ans: ans,
@@ -127,7 +125,7 @@ export class QuizPage extends React.Component {
                 idx: this.idx,
                 numCorrect: this.state.numCorrect
             })
-        } else  {
+        } else  { // show next question 
             this.setState({
                 qnum: this.state.qnum + 1, 
                 ans: ans,
@@ -139,8 +137,10 @@ export class QuizPage extends React.Component {
         }
     }
 
+    // Renders
     render() {
-        if (window.info && window.info.length > this.state.qnum) {
+        if (window.info && window.info.length > this.state.qnum) { // Quiz still ongoing and questions are left 
+        // Rendering corrresponding ESX for quiz
         return(
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
@@ -175,14 +175,14 @@ export class QuizPage extends React.Component {
                             variant="outline-primary"
                             size="lg"
                             onClick={()=> {
-                                this.handleSubmit(this.state.ans)
+                                this.handleSubmit()
                                 }}
                             >
                             {" "}
                             Submit{" "}
                             </Button>
                         }
-                        {!this.state.showSubmit && 
+                        {!this.state.showSubmit && // if user has submitted show continue option
                         <Button
                             id="quiz-submit-btn"
                             variant="outline-primary"
