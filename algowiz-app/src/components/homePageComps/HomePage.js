@@ -31,7 +31,7 @@ export class HomePage extends React.Component {
     componentDidMount() {
         APIHelper('home')
         .then(homeData => {
-            // if fetch successful update the staate
+            // if fetch successful update the state
             this.setState({ homeData: homeData })
         }).then(() => {
             // Use the parser to organize the data

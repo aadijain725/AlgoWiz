@@ -28,7 +28,15 @@ function APIHelper(path, method = 'GET') {
 			'Accept': 'application/json'
 		}
 	})
-	.then(response => response.json())
+	.then(response => {
+		// only pass along data if the fetch was successful
+		if (response.ok) {
+			return response.json();
+		} else {
+			// return response as error
+			return Promise.reject(response);
+		}
+	})
 	// return either the result or an error
 	.then(result => {
 		// pass along the json result
