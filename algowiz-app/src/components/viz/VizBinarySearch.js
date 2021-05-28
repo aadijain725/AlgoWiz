@@ -7,6 +7,7 @@ import VizCode from './VizCode';
 const FILTERED_COLOR = "rgba(0,0,0,0.4)";
 const TARGET_COLOR = "rgba(255, 0, 0,0.4)";
 const POINTER_COLOR = "rgba(113, 205, 205,0.4)";
+const BASE_COLOR = "rgba(255, 218, 128)";
 
 
 class VizBinarySearch extends React.Component {
@@ -18,8 +19,8 @@ class VizBinarySearch extends React.Component {
     // Initializing colors for bars
     for (let i = 0; i <  this.props.barData.length; i++) {
       // console.log("initial color: ", this.props.color);
-      colors.push(this.props.color);
-      copyColors.push(this.props.color);
+      colors.push(BASE_COLOR);
+      copyColors.push(BASE_COLOR);
     }
 
     let start = 0
@@ -73,6 +74,7 @@ class VizBinarySearch extends React.Component {
     this.play  = this.play.bind(this); // bind to the component
     this.pause = this.pause.bind(this); // bind to the component
     this.reset = this.reset.bind(this); // bind to the component
+    console.log("hi from ctor")
   }
 
 

@@ -6,13 +6,13 @@ import APIHelper from '../helpers/APIHelper';
 import LessonRow from './LessonRow';
 import VizRoot from '../viz/VizRoot'
 
- 
+
 
 export class LessonPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lessonData: null
+            lessonData: null,
         }
     }
 
