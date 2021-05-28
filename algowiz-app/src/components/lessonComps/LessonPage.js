@@ -5,11 +5,14 @@ import {Row, Col, Container, Button} from 'react-bootstrap';
 import APIHelper from '../helpers/APIHelper';
 import LessonRow from './LessonRow';
 import VizRoot from '../viz/VizRoot'
+
+
+
 export class LessonPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lessonData: null
+            lessonData: null,
         }
     }
 
@@ -36,7 +39,8 @@ export class LessonPage extends React.Component {
         const data = this.state.lessonData;
         // conditionally render loading bar or content
         if (this.state.lessonData == null) {
-            content = <p>Loading...</p>;
+            content = 
+            <p>Loading...</p>;
         } else {
             content = 
             <Container fluid id='lessonContent'>

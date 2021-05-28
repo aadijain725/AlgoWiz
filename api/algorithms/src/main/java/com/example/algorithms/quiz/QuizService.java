@@ -6,7 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-
+/*
+This class handles business logic; use to store, retrieve, update and
+delete quiz data from quiz repository.
+ */
 @Service
 public class QuizService {
 
@@ -21,7 +24,5 @@ public class QuizService {
     public List<Quiz> getQuiz(String quizId) {
         return quizRepository.findAllByQuizId(quizId);
     }
-
-
 
 }

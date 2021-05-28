@@ -1,8 +1,5 @@
 package com.example.algorithms.LessonPage;
 
-import com.example.algorithms.Homepage.HomepageController;
-import com.example.algorithms.quiz.Quiz;
-import com.example.algorithms.quiz.QuizController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.Column;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+This class is responsible for processing incoming REST API requests and
+processes, and returns a response for the lesson's page.
+ */
 @RestController
 @RequestMapping(path="api/v1/lesson")
 public class LessonController {
 
     private final LessonService lessonService;
 
+    // List of expected lesson IDs
     private final List<String> lessonIDList = new ArrayList<>(List.of("graph_dijkstra_lesson",
             "search_binary_lesson",
             "sort_selection_lesson"));
@@ -30,6 +32,10 @@ public class LessonController {
         this.lessonService = lessonService;
     }
 
+    // Returns the Lesson object for the requested lessonId in the URL path
+    // If the lessonId is not valid, we return a 404 not found HTTP response
+    // If running locally, the url would be:
+    // "http://localhost:8080/api/v1/lesson/{lessonID}"
     @GetMapping(path = "/{lessonID}")
     public LessonController.Data getLessonbyID(@PathVariable String lessonID) {
 
@@ -48,29 +54,24 @@ public class LessonController {
         String description = "dummyDescription";
         String vizSrc = "dummyVizSrc";
 
+        // Get the lesson corresponding to the lessonID
         Lesson l = lessonList.get(0);
         LessonController.Data content;
 
+        // Assign the parameters initialized above to the corresponding lesson fields
         title = l.getTitle();
         lessonId = l.getLessonId();
         quizID = l.getQuizID();
         description = l.getDescription();
         vizSrc = l.getVizSrc();
 
-        // Generate the Questions object using the data
-        content = new LessonController.Data(
-                lessonId,
-                quizID,
-                title,
-                description,
-                vizSrc,
-                l);
+        // Generate the Data object using the lesson data
+        content = new LessonController.Data(lessonId, quizID, title, description, vizSrc, l);
 
-        // Create and return new Data object with the data
-        // generated above
         return content;
     }
 
+    // Outer structure storing lesson data
     private static class Data {
         private String lessonID;
         private String quizID;
@@ -78,6 +79,24 @@ public class LessonController {
         private String description;
         private String vizSrc;
         private List<Col> rows;
+
+        public Data(String lessonID, String quizID, String title, String description, String vizSrc, Lesson lesson) {
+            this.lessonID = lessonID;
+            this.quizID = quizID;
+            this.title = title;
+            this.description = description;
+            this.vizSrc = vizSrc;
+            this.rows = new ArrayList<>();
+
+            // Generate image content
+            rows.add(makeImageCol(lesson.getImageURL(), lesson.getAlt(), lesson.getImgDescription()));
+
+            // Generate Lesson content
+            rows.add(makeContentCol("Pseudocode", "h2"));
+            rows.add(makeContentCol(lesson.getPseudocode(), "p"));
+            rows.add(makeContentCol("Complexity", "h2"));
+            rows.add(makeContentCol(lesson.getComplexity(), "p"));
+        }
 
         public String getLessonID() {
             return lessonID;
@@ -126,62 +145,26 @@ public class LessonController {
         public void setRows(List<Col> rows) {
             this.rows = rows;
         }
-
-        public Data(String lessonID, String quizID, String title, String description, String vizSrc, Lesson lesson) {
-            this.lessonID = lessonID;
-            this.quizID = quizID;
-            this.title = title;
-            this.description = description;
-            this.vizSrc = vizSrc;
-            this.rows = new ArrayList<>();
-
-            List<ContentData> imgData = new ArrayList<>();
-            imgData.add(new ImageContentData(6, "img", lesson.getImageURL(), lesson.getAlt()));
-            imgData.add(new LessonContentData(6, "p", lesson.getImgDescription()));
-            Col imgDataCol = new Col(imgData);
-            rows.add(imgDataCol);
-
-            List<ContentData> pseudocodeHeader = new ArrayList<>();
-            pseudocodeHeader.add(new LessonContentData(12, "h2", "Pseudocode"));
-            Col pseudocodeHeaderDataCol = new Col(pseudocodeHeader);
-            rows.add(pseudocodeHeaderDataCol);
-
-            List<ContentData> pseudocodeContent = new ArrayList<>();
-            pseudocodeContent.add(new LessonContentData(12, "p", lesson.getPseudocode()));
-            Col pseudocodeContentDataCol = new Col(pseudocodeContent);
-            rows.add(pseudocodeContentDataCol);
-
-            List<ContentData> complexityHeader = new ArrayList<>();
-            complexityHeader.add(new LessonContentData(12, "h2", "Complexity"));
-            Col complexityHeaderDataCol = new Col(complexityHeader);
-            rows.add(complexityHeaderDataCol);
-
-            List<ContentData> complexityContent = new ArrayList<>();
-            complexityContent.add(new LessonContentData(12, "p", lesson.getComplexity()));
-            Col complexityContentDataCol = new Col(complexityContent);
-            rows.add(complexityContentDataCol);
-        }
     }
 
-    private static class Row {
-        private List<Col> cols;
-        private Lesson l;
-
-        public Row(Lesson l) {
-            this.cols = new ArrayList<>();
-            this.l = l;
-        }
-
-        public List<Col> getCols() {
-            return cols;
-        }
-
-        public void setCols(List<Col> cols) {
-            this.cols = cols;
-        }
+    // Creates a new Col for image fields
+    private static Col makeImageCol(String url, String alt, String description) {
+        List<ContentData> imgData = new ArrayList<>();
+        imgData.add(new ImageContentData(6, "img", url, alt));
+        imgData.add(new LessonContentData(6, "p", description));
+        return new Col(imgData);
     }
 
+    // Creates a new Col for text fields
+    private static Col makeContentCol(String content, String type) {
+        List<ContentData> complexityHeader = new ArrayList<>();
+        complexityHeader.add(new LessonContentData(12, type, content));
+        return new Col(complexityHeader);
+    }
+
+    // Inner structure storing additional lesson data
     private static class Col {
+        // Contains data in each "cols"
         private List<ContentData> cols;
 
         public Col(List<ContentData> cols) {
@@ -197,8 +180,13 @@ public class LessonController {
         }
     }
 
+    // Object that stores HTML column width and HTML type
+    // This class is never directly used and therefore has no defined constructors
     private static class ContentData {
+        // xs for HTML
         private int xs;
+
+        // type for HTML
         private String type;
 
         public int getXs() {
@@ -218,8 +206,12 @@ public class LessonController {
         }
     }
 
+    // Subclass of ContentData, stores image link and alternate
     private static class ImageContentData extends ContentData {
+        // URL of the image
         private String src;
+
+        // Alt for the image in case it does not load
         private String alt;
 
         public ImageContentData(int xs, String type, String src, String alt) {
@@ -246,7 +238,9 @@ public class LessonController {
         }
     }
 
+    // Subclass of ContentData, stores lesson text data
     private static class LessonContentData extends ContentData {
+        // Text for the lesson content
         private String text;
 
         public LessonContentData(int xs, String type, String text) {
