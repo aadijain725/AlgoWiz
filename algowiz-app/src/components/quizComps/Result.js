@@ -4,12 +4,8 @@ import { Row, Button,Card, Container } from "react-bootstrap";
 import Progress from "./Progress"
 export class Result extends React.Component {
   
-/* commenting out on merge, not sure if needed
-    render() {
-        return <h1> Good Job, you got {this.props.numc} correct </h1>
-    }
-*/
-
+// Renders the ESX for the final results  card, reached by the user after they complete 
+// the quiz. Has a score, a progress bar and a simple picture/
 render() {
     return (
     <Container id = "results-page">
