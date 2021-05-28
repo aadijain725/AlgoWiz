@@ -22,25 +22,13 @@ public class LessonController {
     private final LessonService lessonService;
 
     private final List<String> lessonIDList = new ArrayList<>(List.of("graph_dijkstra_lesson",
-                                                                    "search_binary_lesson",
-                                                                    "sort_selection_lesson"));
+            "search_binary_lesson",
+            "sort_selection_lesson"));
 
     @Autowired
     public LessonController(LessonService lessonService) {
         this.lessonService = lessonService;
     }
-
-
-//    @GetMapping
-//    public List<LessonController.LessonContent> getAllLessons() {
-//        List<LessonController.LessonContent> contentList = new ArrayList<>();
-//        for (String id: this.lessonIDList) {
-//            contentList.add(this.getLessonbyID(id));
-//        }
-//        return contentList;
-//    }
-
-
 
     @GetMapping(path = "/{lessonID}")
     public LessonController.Data getLessonbyID(@PathVariable String lessonID) {
@@ -84,28 +72,27 @@ public class LessonController {
     }
 
     private static class Data {
-        private String lessonId;
-        private String quizId;
+        private String lessonID;
+        private String quizID;
         private String title;
         private String description;
         private String vizSrc;
-        private ImageData imgData;
-        private List<ContentData> contentData;
+        private List<Col> rows;
 
-        public String getLessonId() {
-            return lessonId;
+        public String getLessonID() {
+            return lessonID;
         }
 
-        public void setLessonId(String lessonId) {
-            this.lessonId = lessonId;
+        public void setLessonID(String lessonID) {
+            this.lessonID = lessonID;
         }
 
-        public String getQuizId() {
-            return quizId;
+        public String getQuizID() {
+            return quizID;
         }
 
-        public void setQuizId(String quizId) {
-            this.quizId = quizId;
+        public void setQuizID(String quizID) {
+            this.quizID = quizID;
         }
 
         public String getTitle() {
@@ -132,203 +119,122 @@ public class LessonController {
             this.vizSrc = vizSrc;
         }
 
-        public ImageData getImgData() {
-            return imgData;
+        public List<Col> getRows() {
+            return rows;
         }
 
-        public void setImgData(ImageData imgData) {
-            this.imgData = imgData;
+        public void setRows(List<Col> rows) {
+            this.rows = rows;
         }
 
-        public List<ContentData> getContentData() {
-            return contentData;
-        }
-
-        public void setContentData(List<ContentData> contentData) {
-            this.contentData = contentData;
-        }
-
-        public Data(String lessonId, String quizId, String title, String description, String vizSrc, Lesson lesson) {
-            this.lessonId = lessonId;
-            this.quizId = quizId;
+        public Data(String lessonID, String quizID, String title, String description, String vizSrc, Lesson lesson) {
+            this.lessonID = lessonID;
+            this.quizID = quizID;
             this.title = title;
             this.description = description;
             this.vizSrc = vizSrc;
-            this.imgData = new ImageData(lesson.getImageURL(), lesson.getAlt(), lesson.getImgDescription());
-            this.contentData = new ArrayList<>();
+            this.rows = new ArrayList<>();
 
-            contentData.add(new ContentData("Pseudocode", lesson.getPseudocode()));
-            contentData.add(new ContentData("Complexity", lesson.getComplexity()));
+            List<ContentData> imgData = new ArrayList<>();
+            imgData.add(new ImageContentData(6, "img", lesson.getImageURL(), lesson.getAlt()));
+            imgData.add(new LessonContentData(6, "p", lesson.getImgDescription()));
+            Col imgDataCol = new Col(imgData);
+            rows.add(imgDataCol);
 
+            List<ContentData> pseudocodeHeader = new ArrayList<>();
+            pseudocodeHeader.add(new LessonContentData(12, "h2", "Pseudocode"));
+            Col pseudocodeHeaderDataCol = new Col(pseudocodeHeader);
+            rows.add(pseudocodeHeaderDataCol);
+
+            List<ContentData> pseudocodeContent = new ArrayList<>();
+            pseudocodeContent.add(new LessonContentData(12, "p", lesson.getPseudocode()));
+            Col pseudocodeContentDataCol = new Col(pseudocodeContent);
+            rows.add(pseudocodeContentDataCol);
+
+            List<ContentData> complexityHeader = new ArrayList<>();
+            complexityHeader.add(new LessonContentData(12, "h2", "Complexity"));
+            Col complexityHeaderDataCol = new Col(complexityHeader);
+            rows.add(complexityHeaderDataCol);
+
+            List<ContentData> complexityContent = new ArrayList<>();
+            complexityContent.add(new LessonContentData(12, "p", lesson.getComplexity()));
+            Col complexityContentDataCol = new Col(complexityContent);
+            rows.add(complexityContentDataCol);
         }
     }
 
-    private static class ImageData {
-        private String imageURL;
-        private String alt;
-        private String imgDescription;
+    private static class Row {
+        private List<Col> cols;
+        private Lesson l;
 
-        public ImageData(String imageURL, String alt, String imgDescription) {
-            this.imageURL = imageURL;
-            this.alt = alt;
-            this.imgDescription = imgDescription;
+        public Row(Lesson l) {
+            this.cols = new ArrayList<>();
+            this.l = l;
         }
 
-        public void setImageURL(String imageURL) {
-            this.imageURL = imageURL;
+        public List<Col> getCols() {
+            return cols;
         }
 
-        public void setAlt(String alt) {
-            this.alt = alt;
+        public void setCols(List<Col> cols) {
+            this.cols = cols;
+        }
+    }
+
+    private static class Col {
+        private List<ContentData> cols;
+
+        public Col(List<ContentData> cols) {
+            this.cols = cols;
         }
 
-        public void setImgDescription(String imgDescription) {
-            this.imgDescription = imgDescription;
+        public List<ContentData> getCols() {
+            return cols;
         }
 
-        public String getImageURL() {
-            return imageURL;
-        }
-
-        @Override
-        public String toString() {
-            return "ImageData{" +
-                    "imageURL='" + imageURL + '\'' +
-                    ", alt='" + alt + '\'' +
-                    ", imgDescription='" + imgDescription + '\'' +
-                    '}';
-        }
-
-        public String getAlt() {
-            return alt;
-        }
-
-        public String getImgDescription() {
-            return imgDescription;
+        public void setCols(List<ContentData> cols) {
+            this.cols = cols;
         }
     }
 
     private static class ContentData {
-        private String header;
-        private String content;
+        private int xs;
+        private String type;
 
-        public ContentData(String header, String content) {
-            this.header = header;
-            this.content = content;
+        public int getXs() {
+            return xs;
         }
 
-        @Override
-        public String toString() {
-            return "ContentData{" +
-                    "header='" + header + '\'' +
-                    ", content='" + content + '\'' +
-                    '}';
+        public void setXs(int xs) {
+            this.xs = xs;
         }
 
-        public String getHeader() {
-            return header;
+        public String getType() {
+            return type;
         }
 
-        public void setHeader(String header) {
-            this.header = header;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
+        public void setType(String type) {
+            this.type = type;
         }
     }
 
-
-
-
-
-/*
-    private static class LessonContent {
-        private final String lessonId;
-        private final String quizId;
-        private final String title;
-        private final String description;
-        private final List<LessonController.Data> data;
-
-        public LessonContent(String lessonId, String quizId, String title, String description, List<Data> data) {
-            this.lessonId = lessonId;
-            this.quizId = quizId;
-            this.title = title;
-            this.description = description;
-            this.data = data;
-        }
-
-        public String getLessonId() {
-            return lessonId;
-        }
-
-        public String getQuizId() {
-            return quizId;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public List<LessonController.Data> getData() {
-            return data;
-        }
-
-        @Override
-        public String toString() {
-            return "LessonContent{" +
-                    "lessonID='" + lessonId + '\'' +
-                    ", quizID='" + quizId + '\'' +
-                    ", title='" + title + '\'' +
-                    ", description='" + description + '\'' +
-                    ", data=" + data.toString() +
-                    '}';
-        }
-    }
-
-
-
-    private static class Data {
-        private String title;
-        private String vizSrc;
+    private static class ImageContentData extends ContentData {
+        private String src;
         private String alt;
-        private String imgDescription;
-        private String pseudocode;
-        private String complexity;
-        private String imageURL;
 
-        public Data(String title, String vizSrc, String alt, String imgDescription, String pseudocode, String complexity, String imageURL) {
-            this.title = title;
-            this.vizSrc = vizSrc;
+        public ImageContentData(int xs, String type, String src, String alt) {
+            this.src = src;
             this.alt = alt;
-            this.imgDescription = imgDescription;
-            this.pseudocode = pseudocode;
-            this.complexity = complexity;
-            this.imageURL = imageURL;
+            super.xs = xs;
+            super.type = type;
         }
 
-        public String getTitle() {
-            return title;
+        public String getSrc() {
+            return src;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getVizSrc() {
-            return vizSrc;
-        }
-
-        public void setVizSrc(String vizSrc) {
-            this.vizSrc = vizSrc;
+        public void setSrc(String src) {
+            this.src = src;
         }
 
         public String getAlt() {
@@ -338,52 +244,23 @@ public class LessonController {
         public void setAlt(String alt) {
             this.alt = alt;
         }
-
-        public String getImgDescription() {
-            return imgDescription;
-        }
-
-        public void setImgDescription(String imgDescription) {
-            this.imgDescription = imgDescription;
-        }
-
-        public String getPseudocode() {
-            return pseudocode;
-        }
-
-        public void setPseudocode(String pseudocode) {
-            this.pseudocode = pseudocode;
-        }
-
-        public String getComplexity() {
-            return complexity;
-        }
-
-        public void setComplexity(String complexity) {
-            this.complexity = complexity;
-        }
-
-        public String getImageURL() {
-            return imageURL;
-        }
-
-        public void setImageURL(String imageURL) {
-            this.imageURL = imageURL;
-        }
-
-        @Override
-        public String toString() {
-            return "Data{" +
-                    "title='" + title + '\'' +
-                    ", vizSrc='" + vizSrc + '\'' +
-                    ", alt='" + alt + '\'' +
-                    ", imgDescription='" + imgDescription + '\'' +
-                    ", pseudocode='" + pseudocode + '\'' +
-                    ", complexity='" + complexity + '\'' +
-                    ", imageURL='" + imageURL + '\'' +
-                    '}';
-        }
     }
 
- */
+    private static class LessonContentData extends ContentData {
+        private String text;
+
+        public LessonContentData(int xs, String type, String text) {
+            this.text = text;
+            super.xs = xs;
+            super.type = type;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+    }
 }
