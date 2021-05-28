@@ -9,7 +9,9 @@ import APIHelper from '../helpers/APIHelper';
 // Import the HomePageParser
 import HomePageParser from "../testJson/HomePageParser.js";
 
-
+/**
+ * Homepage builds from fetched data
+ */
 
 
 export class HomePage extends React.Component {
@@ -22,32 +24,33 @@ export class HomePage extends React.Component {
         }
     }
 
+    /**
+     * React Lifecycle method, only fetch once when the component loads. 
+     * Saves data into state
+     */
     componentDidMount() {
-        // TODO: change to APIHelper once backend fixed
-
-
         APIHelper('home')
-            .then(homeData => {
-                this.setState({ homeData: homeData })
-            }).then(() => {
-                var parsedData = new HomePageParser(this.state.homeData, null); // there is no topic to be found in the initial stage
-                this.setState({
-                    topics: parsedData.getTopicNames()
-                })
+        .then(homeData => {
+            // if fetch successful update the staate
+            this.setState({ homeData: homeData })
+        }).then(() => {
+            // Use the parser to organize the data
+            var parsedData = new HomePageParser(this.state.homeData, null); 
+            this.setState({
+                topics: parsedData.getTopicNames()
             })
-            .catch(err => {
-                console.log(err);
-            })
-
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
-
-
     render() {
+        // If no data yet render a loading message
+        // TODO: make a nice loading component
         if (this.state.homeData == null || this.state.topics == null) {
             return (<p>Loading...</p>)
         } else {
-
             return (
                 <Container fluid>
                     <Row>
