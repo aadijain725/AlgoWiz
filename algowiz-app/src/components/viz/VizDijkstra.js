@@ -3,23 +3,26 @@ import ReactFlow from "react-flow-renderer";
 import CustomGraph from "./CustomGraph";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { DijkstraAnimations } from "./Algorithms/DijkstraAlgorithms";
+import VizCode from "./VizCode";
 
 export class VizDijsktra extends React.Component {
     startingStepNumber = -1;
     visualizationSpeed = 1000;
     initialTimeCounter = 0;
     initialNumberNodes = 10;
-    
+
     state = {
-        numberNodes: this.initialNumberNodes,
-        graph: CustomGraph.slice(),
-        speed: this.visualizationSpeed,
-        play_timer_counter: this.initialTimeCounter,
-        step: this.startingStepNumber, // start step with one
-        lastExecutedStep : -1
+        numberNodes: this.initialNumberNodes, // the number of nodes in the graph
+        graph: CustomGraph.slice(), // the graph to be displayed
+        speed: this.visualizationSpeed, // the speed of the visualizer
+        play_timer_counter: this.initialTimeCounter, // to keep track of the counter of play button
+        step: this.startingStepNumber, // start step with -1
+        lastExecutedStep: -1 // to keep track of the last executed step. Helps in the reset() functionality
     };
+
+
     startNode = CustomGraph.slice()[0].id;
     endNode = CustomGraph.slice()[9].id;
 
@@ -59,7 +62,7 @@ export class VizDijsktra extends React.Component {
         if (this.resetPressed) {
             return;
         }
-        
+
         let copyGraph = [...this.state.graph];
         let getInitialDistance = this.animations_info.getInitialDistance;
         for (let i = 0; i < getInitialDistance.length; i++) {
@@ -69,7 +72,7 @@ export class VizDijsktra extends React.Component {
             item.data = data;
 
             // to change the color at weighht initialization
-            let style = { ...item.style};
+            let style = { ...item.style };
             style.background = "yellow"
             item.style = style
             //data.label= getInitialDistance.label
@@ -80,19 +83,19 @@ export class VizDijsktra extends React.Component {
 
     // to get animation for a single neigbor. animate the dege to the neigbor
     // and animate the neighbor node itself
-    getNeigborAnimation(nodeIndex,weightChangedTo,edgeID, edgeIndex, new_node_label,time_counter) {
-        var timeoutID  = setTimeout(() => {
+    getNeigborAnimation(nodeIndex, weightChangedTo, edgeID, edgeIndex, new_node_label, time_counter) {
+        var timeoutID = setTimeout(() => {
             if (this.resetPressed) {
                 return;
             }
-            
+
             //this.pauseProgram() // to pause the program
 
             let copyGraph = [...this.state.graph];
 
             // to animate the edge to the neigbhor
             let edgeitem = { ...copyGraph[edgeIndex] };
-            
+
             let edgeanimated = { ...edgeitem.animated };
             edgeanimated = true;
 
@@ -105,7 +108,7 @@ export class VizDijsktra extends React.Component {
             edgeitem.style = edgestyle;
             copyGraph[edgeIndex] = edgeitem;
 
-            
+
 
             // to animate the node whose weight is being explored
             let nodeitem = { ...copyGraph[nodeIndex] };
@@ -130,11 +133,11 @@ export class VizDijsktra extends React.Component {
 
     // to remove the neigbor animation
     removeNeighborAnimation(nodeIndex, edgeIndex, time_counter, step) {
-        var timeoutID  = setTimeout(() => {
+        var timeoutID = setTimeout(() => {
             if (this.resetPressed) {
                 return;
             }
-            
+
             //this.pauseProgram() // to pause the program
 
             let copyGraph = [...this.state.graph];
@@ -161,24 +164,29 @@ export class VizDijsktra extends React.Component {
             // to copy the these changes into the graph
             copyGraph[nodeIndex] = nodeitem;
 
-            // updating the graph and last executed step
-            this.setState({ graph: copyGraph,  lastExecutedStep : step });
-            //this.state.lastExecutedStep = step was doing this before
-            
-            
+            // updating the graph
+            this.setState({ graph: copyGraph });
 
+            //this.state.lastExecutedStep = step
+            this.setState({ lastExecutedStep: step })
+
+            console.log(this.state.speed * time_counter)
         }, this.state.speed * time_counter);
 
         this.listOfTimeouts.push(timeoutID)
     }
 
-    
+
     getEdgeFromParentAnimation(edgeIndex, time_counter) {
-        var timeoutID  = setTimeout(() => {
+        //console.log("In edge" + " " + this.state.speed * time_counter + " " + thislist of intervals)
+        var timeoutID = setTimeout(() => {
+            console.log("before reset")
             if (this.resetPressed) {
                 return;
             }
+            console.log("after reset")
             
+
             //this.pauseProgram() // to pause the program
 
             let copyGraph = [...this.state.graph];
@@ -207,17 +215,18 @@ export class VizDijsktra extends React.Component {
         // to add timeoutId
         this.listOfTimeouts.push(timeoutID)
     }
-    
+
 
     // the step is passed to help the program run through that line of code
     getNodeExplorationAndWeightUpdateAnimation(step, time_counter) {
         if (this.state.resetPressed) {
             return;
         }
+        
         let main_exploration = this.animations_info.main_exploration;
 
-        let info  = main_exploration[step]
-        
+        let info = main_exploration[step]
+
 
 
         //this.pauseProgram() // to pause the program
@@ -227,32 +236,34 @@ export class VizDijsktra extends React.Component {
         let neighbors_update = info.neigbor_update;
         let node_index = parseInt(node_explored) - 1;
 
-        let parent_node_info  = this.animations_info.parent.get(node_explored)
-        if(typeof(parent_node_info) != 'undefined') {
+        let parent_node_info = this.animations_info.parent.get(node_explored)
+        if (typeof (parent_node_info) != 'undefined') {
             let edgeIndex = parent_node_info.edgeFromParent.edgeIndex;
-            
-            this.getEdgeFromParentAnimation(edgeIndex, time_counter)
 
+   
+            this.getEdgeFromParentAnimation(edgeIndex, time_counter)
+            
             // to move the time counter ahead
             time_counter += 1;
 
             // TODO : should do this inside the set timeout for every method
             //this.state.play_timer_counter = time_counter
-            this.setState({play_timer_counter : time_counter})
+            this.setState({ play_timer_counter: time_counter })
         }
 
-      
-        this.animateOneExploredNodes(node_index, time_counter); 
+
+        this.animateOneExploredNodes(node_index, time_counter);
 
 
         time_counter += 1;
 
         // TODO : should do this inside the set timeout for every method
-        // this.state.play_timer_counter = time_counter
-        this.setState({play_timer_counter : time_counter})   
-            
+        //this.state.play_timer_counter = time_counter
+        this.setState({ play_timer_counter: time_counter })
+
+
         for (let info2 of neighbors_update) {
-            
+
             //this.pauseProgram() // to pause the program
 
             let neighbor_node = info2.weightChangeNode;
@@ -260,64 +271,64 @@ export class VizDijsktra extends React.Component {
             let edgeID = info2.edgeID;
             let edgeIndex = info2.edgeIndex;
             let new_node_label = info2.new_node_label;
-            this.getNeigborAnimation(neighbor_node - 1, neighbor_weight, edgeID, edgeIndex, new_node_label,time_counter); // in the method also pass this.state.time_counter
+            this.getNeigborAnimation(neighbor_node - 1, neighbor_weight, edgeID, edgeIndex, new_node_label, time_counter); // in the method also pass this.state.time_counter
             time_counter++
 
             this.removeNeighborAnimation(neighbor_node - 1, edgeIndex, time_counter, step); // in the method also pass this.state.time_counter
-            this.removeNeighborAnimation()
             time_counter++
-            
+
             // TODO :  should do this inside the set timeout for every method
             //this.state.play_timer_counter = time_counter // to make synchronous with play
-            this.setState({play_timer_counter : time_counter})
+            this.setState({ play_timer_counter: time_counter })
         }
-        
     }
 
-    play =() => {
+    play = () => {
         this.resetPressed = false; // this means that the reset button is not being pressed again
-        this.pausePressed =  false; // this means that the pause button is not being pressed again
-        
-        
-        if(this.state.step === -1) {
-            this.step(0) // to do the initial step of initializing node weights
+        this.pausePressed = false; // this means that the pause button is not being pressed again
+
+
+        if (this.state.step === -1) {
+            this.simulatestep(0) // to do the initial step of initializing node weights
         }
-        
+
         //this.state.play_timer_counter = 0 // whenever play button is pressed set this.state.play_timer_counter = 0 so that it doesn't take more time than usual
-        this.setState({play_timer_counter : 0})
-        
-        for(let i =this.state.step; i <this.animations_info.main_exploration.length; i++) {
-            setTimeout(()=> {
+        this.setState({ play_timer_counter: 0 })
+
+        // to do the animations where distances of nodes are being updated
+        for (let i = this.state.step; i < this.animations_info.main_exploration.length; i++) {
+            let timeoutID = setTimeout(() => {
                 this.simulatestep(this.state.play_timer_counter)
             }, 1000)
+            this.listOfTimeouts.push(timeoutID)
 
         }
     }
 
     // This is to reset the the visualizer
-    reset =() => {
+    reset = () => {
         this.pausePressed = false;
-        
+
         this.resetPressed = true; // this is because resetButton was pressed
 
         import("./CustomGraph").then((module) => {
-            
+
             // remeber it is important to clear the intervals that were not used
-            for(let intervals of this.listOfTimeouts) {
+            for (let intervals of this.listOfTimeouts) {
                 clearTimeout(intervals)
             }
-            this.listOfTimeouts =[] // since no more timeouts the list should be fine
+            this.listOfTimeouts = [] // since no more timeouts the list should be fine
 
 
-           
-            
+
+
             this.setState({
                 numberNodes: this.initialNumberNodes,
                 graph: module.default.slice(),
                 speed: this.visualizationSpeed,
                 time_counter: this.initialTimeCounter,
                 step: this.startingStepNumber,
-                play_timer_counter : 0
+                play_timer_counter: 0
             });
         });
     }
@@ -325,33 +336,33 @@ export class VizDijsktra extends React.Component {
     // we need the time counter to tell the step() method at which time should we do the animation 
     simulatestep(time_counter) {
         this.resetPressed = false; // The pressing of step button means that the reset isn't pressed hence we set the value of resetPressed = false
-        
+
         //this.state.play_timer_counter = 0 // so that it doesn't take more time in the next step
-        this.setState({play_timer_counter : 0})
+        this.setState({ play_timer_counter: time_counter })
 
         this.pausePressed = false;
 
-        
-        if (this.state.step  === -1) {
-            
+        if (this.state.step === -1) {
             this.getInitialDistanceAnimation(); // to do animation for initial distance
             //this.state.step++;
-            this.setState({step : this.state.step +1})
-        } else if(this.state.step  < this.animations_info.main_exploration.length){
+            this.setState({step: this.state.step + 1})
+        } else if (this.state.step < this.animations_info.main_exploration.length) {
+            
             
             this.getNodeExplorationAndWeightUpdateAnimation(this.state.step, time_counter);
-            //this.state.step++  // will refer to this later
-
-            this.setState({step : this.state.step +1})
-        } else  {
-            
-            this.reset()
+            //this.state.step++;
+            this.setState({ step: this.state.step + 1 })
+            return;
+        } else {
+            //this.reset()
             //this.state.step =-1
-            this.setState({step : -1})
+            this.setState({ step: -1 })
+            return;
         }
-       
+        //this.setState({step: this.state.step + 1})
+
     }
-    step =() => {
+    step = () => {
         this.simulatestep(0)
     }
 
@@ -359,27 +370,20 @@ export class VizDijsktra extends React.Component {
 
     // to pause the animation
     pause() {
-        
+
         this.pausePressed = true;
         // remeber it is important to clear the intervals that were not used
-        for(let intervals of this.listOfTimeouts) {
+        for (let intervals of this.listOfTimeouts) {
             clearTimeout(intervals)
         }
         console.log("Inside Pause" + this.state.step + " " + this.state.lastExecutedStep)
-        
         //this.state.step = this.state.lastExecutedStep + 1
-        this.setState({step : this.state.lastExecutedStep +1})
+        this.setState({ step: this.state.lastExecutedStep + 1 })
 
-        this.listOfTimeouts =[] // since no more timeouts the list should be fine
+        this.listOfTimeouts = [] // since no more timeouts the list should be fine
 
         // to make the code run in an endless loop
     }
-    pauseProgram() {
-    // to make the code run in an endless loop
-    //    console.log("Program Paused")
-    //    console.log("Program UnPaused")
-    }
-
     // to pause the animation
     resume() {
         this.pausePressed = false;
@@ -414,9 +418,16 @@ export class VizDijsktra extends React.Component {
     render() {
         return (
             <Container>
-                <div style={{ height: 700 }}>
-                    <ReactFlow elements={this.state.graph} />
-                </div>
+                <Row>
+                    <Col>
+                        <div style={{ height: '70vh' }}>
+                            <ReactFlow elements={this.state.graph} />
+                        </div>
+                    </Col>
+                </Row>
+
+
+
             </Container>
         );
     }
