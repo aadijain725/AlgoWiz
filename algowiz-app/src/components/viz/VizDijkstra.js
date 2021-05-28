@@ -5,7 +5,7 @@ import CustomGraph from "./CustomGraph";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { DijkstraAnimations } from "./Algorithms/DijkstraAlgorithms";
-import VizCode from "./VizCode";
+
 
 export class VizDijsktra extends React.Component {
     startingStepNumber = -1;
@@ -170,7 +170,6 @@ export class VizDijsktra extends React.Component {
             //this.state.lastExecutedStep = step
             this.setState({ lastExecutedStep: step })
 
-            console.log(this.state.speed * time_counter)
         }, this.state.speed * time_counter);
 
         this.listOfTimeouts.push(timeoutID)
@@ -180,11 +179,11 @@ export class VizDijsktra extends React.Component {
     getEdgeFromParentAnimation(edgeIndex, time_counter) {
         //console.log("In edge" + " " + this.state.speed * time_counter + " " + thislist of intervals)
         var timeoutID = setTimeout(() => {
-            console.log("before reset")
+            
             if (this.resetPressed) {
                 return;
             }
-            console.log("after reset")
+            
             
 
             //this.pauseProgram() // to pause the program
@@ -376,7 +375,7 @@ export class VizDijsktra extends React.Component {
         for (let intervals of this.listOfTimeouts) {
             clearTimeout(intervals)
         }
-        console.log("Inside Pause" + this.state.step + " " + this.state.lastExecutedStep)
+        
         //this.state.step = this.state.lastExecutedStep + 1
         this.setState({ step: this.state.lastExecutedStep + 1 })
 
