@@ -67,33 +67,20 @@ public class Quiz {
 
     }
 
-    public Quiz(int questionId,
-                String quizId,
-                String lessonId,
-                String title,
-                String question,
-                String option1,
-                String option2,
-                String option3,
-                int correctAnswer,
-                String feedback1,
-                String feedback2,
-                String feedback3) {
-
-        this.questionId = questionId;
-        this.quizId = quizId;
-        this.lessonId = lessonId;
-        this.title = title;
-        this.question = question;
-        this.option1 = option1;
-        this.option2 = option2;
-        this.option3 = option3;
-        this.correctAnswer = correctAnswer;
-        this.feedback1 = feedback1;
-        this.feedback2 = feedback2;
-        this.feedback3 = feedback3;
-
-    }
+    /**
+     * Create a quiz object that contains the given fields
+     * @param quizId            unique quiz id for the algorithm
+     * @param lessonId          unique lesson id for the algorithm
+     * @param title             name of the algorithm
+     * @param question          question for the quiz
+     * @param option1           possible answer choice for the question
+     * @param option2           possible answer choice for the question
+     * @param option3           possible answer choice for the question
+     * @param correctAnswer     correct answer for the question
+     * @param feedback1         feedback based on the option user picks
+     * @param feedback2         feedback based on the option user picks
+     * @param feedback3         feedback based on the option user picks
+     */
 
     public Quiz(String quizId,
                 String lessonId,

@@ -8,6 +8,11 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+This class is responsible for processing incoming REST API requests and
+processes, and returns a response for the quiz page.
+ */
+
 @RestController
 // This is the main API Route for the quiz page
 // If running locally, the url would be:
@@ -18,8 +23,8 @@ public class QuizController {
     private final QuizService quizService;
     // List of all the quizIds
     private final List<String> quizIdList = new ArrayList<>(List.of("graph_dijkstra_quiz",
-                                                                    "search_binary_quiz",
-                                                                    "sort_selection_quiz"));
+            "search_binary_quiz",
+            "sort_selection_quiz"));
 
     @Autowired
     public QuizController(QuizService quizService) {
@@ -69,10 +74,10 @@ public class QuizController {
 
             // Generate the Questions object using the data
             Questions question = new Questions (q.getQuestion(),
-                                                options,
-                                                q.getCorrectAnswer(),
-                                                responses
-                                                );
+                    options,
+                    q.getCorrectAnswer(),
+                    responses
+            );
             questionList.add(question);
         }
 
