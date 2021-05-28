@@ -11,6 +11,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
+/*
+This class writes homepage, lesson, and quiz page data to postgresql database.
+It contains interface CommandLineRunner that indicates where the bean should run within
+the Spring application.
+ */
 @Configuration
 public class AlgoContentConfig {
     // a bean, inject quiz, homepage, and lesson repository
@@ -50,32 +55,83 @@ public class AlgoContentConfig {
             Lesson dijkstrasLesson = new Lesson(
                     "graph_dijkstra_lesson",
                     "graph_dijkstra_quiz",
-                    "Dijkstras",
-                    "Dijkstras alt placeholder",
-                    "Dijkstras img description placeholder",
-                    "Dijkstras vizSrc placeholder",
-                    "Dijkstra's algorithm is a type of graph algorithm for finding the shortest paths between nodes in" +
-                            "a graph. Dijkstra's algorithm was published in 1959 by a Dutch computer scientist Edsger Dijkstra." +
-                            "The graph can be directed meaning the edges point in a direction or undirected. The weight" +
-                            "on each edge needs to have a nonnegative weight. Dijkstra's algorithms are used to find " +
-                            "shortest route between one city and all other cities, social networking" +
-                            "application to suggest lists of firends that a user may know.",
-                    "1-Initialization of all nodes with distance \"infinite\"; initialization of the starting node with 0.\n" +
-                            "2-Marking of the distance of the starting node as permanent, all\n" +
-                            " other distances as temporarily.\n" +
-                            "3-Setting of starting node as active. 4-Calculation of the \n" +
-                            "temporary distances of all neighbour nodes of the active node \n" +
-                            "by summing up its distance with the weights of the edges.\n" +
-                            "5-If such a calculated distance of a node is smaller as the current \n" +
-                            "one, update the distance and set the current node as antecessor.\n" +
-                            " This step is also called update and is Dijkstra's central idea.\n" +
-                            "6-Setting of the node with the minimal temporary distance as \n" +
-                            "active. Mark its distance as permanent.\n" +
-                            "7-Repeating of steps 4 to 7 until there aren't any nodes \n" +
-                            "left with a permanent distance, which neighbours still have temporary distances.",
-                    "The time complexity of Dijkstra's algorithm is O(V^2) but with min priority queue, it reduces to \n" +
-                            "O(E + V log V)",
+                    "Dijkstra's algorithm",
+                    "Dijkstra graph image",
+                    "The graph can be directed meaning the edges point in a direction " +
+                            "or undirected. The weight on each edge needs to have a nonnegative weight. " +
+                            "It finds the shortest path between two points. It picks the unvisited vertex with the " +
+                            "lowest distance, calculates the distance through it to each unvisited neighbor, and " +
+                            "updates the neighbor's distance if smaller. Mark visited (set to red) when done with neighbors.\n",
+                    "Dijkstra vizSrc placeholder",
+                    "Dijkstra's algorithm is a type of graph algorithm for finding the shortest paths between" +
+                            " nodes in a graph. This algorithm was published in 1959 by a Dutch computer scientist Edsger Dijkstra." +
+                            " It is commonly used to find the shortest route between one city and all other cities, a " +
+                            "social networking application to suggest lists of friends that a user may know.\n",
+                    "Start with vertex u in Q with min dist[u], searches for the vertex u in the vertex set Q " +
+                            "that has the least dist[u] value. length(u, v) returns the length of the edge joining " +
+                            "(i.e. the distance between) the two neighbor-nodes u and v. The variable alt on line 18 is the " +
+                            "length of the path from the root node to the neighbor node v if it were to go through u. " +
+                            "If this path is shorter than the current shortest path recorded for v, that current path is " +
+                            "replaced with this alt path. The prev array is populated with a pointer to the \"next-hop\" " +
+                            "node on the source graph to get the shortest route to the source.\n",
+                    "The time complexity of Dijkstra's algorithm is O(V^2). But with min priority queue, it reduces to \n" +
+                            "O(V + E log V).\n",
                     "https://i.ytimg.com/vi/wtdtkJgcYUM/maxresdefault.jpg"
+            );
+            Lesson binaryLesson = new Lesson(
+                    "search_binary_lesson",
+                    "search_binary_quiz",
+                    "Binary search algorithm",
+                    "Binary search image",
+                    "It compares the target value to the middle element of the array. If they are not equal, the half " +
+                            "in which the target cannot lie is eliminated and the search continues on the remaining half, " +
+                            "again taking the middle element to compare to the target value, and repeating this until the " +
+                            "target value is found. If the search ends with the remaining half being empty, the target " +
+                            "is not in the array.\n",
+                    "Binary search vizSrc placeholder",
+                    "Binary search is a search algorithm used to find the location of a particular element within a " +
+                            "sorted array. It is faster than linear search on sorted arrays because of its logarithmic " +
+                            "runtime. B-tree and binary search trees are two data structures that are based on binary search.",
+                    "Binary search looks for a particular item by comparing the middle most item of the collection. " +
+                            "If a match occurs, then the index of the item is returned. If the middle item is greater " +
+                            "than the item, then the item is searched in the sub-array to the left of the middle item. " +
+                            "Otherwise, the item is searched for in the sub-array to the right of the middle item. " +
+                            "This process continues on the sub-array as well until the size of the subarray reduces to zero.\n",
+                    "The time complexity of the binary search algorithm is O(log n). The best-case time complexity " +
+                            "would be O(1) when the central index would directly match the desired value. " +
+                            "The worst-case scenario could be the values at either extremity of the list or values not in the list\n",
+                    "https://jojozhuang.github.io/assets/images/algorithm/1211/binarysearch.png"
+            );
+
+            Lesson selectionLesson = new Lesson(
+                    "sort_selection_lesson",
+                    "sort_selection_quiz",
+                    "Selection sort algorithm",
+                    "Selection sort image",
+                    "A temporary int variable is initialized with the index of the outer loop. " +
+                            "Then the inner loop starts. If the element at the current inner loop’s index is, " +
+                            "for example, less than the element at the temporarily stored index, the temporary " +
+                            "variable’s value is replaced with that of the current inner loop index. This process " +
+                            "continues until the inner loop terminates. Upon termination, the algorithm swaps the " +
+                            "element at the outer loop’s index with the one at the temporary variable’s index. " +
+                            "This process continues until the outer loop finishes.\n",
+                    "Selection sort vizSrc placeholder",
+                    "Selection sort algorithm is an in-place comparison-based algorithm in which the list is " +
+                            "divided into two parts, the sorted part at the left end and the unsorted part at the " +
+                            "right end. It involves a nested for loop. The outer loop loops over each index in the " +
+                            "array while the inner loop loops over the indices after the outer loop’s index. \n",
+                    "The algorithm divides the input list into two parts: a sorted sublist of items which is " +
+                            "built up from left to right at the front (left) of the list and a sublist of the " +
+                            "remaining unsorted items that occupy the rest of the list. Initially, the sorted " +
+                            "sublist is empty and the unsorted sublist is the entire input list. The algorithm " +
+                            "proceeds by finding the smallest (or largest, depending on sorting order) element " +
+                            "in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element " +
+                            "(putting it in sorted order), and moving the sublist boundaries one element to the right.\n",
+                    "Selection Sort can be used if memory is limited. It can also be used in cases where the swap " +
+                            "operation is particularly expensive. The runtime complexity of Selection Sort is always O(N^2).\n",
+                    "https://static.packt-cdn.com/products/9781785888731/graphics/image_13_007-1.jpg"
+
+
             );
 
             Quiz dijkstraQ1 = new Quiz (
@@ -155,8 +211,8 @@ public class AlgoContentConfig {
                     2,
                     "Not quite. The current element is not equal to the target and we have more elements" +
                             " to explore. So, our algorithm keeps executing.",
-                    "Not quite. If the current element is greater than the target, since the array is s" +
-                            "orted in ascending order, we know that the target is present before the current element in the array.",
+                    "Not quite. If the current element is greater than the target, since the array is sorted " +
+                            "in ascending order, we know that the target is present before the current element in the array.",
                     "Correct! If the target value < current value, we go to the left."
             );
 
@@ -227,15 +283,15 @@ public class AlgoContentConfig {
                     "Faster runtime",
                     2,
                     "Not quite. Selection sort only need an additional single temporary int variable to the function.",
-                    "Correct! With an O(N^2) complexity, Selection Sort's runtime can quickly " +
-                            "increase when the array is larger. There are other sorts more suited towards larger arrays.",
                     "Not quite. Selection sort only needs to make one swap operation per outer loop iteration, " +
-                            "which is on the lower-end of swap-based sorts."
+                            "which is on the lower-end of swap-based sorts.",
+                    "Correct! With an O(N^2) complexity, Selection Sort's runtime can quickly " +
+                            "increase when the array is larger. There are other sorts more suited towards larger arrays."
             );
 
             // Save all the objects in the corresponding repositories.
             homepageRepository.saveAll(List.of(dijkstrasAlgorithm, selectionSort, binarySearch));
-            lessonRepository.saveAll(List.of(dijkstrasLesson));
+            lessonRepository.saveAll(List.of(dijkstrasLesson, binaryLesson, selectionLesson));
             quizRepository.saveAll(
                     List.of(dijkstraQ1,
                             dijkstraQ2,

@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
+This class is responsible for processing incoming REST API requests and
+processes, and returns a response for the homepage.
+ */
 @RestController
 // This is the main API Route for the homepage page
 // If running locally, the url would be:
@@ -38,11 +41,11 @@ public class HomepageController {
             // Initialize a Data object containing the information
             // about the topic.
             Data topicData = new Data(hp.getId(),
-                                      hp.getQuizId(),
-                                      hp.getLessonId(),
-                                      hp.getAlgorithmName(),
-                                      hp.getHomepageDescription(),
-                                      hp.getImageURL());
+                    hp.getQuizId(),
+                    hp.getLessonId(),
+                    hp.getAlgorithmName(),
+                    hp.getHomepageDescription(),
+                    hp.getImageURL());
 
             // Check if the "topic" is already in the map.
             // If it is, append the new data object to the list of values of the topic

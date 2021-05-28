@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/*
+This class handles business logic; use to store, retrieve, update and
+delete homepage data from homepage repository.
+ */
 @Service
 public class HomepageService {
     private final HomepageRepository homepageRepository;
