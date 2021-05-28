@@ -1,19 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+// Global CSS styles
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// Add this in node_modules/react-dom/index.js
-window.React1 = require('react');
 
-// Add this in your component file
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
 
+/**
+ * This is the Root entry point of the app.
+ */
 ReactDOM.render(
   <React.StrictMode>
     <App />

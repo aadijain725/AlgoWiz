@@ -49,8 +49,6 @@ export class QuizPage extends React.Component {
         };
     }
 
-    // Fetching data from the backend API to populate current quiz page data 
-    // accordingly.
     componentDidMount() {
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
@@ -60,8 +58,6 @@ export class QuizPage extends React.Component {
             this.setState({
                 data: homeData 
             });
-
-
         })
         .catch(err => {
             console.log(err);
@@ -244,6 +240,7 @@ export class QuizPage extends React.Component {
     }
 }
 
+// wrap export in withRouter so it can access React url params
 export default withRouter(QuizPage);
 
 

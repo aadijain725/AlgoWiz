@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {
@@ -9,13 +8,18 @@ import {
 } from 'react-router-dom';
 import {Container, Row, Col} from 'react-bootstrap';
 import Navbar from './components/NavBar';
-import HomePage from './components/HomePage';
+import HomePage from './components/homePageComps/HomePage';
 import QuizPage from './components/QuizPage';
 import LessonPage from './components/lessonComps/LessonPage';
 import Gutter from './components/Gutter';
 
+/**
+ * Handles the routing for the frontend. For static sites such as 
+ * Github pages, use a HashRouter. In the future url could be prettified 
+ * using a BrowserRouter instead. 
+ * @returns JSX Router
+ */
 function App() {
-	console.log(process.env.REACT_APP_API_URL);
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar/> 

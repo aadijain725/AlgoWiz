@@ -2,6 +2,7 @@
 import React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {Row, Col, Container, Button} from 'react-bootstrap';
+import APIHelper from '../helpers/APIHelper';
 import LessonRow from './LessonRow';
 import VizRoot from '../viz/VizRoot'
 
@@ -13,30 +14,22 @@ export class LessonPage extends React.Component {
         this.state = {
             lessonData: null
         }
-        // TODO: once local backend serves lesson properly then change this
-        this.getData = this.getData.bind(this);
     }
 
+    /**
+     * React Lifecycle method. Only call fetch once. 
+     * Fetches data based on React URL params
+    */
     componentDidMount() {
-        // TODO: change to APIHelper once backend fixed
-        this.getData();
-    }
-
-    // TODO: once backend fixed this can be replaced with APIHelper
-    getData() {
-        fetch(`./lesson/${this.props.match.params.lessonID}`, {
-            headers : { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
+        // build the route based on React URL params
+        const url = `lesson/${this.props.match.params.lessonID}`
+        APIHelper(url)
         .then(lessonData => {
-            this.setState({
-                lessonData
-            })
+            console.log(lessonData)
+            this.setState({ lessonData })
         })
         .catch(err => {
+            console.log('Something went wrong in Lesson Fetch');
             console.log(err);
         })
     }

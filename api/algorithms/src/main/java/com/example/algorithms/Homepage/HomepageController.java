@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+// This is the main API Route for the homepage page
+// If running locally, the url would be:
+// "http://localhost:8080/api/v1/home"
 @RequestMapping(path="api/v1/home")
 public class HomepageController {
     private final HomepageService algoHomeService;

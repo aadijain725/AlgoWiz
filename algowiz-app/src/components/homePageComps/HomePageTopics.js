@@ -17,7 +17,21 @@ export class HomePageTopics extends React.Component {
      * 2. avoid inline styles
      */
 
+
+  //   <Tab eventKey="Search" title="Search" key = "a" >
+  //   <HomePageTab topic="Search" />
+  // </Tab>
+
+  // <Tab eventKey="Graph" title="Graph" key = "b">
+  //   <HomePageTab topic="Graph" /> 
+  // </Tab>
+
+  // <Tab eventKey="Sorting" title="Sorting" key = "c">
+  //   <HomePageTab topic="Sorting" />
+  // </Tab>
+ 
     return (
+      
       <div>
         <Container fluid>
           <Row>
@@ -28,24 +42,28 @@ export class HomePageTopics extends React.Component {
                 className="nav nav pills"
                 style={{ color: "red", fontSize: "150%", padding :"0.5em" }}
               >
-                  
-                <Tab eventKey="Search" title="Search" key = "a" >
-                  <HomePageTab topic="Search" />
-                </Tab>
-
-                <Tab eventKey="home" title="Graph" key = "b">
-                  <HomePageTab topic="Graph" /> 
-                </Tab>
-
-                <Tab eventKey="Sorting" title="Sorting" key = "c">
-                  <HomePageTab topic="Sorting" />
-                </Tab>
+              {this.getMenuForTopics(this.props.data, this.props.topics)}
               </Tabs>
             </Col>
           </Row>
         </Container>
       </div>
     );
+  }
+  
+  // return the menu for topics
+  getMenuForTopics(data, topics) {
+    let menu =[]
+    
+    for(let i =0; i < topics.length; i++) {
+      let nameOfTopic =   topics[i]
+      menu.push(
+        <Tab eventKey= {nameOfTopic} title= {nameOfTopic} key = {i+""} >
+            <HomePageTab topic= {nameOfTopic} data = {data}/>
+        </Tab>
+      )
+    }
+    return menu
   }
 }
 
