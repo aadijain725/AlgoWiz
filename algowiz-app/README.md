@@ -12,6 +12,11 @@ To settup the initial package manager, run this command first.
 
 To install bootstrap dependencies 
 
+### npm install --save react-chartjs-2 chart.js
+
+Installs for visualiser dependencies 
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
