@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class LessonService {
+
     private final LessonRepository lessonRepository;
 
     @Autowired
@@ -15,7 +17,7 @@ public class LessonService {
         this.lessonRepository = lessonRepository;
     }
 
-    public List<Lesson> getLesson() {
-        return lessonRepository.findAll();
+    public List<Lesson> getLesson(String lessonID) {
+        return lessonRepository.findAllByLessonId(lessonID);
     }
 }

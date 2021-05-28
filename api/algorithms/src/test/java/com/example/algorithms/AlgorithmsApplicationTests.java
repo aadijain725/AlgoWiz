@@ -2,6 +2,9 @@ package com.example.algorithms;
 
 import com.example.algorithms.Homepage.HomepageRepository;
 import com.example.algorithms.Homepage.HomepageTopics;
+import com.example.algorithms.LessonPage.Lesson;
+import com.example.algorithms.LessonPage.LessonRepository;
+import com.example.algorithms.LessonPage.LessonService;
 import com.example.algorithms.quiz.Quiz;
 import com.example.algorithms.quiz.QuizRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -62,6 +65,9 @@ class AlgorithmsApplicationTests {
 		long expectedItemCount = quizTestRepository.count();
 		assertEquals(expectedItemCount, 0);
 	}
+
+	@Autowired
+	private LessonRepository lessonRepository;
 
 	@Test
 	public void testNumberOfElementsInNonEmptyQuizRepository() {
@@ -235,5 +241,16 @@ class AlgorithmsApplicationTests {
 	//////////////////////////////////////////////////////////////////////////////
 
 
+
+	public void testLesson() {
+		String lessonID = "graph_dijkstra_lesson";
+		LessonService ls = new LessonService((lessonRepository));
+
+		List<Lesson> les1 = lessonRepository.findAllByLessonId(lessonID);
+		assertEquals(les1.size(), 1);
+
+		Lesson res = les1.get(0);
+		assertEquals(res.getAlt(), "Dijkstras alt placeholder");
+	}
 
 }
