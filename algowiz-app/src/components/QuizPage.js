@@ -51,6 +51,9 @@ export class QuizPage extends React.Component {
         };
     }
 
+    /**
+     * React lifestyle component. Only fetch data once.
+     */
     componentDidMount() {
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
@@ -60,15 +63,10 @@ export class QuizPage extends React.Component {
             this.setState({
                 data: homeData 
             });
-
-
         })
         .catch(err => {
             console.log(err);
         })
-
-        // window.info = data2["questions"];
-        // window.title = data2["title"];
     }
 
     // Function that handles selecting buttons 
@@ -244,6 +242,7 @@ export class QuizPage extends React.Component {
     }
 }
 
+// wrap export in withRouter so it can access React url params
 export default withRouter(QuizPage);
 
 

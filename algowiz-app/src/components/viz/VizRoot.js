@@ -2,13 +2,14 @@ import './viz.css';
 import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap';
 // TODO: find way to import specific engines
-//import VizSelectionSort from './VizSelectionSort';
+import VizSelectionSort from './VizSelectionSort';
 import VizDijsktra from './VizDijkstra';
 
 /**
  * This component is the root for all Visualizers.
  * Contains the UI common to all versions.
- * TODO: May need to be refactored in the future 
+ * Conditionally renders the viz engine based on the lesson id
+ * Bad lesson Id's may break this component
  */
 export class VizRoot extends React.Component {
     constructor(props) {
@@ -17,16 +18,15 @@ export class VizRoot extends React.Component {
         this.engineRef = React.createRef();
     }
 
-    // Render for root component
     render() {
+        // map each lesson id to its viz component
+        const engine = {
+            graph_dijkstra_lesson: <VizDijsktra ref={this.engineRef}/>,
+            sort_selection_lesson: <VizSelectionSort ref={this.engineRef}/>
+        }
         return(
             <>
-            {/** Viz Engine Goes here 
-             * TODO: add prop to conditionally render correct viz engine
-            
-            <MyComponent ref={this.engineRef}/> 
-            */}
-            <VizDijsktra ref={this.engineRef}> </VizDijsktra>
+            {engine[this.props.id]}
             <Row className='vizRow'>
                 <Col xs='12' className='text-center justify-content-centers'>
                     <Button variant='primary' 
@@ -51,6 +51,5 @@ export class VizRoot extends React.Component {
         )
     }
 }
-
 
 export default VizRoot;
