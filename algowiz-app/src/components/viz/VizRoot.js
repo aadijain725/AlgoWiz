@@ -8,6 +8,7 @@ import VizBinarySearch from './VizBinarySearch';
 
 
 const userInput = [1,2,3,4,5,6,7,8,9];
+const target = 4;
 
 /**
  * This component is the root for all Visualizers.
@@ -30,7 +31,7 @@ export class VizRoot extends React.Component {
         const engine = {
             graph_dijkstra_lesson: <VizDijsktra ref={this.engineRef}/>,
             sort_selection_lesson: <VizSelectionSort ref={this.engineRef}/>,
-            search_binary_lesson: <VizBinarySearch ref={this.engineRef} barData = {this.state.barData}/>
+            search_binary_lesson: <VizBinarySearch ref={this.engineRef} barData = {userInput} target = {target} />
         }
         return(
             <>

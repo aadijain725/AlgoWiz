@@ -19,7 +19,7 @@ render() {
           <Link to='/'>
             <Button className="btn btn-primary btn-m m-5">Go Back to Home</Button>
           </Link>
-          <Link to="/lesson/l1">
+          <Link to={`/lesson/${this.props.lessonID}`}>
                   <Button
                     href="/lesson"
                     className="btn btn-danger btn-m m-5"

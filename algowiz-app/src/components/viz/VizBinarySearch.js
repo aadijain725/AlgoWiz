@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 import VizCode from './VizCode';
-// import VizBarGraph from './VizBarGraph';
 
 const FILTERED_COLOR = "rgba(0,0,0,0.4)";
 const TARGET_COLOR = "rgba(255, 0, 0,0.4)";
@@ -260,7 +259,7 @@ class VizBinarySearch extends React.Component {
     let colors = [];
     for (let i = 0; i <  this.props.barData.length; i++) {
       // console.log("initial color: ", this.props.color);
-      colors.push(this.props.color);
+      colors.push(BASE_COLOR);
     }
 
     let start = 0
