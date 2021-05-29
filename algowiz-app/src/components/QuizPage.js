@@ -43,27 +43,14 @@ export class QuizPage extends React.Component {
             numCorrect: 0,
             data: null 
         };
-        this.getLessonID();
     }
 
-    // Function that returns a string for the 
-    // corresponding lessonID to the quiz page 
-    // that we are currently on.
-    getLessonID() {
-        let x = this.props.match.params.quizID;
-        let q = x.split("_");
-        q[q.length - 1] = "lesson";
-        let lessonID = q[0];
-        for (let i = 1;  i < q.length; i++) {
-            lessonID += "_" + q[i];
-        }
-        return lessonID;
-    }
 
     componentDidMount() {
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
             window.info = homeData["questionsList"];
+            window.lessonId = homeData["lessonId"];
             window.title = homeData["title"];
             this.setState({
                 data: homeData 
@@ -218,6 +205,14 @@ export class QuizPage extends React.Component {
     // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
         return window.info[qnum]["responses"];
+    }
+
+
+    // Function that returns a string for the 
+    // corresponding lessonID to the quiz page 
+    // that we are currently on.
+    getLessonID() {
+        return window.lessonId;
     }
 }
 
