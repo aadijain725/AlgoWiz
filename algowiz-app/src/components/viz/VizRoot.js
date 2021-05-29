@@ -21,6 +21,9 @@ export class VizRoot extends React.Component {
         super(props);
         // create a ref to call playback on the viz engine
         this.engineRef = React.createRef();
+        this.state = {
+            barData: userInput
+        }
     }
 
     render() {
