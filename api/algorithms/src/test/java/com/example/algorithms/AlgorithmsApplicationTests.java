@@ -4,7 +4,6 @@ import com.example.algorithms.Homepage.HomepageRepository;
 import com.example.algorithms.Homepage.HomepageTopics;
 import com.example.algorithms.LessonPage.Lesson;
 import com.example.algorithms.LessonPage.LessonRepository;
-import com.example.algorithms.LessonPage.LessonService;
 import com.example.algorithms.quiz.Quiz;
 import com.example.algorithms.quiz.QuizRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -18,6 +17,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/*
+AlgorithmsApplicationTests class tests for homepage, lesson page and quiz page.
+Testing for functionalities of each repository and make sure they are returning
+the correct output.
+ */
 @DataJpaTest
 class AlgorithmsApplicationTests {
 
@@ -29,6 +33,10 @@ class AlgorithmsApplicationTests {
 	@Autowired
 	private HomepageRepository homepageTestRepository;
 
+	// Initialize HomepageRepository
+	@Autowired
+	private LessonRepository lessonTestRepository;
+
 	// Deletes all the elements from repositories
 	// and resets the state of the repositories
 	// after each test is executed.
@@ -36,6 +44,7 @@ class AlgorithmsApplicationTests {
 	void tearDown() {
 		quizTestRepository.deleteAll();
 		homepageTestRepository.deleteAll();
+		lessonTestRepository.deleteAll();
 	}
 
 
@@ -65,9 +74,6 @@ class AlgorithmsApplicationTests {
 		long expectedItemCount = quizTestRepository.count();
 		assertEquals(expectedItemCount, 0);
 	}
-
-	@Autowired
-	private LessonRepository lessonRepository;
 
 	@Test
 	public void testNumberOfElementsInNonEmptyQuizRepository() {
@@ -182,6 +188,7 @@ class AlgorithmsApplicationTests {
 	////////////////////////////////////////////////////////////////////////////////
 	///////////////////// Homepage Repository Tests ////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
+
 	@Test
 	public void testCreateHomepageTopic() {
 		HomepageTopics hp = new HomepageTopics(
@@ -240,17 +247,64 @@ class AlgorithmsApplicationTests {
 	///////////////////// Lesson Repository Tests ////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
 
+	// test empty lesson data
+	@Test
+	public void testElementsInLessonRepository() {
+		long expectedItemCount = lessonTestRepository.count();
+		assertEquals(expectedItemCount, 0);
+	}
 
+	// test lesson page not null
+	@Test
+	public void testLessonIdNotNull() {
+		Lesson lesson = new Lesson(
+				"graph_dijkstra_lesson",
+				"graph_dijkstra_quiz",
+				"Dijkstra",
+				"Dijkstra algorithm",
+				"Dijkstra image description",
+				"Dijkstra visualsrc",
+				"Dijkstra algorithm description",
+				"pseudocode for Dijkstra",
+				"time complexity",
+				"image url"
+		);
+		assertNotNull(lesson);
+	}
 
-	public void testLesson() {
-		String lessonID = "graph_dijkstra_lesson";
-		LessonService ls = new LessonService((lessonRepository));
+	// test for list of lessons in the lesson repository
+	@Test
+	public void testNumberOfElementsInLessonRepository() {
+		Lesson lesson1 = new Lesson(
+				"graph_dijkstra_lesson",
+				"graph_dijkstra_quiz",
+				"Dijkstra",
+				"Dijkstra algorithm",
+				"Dijkstra image description",
+				"Dijkstra visualsrc",
+				"Dijkstra algorithm description",
+				"pseudocode for Dijkstra",
+				"time complexity",
+				"image url"
+		);
 
-		List<Lesson> les1 = lessonRepository.findAllByLessonId(lessonID);
-		assertEquals(les1.size(), 1);
+		Lesson lesson2 = new Lesson(
+				"search_binary_lesson",
+				"search_binary_quiz",
+				"Binary Search",
+				"Binary search algorithm",
+				"Binary search image description",
+				"Binary Search visualsrc",
+				"Binary Search algorithm description",
+				"pseudocode for binary Search",
+				"time complexity",
+				"image url"
+		);
 
-		Lesson res = les1.get(0);
-		assertEquals(res.getAlt(), "Dijkstras alt placeholder");
+		lessonTestRepository.saveAll(List.of(lesson1, lesson2));
+
+		long expectedItemCount = lessonTestRepository.count();
+		assertEquals(expectedItemCount, 2);
 	}
 
 }

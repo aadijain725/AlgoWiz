@@ -7,40 +7,34 @@ import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Result from './quizComps/Result';
 
-// Functional component for getting correct user feedback depending on the 
+// Functional component for generating ESX correct user feedback depending on the 
 // User's answer and the correct answer 
 export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
-    console.log(feedbacks);
-    console.log(option_index)
-    if (!ans) {
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'warning'> 
-            Please select an answer before submitting 
-        </Alert>
-    } else if (correct_ans === ans){
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'success'> 
-            {feedbacks[option_index]}
-        </Alert>
-    } else {
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'danger'> 
-            {feedbacks[option_index]}
-        </Alert>
+    let variant = "";
+    let feedback = "";
+    if (!ans) { // No answer is selected by user
+        feedback = "Please select an answer before submitting";
+        variant = "warning";
+    } else if (correct_ans === ans){ // User selected the correct answer
+        feedback = feedbacks[option_index];
+        variant = "success";
+    } else { // User selected the incorrect answer
+        feedback = feedbacks[option_index];
+        variant = "danger";
     }
+
+    return <Alert 
+            id = "feedback" 
+            className = "mt-5"
+            variant = {variant}> 
+            {feedback}
+        </Alert>
 }
 
 
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        // console.log("length of data", window.info.length);
         this.state = {
             qnum : 0,
             ans: null,
@@ -51,14 +45,12 @@ export class QuizPage extends React.Component {
         };
     }
 
-    /**
-     * React lifestyle component. Only fetch data once.
-     */
+
     componentDidMount() {
         APIHelper(`quiz/${this.props.match.params.quizID}`)
         .then(homeData => {
-            console.log("data: ", homeData);
             window.info = homeData["questionsList"];
+            window.lessonId = homeData["lessonId"];
             window.title = homeData["title"];
             this.setState({
                 data: homeData 
@@ -69,9 +61,8 @@ export class QuizPage extends React.Component {
         })
     }
 
-    // Function that handles selecting buttons 
+    // Function that handles user selecting buttons 
     handleSelect = (ans, idx) => {
-        console.log("index in handleSelect is:", idx);
         this.setState({
             qnum: this.state.qnum, 
             ans: ans,
@@ -81,64 +72,45 @@ export class QuizPage extends React.Component {
             idx: idx
         })
     }
+
     // Function that handles user submissions
-    handleSubmit = (ans) => {
-        console.log("index in handleSubmit is:", this.state.idx);
-        if (ans == null) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                idx: this.state.idx,
-                numCorrect: this.state.numCorrect
-            })
-        } else  if (ans === this.getAnswer(this.state.qnum)) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                idx: this.state.idx,
-                numCorrect: this.state.numCorrect + 1
-            })
-        } else {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                idx: this.state.idx,
-                numCorrect: this.state.numCorrect
-            })
-        }
+    handleSubmit = () => {
+        let ans = this.state.ans;
+        let numCorrect = this.state.numCorrect;
+        if (ans === this.getAnswer(this.state.qnum) ) { // User's Answer is correct 
+            numCorrect += 1;
+        } 
+        this.setState({
+            qnum: this.state.qnum, 
+            ans: ans,
+            submitted: true,
+            showSubmit: false,
+            idx: this.state.idx,
+            numCorrect: numCorrect
+        })
     }
 
-    // Function that handles continue functionality
-    handleContinue =  (ans) => {
-        if (ans == null) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: true,
-                idx: this.idx,
-                numCorrect: this.state.numCorrect
-            })
-        } else  {
-            this.setState({
-                qnum: this.state.qnum + 1, 
-                ans: ans,
-                submitted: true,
-                showSubmit: true,
-                idx: this.idx,
-                numCorrect: this.state.numCorrect
-            })
+    // Function that handles continue button functionality
+    handleContinue =  () => {
+        let ans = this.state.ans;
+        let q = this.state.qnum; 
+        if (ans) { // if an answer is selected, show next question
+            q += 1;
         }
+        this.setState({
+            qnum: q, 
+            ans: null,
+            submitted: false,
+            showSubmit: true,
+            idx: this.idx,
+            numCorrect: this.state.numCorrect
+        });
     }
 
+    // Renders
     render() {
-        if (window.info && window.info.length > this.state.qnum) {
+        if (window.info && window.info.length > this.state.qnum) { // Quiz still ongoing and questions are left 
+        // Rendering corrresponding ESX for quiz
         return(
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
@@ -160,40 +132,35 @@ export class QuizPage extends React.Component {
                 </Row>
                 {this.state.submitted === true &&
                     <Row>
-                        {getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum), this.state.idx)}
+                        {
+                    getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum), this.state.idx)
+                    }
                     </Row>
                 }
-                {/* Bottom row -- submit */}
+                {/* Bottom row -- submit and continue buttons*/}
                 <Row>
                     <Col sm={3}></Col>
                     <Col>
-                        {this.state.showSubmit && 
+                        {this.state.showSubmit && // if user has not already submitted, show submit
                             <Button
                             id="quiz-submit-btn"
                             variant="outline-primary"
                             size="lg"
                             onClick={()=> {
-                                this.handleSubmit(this.state.ans)
+                                this.handleSubmit()
                                 }}
                             >
                             {" "}
                             Submit{" "}
                             </Button>
                         }
-                        {!this.state.showSubmit && 
+                        {!this.state.showSubmit && // if user has submitted show continue option
                         <Button
                             id="quiz-submit-btn"
                             variant="outline-primary"
                             size="lg"
                             onClick={()=> {
                                 this.handleContinue(this.state.ans)
-                                this.setState({
-                                    qnum: this.state.qnum + 1, 
-                                    ans: this.ans,
-                                    submitted : false,
-                                    showSubmit: true,
-                                    numCorrect: this.state.numCorrect
-                                    });
                                 }}
                             >
                             {" "}
@@ -206,8 +173,9 @@ export class QuizPage extends React.Component {
                 
             </Container>
         )
-        } else if (window.info){
-            return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
+        } else if (window.info){ // user has reached end of quiz
+            let lessonID = this.getLessonID();
+            return <Result curr = {this.state.numCorrect} total = {window.info.length} lessonID = {lessonID}> </Result>
         } else {
             return (<h1>Loading ... </h1>)
         }
@@ -230,8 +198,6 @@ export class QuizPage extends React.Component {
     // Fetches the correct answer for the current question that is selected
     getAnswer(qnum) {
         let index = window.info[qnum]["correctAnswer"];
-        console.log("answer idx is ", index);
-        console.log("answer is ", window.info[qnum]["options"][index]);
         return window.info[qnum]["options"][index];
     }
 
@@ -239,6 +205,14 @@ export class QuizPage extends React.Component {
     // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
         return window.info[qnum]["responses"];
+    }
+
+
+    // Function that returns a string for the 
+    // corresponding lessonID to the quiz page 
+    // that we are currently on.
+    getLessonID() {
+        return window.lessonId;
     }
 }
 

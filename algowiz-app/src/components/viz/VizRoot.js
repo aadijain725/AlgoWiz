@@ -4,6 +4,11 @@ import {Row, Col, Button} from 'react-bootstrap';
 // TODO: find way to import specific engines
 import VizSelectionSort from './VizSelectionSort';
 import VizDijsktra from './VizDijkstra';
+import VizBinarySearch from './VizBinarySearch';
+
+
+const userInput = [1,2,3,4,5,6,7,8,9];
+const target = 4;
 
 /**
  * This component is the root for all Visualizers.
@@ -16,13 +21,17 @@ export class VizRoot extends React.Component {
         super(props);
         // create a ref to call playback on the viz engine
         this.engineRef = React.createRef();
+        this.state = {
+            barData: userInput
+        }
     }
 
     render() {
         // map each lesson id to its viz component
         const engine = {
             graph_dijkstra_lesson: <VizDijsktra ref={this.engineRef}/>,
-            sort_selection_lesson: <VizSelectionSort ref={this.engineRef}/>
+            sort_selection_lesson: <VizSelectionSort ref={this.engineRef}/>,
+            search_binary_lesson: <VizBinarySearch ref={this.engineRef} barData = {userInput} target = {target} />
         }
         return(
             <>

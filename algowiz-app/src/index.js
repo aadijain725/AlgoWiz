@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+
 /**
  * This is the Root entry point of the app.
  */

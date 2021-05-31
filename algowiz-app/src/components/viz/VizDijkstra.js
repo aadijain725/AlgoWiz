@@ -1,11 +1,9 @@
 import React from "react";
 import ReactFlow from "react-flow-renderer";
 import CustomGraph from "./CustomGraph";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { DijkstraAnimations } from "./Algorithms/DijkstraAlgorithms";
-
 import VizDisjktraCode from "./VizDijsktraCode"
 
 export class VizDijsktra extends React.Component {
@@ -368,8 +366,6 @@ export class VizDijsktra extends React.Component {
         this.simulatestep(0)
     }
 
-
-
     // to pause the animation
     pause() {
 
@@ -381,9 +377,8 @@ export class VizDijsktra extends React.Component {
         
         //this.state.step = this.state.lastExecutedStep + 1
         this.setState({ step: this.state.lastExecutedStep + 1 })
-
-        this.listOfTimeouts = [] // since no more timeouts the list should be fine
-
+        this.listOfTimeouts = [] 
+        // since no more timeouts the list should be fine
         // to make the code run in an endless loop
     }
     // to pause the animation
@@ -427,12 +422,11 @@ export class VizDijsktra extends React.Component {
                         </div>
                     </Col>
                     <Col>
-                    <div style={{width:'40%'}}><VizDisjktraCode step={this.state.codeStep}/></div>
+                      <div style={{width:'40%'}}>
+                        <VizDisjktraCode step={this.state.codeStep}/>
+                      </div>
                     </Col>
                 </Row>
-
-
-
             </Container>
         );
     }

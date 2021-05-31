@@ -3,6 +3,8 @@
 ## Product description
 Algowiz is a highly interactive web-based application aimed at spreading the love and knowledge we have for computer science. Initially, it will act as primarily an academic aid to students and teachers alike. It will cover a wide array of topics ranging from sorting and searching algorithms to exploring graphs. The experience will include a separate section for each of the various topics. Each of these sections will have a study guide, a quiz, and a visualizer to help visualize the concepts.
 
+## [Developer Guide](/documentation) and [User Guide](/documentation) 
+
 ## Latest Deployment
 The latest AlgoWiz version is live at
 [aadijain725.github.io/AlgoWiz/](https://aadijain725.github.io/AlgoWiz/)
@@ -28,12 +30,7 @@ cd algowiz-app
 ```
 npm install
 ```
-```
-npm install react-bootstrap
-```
-```
-npm install react-dom
-```
+
 This readies the system to be ran and tested by installing all dependencies.
 
 3. Start the Development Server:
@@ -41,7 +38,7 @@ This readies the system to be ran and tested by installing all dependencies.
 npm start
 ```
 
-The above command runs the app locally on the users computer.
+The above command runs the app locally on the user's computer.
 
 If it does not load automatically open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -69,7 +66,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Setting up backend Spring boot
-git clone from algowiz repo
+- Set up PostgreSQL Database
+- Install latest Java
+- cd into AlgoWiz/api/algorithms
+- Run Spring Boot `./mvnw spring-boot:run` on a bash based shell. 
 
 ### Configuring the PostgreSQL Database
 
@@ -77,41 +77,47 @@ git clone from algowiz repo
 - Go to the website below and download the appropriate installer. https://www.enterprisedb.com/downloads/postgres-postgresql-downloads?quicktabs_postgres_plus_dwnlds=1 
 - During installation, set a password for the default superuser “postgres”.
 
-#### 2. Update application.properties file
+#### 2. Update application.properties file in the /api/algorithms/src/main/resources
 - Change the value for spring.datasource.username to `postgres`(default value) and  spring.datasource.password to the one you set up during installation.
 - If you changed the port number during installation, update it in spring.datasource.url, else leave it as it is.
+- When pushing to public repo, remove the username and password for security purpose. 
 
 #### 3. Creating the database
-- Open postgresql shell and login as “postgres” user.
+- Open SQL shell from the start menu and login as “postgres” user.
 - Type in `CREATE DATABASE algowiz;`
 - Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`
+We have now configured the database!  
 
-#### 4. Connect to the datasource
-- While connecting to the datasource from your code editor, make sure the database is named `algowiz`, port is `5432`, URL is `jdbc:postgresql://localhost:5432/algowiz`, username is `postgres`.
-- On IntelliJ, when you go to Database -> Create New -> Datasource -> PostgreSQL, we get the window below. Make sure to have similar settings in your code editor.
-
-![](https://i.imgur.com/xj8EkAJ.png)
-
-
-- We have now configured the database!
-
-### Install Java 11 and latest version of Maven
+### Install Java 11 or latest Java and latest version of Maven
 
 ### Run Spring Boot in command line
-1. cd api/algorithms
+1.  cd into AlgoWiz/api/algorithms
 
 2. Run the following command in a terminal  
-    ./mvnw spring-boot:run  
-
-3. Open in the browser and typed
-    localhost:8080/api/v1/home for the homepage
-    localhost:8080/api/v1/lesson for the lesson page
-    localhost:8080/api/v1/quiz for the quiz page
- 
-  or you can run the service with curl  
-    $ curl localhost:8080/api/v1/home  
-    $ curl localhost:8080/api/v1/lesson  
-    $ curl localhost:8080/api/v1/quiz  
+     `./mvnw spring-boot:run` on a bash based shell.
+   
+   For Mac user might encounter permission denied when running maven command  
+        do `chmod a+x mvnmw` to grant permission
+    
+3. Open the browser  
+   For homepage, type  
+   ```localhost:8080/api/v1/home```  
+   
+   For lesson page, type    
+   ```localhost:8080/api/v1/lesson```  
+   
+   For quiz page, type  
+   ```localhost:8080/api/v1/quiz```  
+  
+   
+   
+   You can choose to run the service with curl  
+   
+   ```$ curl localhost:8080/api/v1/home```  
+   
+   ```$ curl localhost:8080/api/v1/lesson```  
+   
+   ```$ curl localhost:8080/api/v1/quiz```  
 
 
 ## Working Use Case:
@@ -188,6 +194,8 @@ integrate more content and features.
 3. **Online Leaderboard** - Public competition to encourage students to explore the site and attempt more lessons and quizes. 
 
 ## Directory Map
+
+**[.github/workflows](/.github/workflows):** CI/Workflows
 
 **[algowiz-app](/algowiz-app):** Frontend code
 

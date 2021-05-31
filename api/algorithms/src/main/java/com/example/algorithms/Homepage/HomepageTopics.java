@@ -39,21 +39,16 @@ public class HomepageTopics {
 
     public HomepageTopics(){}
 
-    public HomepageTopics(Long id,
-                          String topic,
-                          String quizId,
-                          String lessonId,
-                          String algorithmName,
-                          String homepageDescription,
-                          String imageURL) {
-        this.id = id;
-        this.topic = topic;
-        this.quizId = quizId;
-        this.lessonId = lessonId;
-        this.algorithmName = algorithmName;
-        this.homepageDescription = homepageDescription;
-        this.imageURL = imageURL;
-    }
+
+    /**
+     * Create a homepage object that contains the given fields
+     * @param topic                 algorithm category
+     * @param quizId                unique quiz id for the algorithm
+     * @param lessonId              unique lesson id for the algorithm
+     * @param algorithmName         name of the algorithm
+     * @param homepageDescription   a short description of the algorithm
+     * @param imageURL              an image url for the algorithm
+     */
 
     public HomepageTopics(String topic,
                           String quizId,
