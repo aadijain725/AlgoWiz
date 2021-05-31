@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { DijkstraAnimations } from "./Algorithms/DijkstraAlgorithms";
 
+import VizDisjktraCode from "./VizDijsktraCode"
 
 export class VizDijsktra extends React.Component {
     startingStepNumber = -1;
@@ -19,7 +20,8 @@ export class VizDijsktra extends React.Component {
         speed: this.visualizationSpeed, // the speed of the visualizer
         play_timer_counter: this.initialTimeCounter, // to keep track of the counter of play button
         step: this.startingStepNumber, // start step with -1
-        lastExecutedStep: -1 // to keep track of the last executed step. Helps in the reset() functionality
+        lastExecutedStep: -1, // to keep track of the last executed step. Helps in the reset() functionality
+        codeStep : -1
     };
 
 
@@ -52,7 +54,7 @@ export class VizDijsktra extends React.Component {
             item.style = style;
 
             copyGraph[index] = item;
-            this.setState({ graph: copyGraph });
+            this.setState({ graph: copyGraph, codeStep : 1 });
         }, this.state.speed * time_counter);
         this.listOfTimeouts.push(timeoutID)
     }
@@ -78,10 +80,10 @@ export class VizDijsktra extends React.Component {
             //data.label= getInitialDistance.label
             copyGraph[i] = item;
         }
-        this.setState({ graph: copyGraph });
+        this.setState({ graph: copyGraph, codeStep : 0 });
     }
 
-    // to get animation for a single neigbor. animate the dege to the neigbor
+    // to get animation for a single neigbor. animate the edge to the neigbor
     // and animate the neighbor node itself
     getNeigborAnimation(nodeIndex, weightChangedTo, edgeID, edgeIndex, new_node_label, time_counter) {
         var timeoutID = setTimeout(() => {
@@ -125,7 +127,7 @@ export class VizDijsktra extends React.Component {
             copyGraph[nodeIndex] = nodeitem;
 
             // updating the graph
-            this.setState({ graph: copyGraph });
+            this.setState({ graph: copyGraph, codeStep : 2 });
         }, this.state.speed * time_counter);
 
         this.listOfTimeouts.push(timeoutID)
@@ -208,7 +210,7 @@ export class VizDijsktra extends React.Component {
             copyGraph[edgeIndex] = edgeitem;
 
             // updating the graph
-            this.setState({ graph: copyGraph });
+            this.setState({ graph: copyGraph, codeStep : 1 });
         }, this.state.speed * time_counter);
 
         // to add timeoutId
@@ -327,7 +329,8 @@ export class VizDijsktra extends React.Component {
                 speed: this.visualizationSpeed,
                 time_counter: this.initialTimeCounter,
                 step: this.startingStepNumber,
-                play_timer_counter: 0
+                play_timer_counter: 0,
+                codeStep : -1
             });
         });
     }
@@ -422,6 +425,9 @@ export class VizDijsktra extends React.Component {
                         <div style={{ height: '70vh' }}>
                             <ReactFlow elements={this.state.graph} />
                         </div>
+                    </Col>
+                    <Col>
+                    <div style={{width:'40%'}}><VizDisjktraCode step={this.state.codeStep}/></div>
                     </Col>
                 </Row>
 
