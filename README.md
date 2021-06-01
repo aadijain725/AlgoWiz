@@ -108,8 +108,6 @@ We have now configured the database!
    
    For quiz page, type  
    ```localhost:8080/api/v1/quiz```  
-  
-   
    
    You can choose to run the service with curl  
    
@@ -118,7 +116,6 @@ We have now configured the database!
    ```$ curl localhost:8080/api/v1/lesson```  
    
    ```$ curl localhost:8080/api/v1/quiz```  
-
 
 ## Working Use Case:
 

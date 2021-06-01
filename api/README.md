@@ -2,9 +2,9 @@
 
 # Set up for Spring Boot backend API for web application
 
-- Clone from AlgoWiz repository  
+- Clone from AlgoWiz repository    
 ```git clone https://github.com/aadijain725/AlgoWiz.git```  
-- Set up the PostgresSQL Database account with provided instructions below
+- Set up the PostgresSQL Database account with provided instructions below  
 
 ### Configuring the PostgreSQL Database
 

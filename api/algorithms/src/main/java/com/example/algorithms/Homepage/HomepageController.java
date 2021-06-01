@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ processes, and returns a response for the homepage.
 // This is the main API Route for the homepage page
 // If running locally, the url would be:
 // "http://localhost:8080/api/v1/home"
+@CrossOrigin
 @RequestMapping(path="api/v1/home")
 public class HomepageController {
     private final HomepageService algoHomeService;
