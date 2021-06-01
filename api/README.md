@@ -12,21 +12,21 @@
 - Go to the website below and download the appropriate installer. https://www.enterprisedb.com/downloads/postgres-postgresql-downloads?quicktabs_postgres_plus_dwnlds=1 
 - During installation, set a password for the default superuser “postgres”.
 
-#### 2. Update application.properties file
+#### 2. Update application.properties file in the /api/algorithms/src/main/resources
 - Change the value for spring.datasource.username to `postgres`(default value) and  spring.datasource.password to the one you set up during installation.
 - If you changed the port number during installation, update it in spring.datasource.url, else leave it as it is.
+- When pushing to public repo, remove the username and password for security purpose.  
 
 #### 3. Creating the database
-- Open postgresql shell and login as “postgres” user.
+- Open SQL shell from the start menu and login as “postgres” user.
 - Type in `CREATE DATABASE algowiz;`
 - Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`
-We have now configured the database!
+We have now configured the database! 
 
-### Install Java 11 and latest version of Maven
+### Install Java 11 or latest Java and latest version of Maven
 
 ### How to run Spring Boot in command line
-1. Cd into AlgoWiz/api/algorithms  
-   ```cd AlgoWiz/api/algorithms```  
+1. - cd into AlgoWiz/api/algorithms 
 
 2. Run the following command in the terminal  
         `./mvnw spring-boot:run` on a bash based shell.  
@@ -56,9 +56,3 @@ We have now configured the database!
         
  
 ### Resource of Spring Boot framework can be found [here](https://start.spring.io/)
-
-    
- 
- 
-
- 

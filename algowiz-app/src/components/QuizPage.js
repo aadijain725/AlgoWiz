@@ -1,186 +1,166 @@
 import React from 'react';
-import Question from '../components/Question'
-import Progress from './Progress'
+import Question from '../components/quizComps/Question'
+import Progress from '../components/quizComps/Progress'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Parser from "./testJson/QuizPageParser.js"
+import {withRouter} from 'react-router-dom';
+import APIHelper from './helpers/APIHelper'
 import {Container, Row, Col, Alert, Button} from 'react-bootstrap'
-import Result from './Result';
+import Result from './quizComps/Result';
 
-
-export function getUserFeedback(correct_ans, ans, feedbacks) {
-    if (!ans) {
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'warning'> 
-            Please select an answer before submitting 
-        </Alert>
-    } else if (correct_ans === ans){
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'success'> 
-            {feedbacks[0]}
-        </Alert>
-    } else {
-        return <Alert 
-            id = "feedback" 
-            className = "mt-5"
-            variant = 'danger'> 
-            {feedbacks[1]}
-        </Alert>
+// Functional component for generating ESX correct user feedback depending on the 
+// User's answer and the correct answer 
+export function getUserFeedback(correct_ans, ans, feedbacks, option_index) {
+    let variant = "";
+    let feedback = "";
+    if (!ans) { // No answer is selected by user
+        feedback = "Please select an answer before submitting";
+        variant = "warning";
+    } else if (correct_ans === ans){ // User selected the correct answer
+        feedback = feedbacks[option_index];
+        variant = "success";
+    } else { // User selected the incorrect answer
+        feedback = feedbacks[option_index];
+        variant = "danger";
     }
+
+    return <Alert 
+            id = "feedback" 
+            className = "mt-5"
+            variant = {variant}> 
+            {feedback}
+        </Alert>
 }
 
 
 export class QuizPage extends React.Component {
     constructor(props) {
         super(props);
-        let parser = new Parser();
-        let data = parser.getInfo();
-        window.info = data;
-        // console.log("length of data", window.info.length);
         this.state = {
             qnum : 0,
             ans: null,
             submitted: false,
             showSubmit: true,
-            numCorrect: 0 
+            numCorrect: 0,
+            data: null 
         };
     }
 
 
-    handleSelect = (ans) => {
+    componentDidMount() {
+        APIHelper(`quiz/${this.props.match.params.quizID}`)
+        .then(homeData => {
+            window.info = homeData["questionsList"];
+            window.lessonId = homeData["lessonId"];
+            window.title = homeData["title"];
+            this.setState({
+                data: homeData 
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    // Function that handles user selecting buttons 
+    handleSelect = (ans, idx) => {
         this.setState({
             qnum: this.state.qnum, 
             ans: ans,
             submitted: false,
             showSubmit: true,
-            numCorrect: this.state.numCorrect
+            numCorrect: this.state.numCorrect,
+            idx: idx
         })
     }
 
-    handleSubmit = (ans) => {
-        
-        if (ans == null) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                numCorrect: this.state.numCorrect
-            })
-        } else  if (ans === this.getAnswer(this.state.qnum)) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                numCorrect: this.state.numCorrect + 1
-            })
-        } else {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: false,
-                numCorrect: this.state.numCorrect
-            })
-        }
+    // Function that handles user submissions
+    handleSubmit = () => {
+        let ans = this.state.ans;
+        let numCorrect = this.state.numCorrect;
+        if (ans === this.getAnswer(this.state.qnum) ) { // User's Answer is correct 
+            numCorrect += 1;
+        } 
+        this.setState({
+            qnum: this.state.qnum, 
+            ans: ans,
+            submitted: true,
+            showSubmit: false,
+            idx: this.state.idx,
+            numCorrect: numCorrect
+        })
     }
 
-    handleContinue =  (ans) => {
-        if (ans == null) {
-            this.setState({
-                qnum: this.state.qnum, 
-                ans: ans,
-                submitted: true,
-                showSubmit: true,
-                numCorrect: this.state.numCorrect
-            })
-        } else  {
-            this.setState({
-                qnum: this.state.qnum + 1, 
-                ans: ans,
-                submitted: true,
-                showSubmit: true,
-                numCorrect: this.state.numCorrect
-            })
+    // Function that handles continue button functionality
+    handleContinue =  () => {
+        let ans = this.state.ans;
+        let q = this.state.qnum; 
+        if (ans) { // if an answer is selected, show next question
+            q += 1;
         }
+        this.setState({
+            qnum: q, 
+            ans: null,
+            submitted: false,
+            showSubmit: true,
+            idx: this.idx,
+            numCorrect: this.state.numCorrect
+        });
     }
 
-    // componentDidMount() {
-
-    // }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.submitted === true) {
-    //         console.log("submission was successful");
-    //         this.setState({
-    //             qnum: this.state.qnum + 1, 
-    //             ans: this.ans,
-    //             submitted : false,
-    //             showSubmit: true
-    //         })
-    //     }
-    // }
-
-
+    // Renders
     render() {
-        if (window.info.length > this.state.qnum) {
+        if (window.info && window.info.length > this.state.qnum) { // Quiz still ongoing and questions are left 
+        // Rendering corrresponding ESX for quiz
         return(
             <Container className = "quiz-page">
                 {/* Top row -- topic + progress bar */}
                 <Row>
-                    <Col sm= {6}> <h2>Quiz Page: {this.getCategory(this.state.qnum)}</h2> </Col>
+                    <Col sm= {6}> <h2>Quiz Page: {this.getCategory()}</h2> </Col>
                     <Col sm = {6}> <Progress id = "quiz-progress-bar" type = "Questions Answered" curr = {this.state.qnum} total = {window.info.length}></Progress> </Col>
                 </Row>
                 <Row>
                     <Col sm = {3}></Col>
-                    <Col sm = {6}><Question 
+                    <Col sm = {6}>
+                        {!this.state.submitted &&
+                        <Question 
                     value = {this.getQuestion(this.state.qnum)} 
                     qnum = {this.state.qnum}
                     onSelect = {this.handleSelect}
-                    // onSubmit = {this.handleSubmit}
                     options = {this.getOptions(this.state.qnum)}
-                    ></Question> </Col>
+                    ></Question>}
+                     </Col>
                 </Row>
                 {this.state.submitted === true &&
                     <Row>
-                        {getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum))}
+                        {
+                    getUserFeedback(this.getAnswer(this.state.qnum), this.state.ans, this.getFeedback(this.state.qnum), this.state.idx)
+                    }
                     </Row>
                 }
-                {/* Bottom row -- submit */}
+                {/* Bottom row -- submit and continue buttons*/}
                 <Row>
                     <Col sm={3}></Col>
                     <Col>
-                        {this.state.showSubmit && 
+                        {this.state.showSubmit && // if user has not already submitted, show submit
                             <Button
                             id="quiz-submit-btn"
                             variant="outline-primary"
                             size="lg"
                             onClick={()=> {
-                                this.handleSubmit(this.state.ans)
+                                this.handleSubmit()
                                 }}
                             >
                             {" "}
                             Submit{" "}
                             </Button>
                         }
-                        {!this.state.showSubmit && 
+                        {!this.state.showSubmit && // if user has submitted show continue option
                         <Button
                             id="quiz-submit-btn"
                             variant="outline-primary"
                             size="lg"
                             onClick={()=> {
                                 this.handleContinue(this.state.ans)
-                                this.setState({
-                                    qnum: this.state.qnum + 1, 
-                                    ans: this.ans,
-                                    submitted : false,
-                                    showSubmit: true,
-                                    numCorrect: this.state.numCorrect
-                                    });
                                 }}
                             >
                             {" "}
@@ -193,76 +173,50 @@ export class QuizPage extends React.Component {
                 
             </Container>
         )
+        } else if (window.info){ // user has reached end of quiz
+            let lessonID = this.getLessonID();
+            return <Result curr = {this.state.numCorrect} total = {window.info.length} lessonID = {lessonID}> </Result>
         } else {
-            return <Result curr = {this.state.numCorrect} total = {window.info.length}> </Result>
+            return (<h1>Loading ... </h1>)
         }
     }
 
     // Fetches the question details for the current topic
     getQuestion (qnum) {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
         return window.info[qnum]["question"];
     }
-
-    getCategory (qnum) {
-        // TODO:  add fecth call  
-        // TODO: add json parser -- SHIVAMS
-        
-        // console.log("topic", window.info[qnum]["question"]);
-        return window.info[qnum]["category"];
+    // Fetches the title name for the current topic
+    getCategory () {
+        return window.title;
     }
 
+    // Fetches the question options list for the current question that is selected
     getOptions (qnum) {
-        return window.info[qnum]["option"];
+        return window.info[qnum]["options"];
     }
 
+    // Fetches the correct answer for the current question that is selected
     getAnswer(qnum) {
-        return window.info[qnum]["answer"];
+        let index = window.info[qnum]["correctAnswer"];
+        return window.info[qnum]["options"][index];
     }
 
+
+    // Fetches the feedback list for the current question that is selected
     getFeedback(qnum) {
-        return window.info[qnum]["feebacks"];
+        return window.info[qnum]["responses"];
+    }
+
+
+    // Function that returns a string for the 
+    // corresponding lessonID to the quiz page 
+    // that we are currently on.
+    getLessonID() {
+        return window.lessonId;
     }
 }
 
-export default QuizPage;
+// wrap export in withRouter so it can access React url params
+export default withRouter(QuizPage);
 
 
-
-// // TODO: Need to pass state to this and add buttons accordingly 
-// function showButton(showSubmit) {
-//     if(showSubmit) {
-//         return <Button
-//         id="quiz-submit-btn"
-//         variant="outline-primary"
-//         size="lg"
-//         onClick={()=> {
-//             this.handleSubmit(this.state.ans)
-//             this.setState({
-//                 ans: null
-//             });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     } else  {
-//         return <Button
-//             id="quiz-submit-btn"
-//             variant="outline-primary"
-//             size="lg"
-//             onClick={()=> {
-//                 this.handleSubmit(this.state.ans)
-//                 this.setState({
-//                     ans: null
-//                 });
-//             }}
-//         >
-//         {" "}
-//         Submit{" "}
-//         </Button>
-//     }
-// }

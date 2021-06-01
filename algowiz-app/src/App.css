@@ -64,7 +64,7 @@ color: rgb(181, 213, 255);
 }
 
 .gutter {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--purp);
 }
 
 #introFont {

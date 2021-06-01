@@ -16,18 +16,55 @@ public class HomepageTopics {
             strategy = GenerationType.SEQUENCE,
             generator = "home_topic_sequence"
     )
+    // Unique Id for each topic
     private Long id;
+
+    // Topic name
     private String topic;
+
+    // quizId for the algorithm
+    private String quizId;
+
+    // lessonId for the algorithm
+    private String lessonId;
+
+    // Algorithm name of the main topic
     private String algorithmName;
+
+    // Homepage content for the algorithm
     private String homepageDescription;
+
+    // Image link of the algorithm
     private String imageURL;
 
-    public HomepageTopics(String topic, String algorithmName, String homepageDescription, String imageURL) {
+    public HomepageTopics(){}
+
+
+    /**
+     * Create a homepage object that contains the given fields
+     * @param topic                 algorithm category
+     * @param quizId                unique quiz id for the algorithm
+     * @param lessonId              unique lesson id for the algorithm
+     * @param algorithmName         name of the algorithm
+     * @param homepageDescription   a short description of the algorithm
+     * @param imageURL              an image url for the algorithm
+     */
+
+    public HomepageTopics(String topic,
+                          String quizId,
+                          String lessonId,
+                          String algorithmName,
+                          String homepageDescription,
+                          String imageURL) {
+
         this.topic = topic;
+        this.quizId = quizId;
+        this.lessonId = lessonId;
         this.algorithmName = algorithmName;
         this.homepageDescription = homepageDescription;
         this.imageURL = imageURL;
     }
+
     public Long getId() {
         return id;
     }
@@ -42,6 +79,22 @@ public class HomepageTopics {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    public String getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(String quizId) {
+        this.quizId = quizId;
+    }
+
+    public String getLessonId() {
+        return lessonId;
+    }
+
+    public void setLessonId(String lessonId) {
+        this.lessonId = lessonId;
     }
 
     public String getAlgorithmName() {
@@ -68,18 +121,16 @@ public class HomepageTopics {
         this.imageURL = imageURL;
     }
 
-
     @Override
     public String toString() {
-        return "HomePageTopics{" +
+        return "HomepageTopics{" +
                 "id=" + id +
                 ", topic='" + topic + '\'' +
+                ", quizId='" + quizId + '\'' +
+                ", lessonId='" + lessonId + '\'' +
                 ", algorithmName='" + algorithmName + '\'' +
                 ", homepageDescription='" + homepageDescription + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 '}';
     }
-
-    public HomepageTopics(){}
-
 }

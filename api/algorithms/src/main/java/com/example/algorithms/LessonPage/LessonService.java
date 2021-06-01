@@ -1,11 +1,13 @@
 package com.example.algorithms.LessonPage;
 
-import com.example.algorithms.quiz.Quiz;
-import com.example.algorithms.quiz.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+/*
+This class handles business logic; use to store, retrieve, update and
+delete lesson data from the lesson's repository.
+ */
 @Service
 public class LessonService {
     private final LessonRepository lessonRepository;
@@ -15,7 +17,8 @@ public class LessonService {
         this.lessonRepository = lessonRepository;
     }
 
-    public List<Lesson> getLesson() {
-        return lessonRepository.findAll();
+    // Get a list of Lessons that correspond to a given lessonID
+    public List<Lesson> getLesson(String lessonID) {
+        return lessonRepository.findAllByLessonId(lessonID);
     }
 }

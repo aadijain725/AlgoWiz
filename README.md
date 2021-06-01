@@ -3,6 +3,8 @@
 ## Product description
 Algowiz is a highly interactive web-based application aimed at spreading the love and knowledge we have for computer science. Initially, it will act as primarily an academic aid to students and teachers alike. It will cover a wide array of topics ranging from sorting and searching algorithms to exploring graphs. The experience will include a separate section for each of the various topics. Each of these sections will have a study guide, a quiz, and a visualizer to help visualize the concepts.
 
+## [Developer Guide](/documentation) and [User Guide](/documentation) 
+
 ## Latest Deployment
 The latest AlgoWiz version is live at
 [aadijain725.github.io/AlgoWiz/](https://aadijain725.github.io/AlgoWiz/)
@@ -28,12 +30,7 @@ cd algowiz-app
 ```
 npm install
 ```
-```
-npm install react-bootstrap
-```
-```
-npm install react-dom
-```
+
 This readies the system to be ran and tested by installing all dependencies.
 
 3. Start the Development Server:
@@ -41,7 +38,7 @@ This readies the system to be ran and tested by installing all dependencies.
 npm start
 ```
 
-The above command runs the app locally on the users computer.
+The above command runs the app locally on the user's computer.
 
 If it does not load automatically open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -69,9 +66,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Setting up backend Spring boot
-- Clone from AlgoWiz repository     
-```git clone https://github.com/aadijain725/AlgoWiz.git```  
-- Set up the PostgresSQL Database account with provided instructions below  
+- Set up PostgreSQL Database
+- Install latest Java
+- cd into AlgoWiz/api/algorithms
+- Run Spring Boot `./mvnw spring-boot:run` on a bash based shell. 
 
 ### Configuring the PostgreSQL Database
 
@@ -79,25 +77,24 @@ It correctly bundles React in production mode and optimizes the build for the be
 - Go to the website below and download the appropriate installer. https://www.enterprisedb.com/downloads/postgres-postgresql-downloads?quicktabs_postgres_plus_dwnlds=1 
 - During installation, set a password for the default superuser “postgres”.
 
-#### 2. Update application.properties file
+#### 2. Update application.properties file in the /api/algorithms/src/main/resources
 - Change the value for spring.datasource.username to `postgres`(default value) and  spring.datasource.password to the one you set up during installation.
 - If you changed the port number during installation, update it in spring.datasource.url, else leave it as it is.
+- When pushing to public repo, remove the username and password for security purpose. 
 
 #### 3. Creating the database
-- Open postgresql shell and login as “postgres” user.  
-- Type in `CREATE DATABASE algowiz;`  
-- Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`  
-
+- Open SQL shell from the start menu and login as “postgres” user.
+- Type in `CREATE DATABASE algowiz;`
+- Then `GRANT ALL PRIVILEGES ON DATABASE "algowiz" TO postgres;`
 We have now configured the database!  
 
-### Install Java 11 and latest version of Maven
+### Install Java 11 or latest Java and latest version of Maven
 
 ### Run Spring Boot in command line
-1. Cd into AlgoWiz/api/algorithms  
-```cd AlgoWiz/api/algorithms```  
+1.  cd into AlgoWiz/api/algorithms
 
-2. Run the following command in the terminal  
-        `./mvnw spring-boot:run` on a bash based shell.  
+2. Run the following command in a terminal  
+     `./mvnw spring-boot:run` on a bash based shell.
    
    For Mac user might encounter permission denied when running maven command  
         do `chmod a+x mvnmw` to grant permission
@@ -119,7 +116,6 @@ We have now configured the database!
    ```$ curl localhost:8080/api/v1/lesson```  
    
    ```$ curl localhost:8080/api/v1/quiz```  
-
 
 ## Working Use Case:
 
@@ -195,6 +191,8 @@ integrate more content and features.
 3. **Online Leaderboard** - Public competition to encourage students to explore the site and attempt more lessons and quizes. 
 
 ## Directory Map
+
+**[.github/workflows](/.github/workflows):** CI/Workflows
 
 **[algowiz-app](/algowiz-app):** Frontend code
 
