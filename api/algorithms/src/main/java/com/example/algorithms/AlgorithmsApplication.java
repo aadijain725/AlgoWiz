@@ -32,7 +32,7 @@ public class AlgorithmsApplication {
 				registry.addMapping("/**")
 						// Enable this when run locally
 						// TODO: this may need to change when Live
-						.allowedOrigins("http://localhost:3000")
+						.allowedOrigins("http://localhost:3000", "https://aadijain725.github.io")
 						// Needed for REACT fetch requests CORS headers
 						.allowCredentials(true);
 			}
