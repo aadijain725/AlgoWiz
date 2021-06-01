@@ -13,7 +13,7 @@ export class HomePageIntroduction extends React.Component {
 
   styleintro(description) {
     return (
-      <p id="introFont" class="text-right" style={{ "font-size": "1vw" }}>
+      <p id="introFont" class="text-right" style={{ "font-size": "1.7vw" }}>
         {" "}
         {description}
       </p>
