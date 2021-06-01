@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimateSharedLayout } from "framer-motion";
 import Rect  from './VizSelectionRect';
-import VizCode from './VizCode';
+import VizSelectionSortCode from './VizSelectionSortCode';
 
 export class VizSelectionSort extends React.Component {
 	constructor(props) {
@@ -166,7 +166,7 @@ export class VizSelectionSort extends React.Component {
 						</div>
 					</AnimateSharedLayout>
 				}</div>
-				<div style={{width:'40%'}}><VizCode step={this.state.step}/></div>				
+				<div style={{width:'40%'}}><VizSelectionSortCode step={this.state.step}/></div>				
 			</div>
 		);
 	}
