@@ -23,19 +23,19 @@ public class AlgorithmsApplication {
 	}
 
 	// This bean allows for CORS requests
-	// @Bean
-	// public WebMvcConfigurer corsConfigurer() {
-	// 	return new WebMvcConfigurerAdapter() {
-	// 		@Override
-	// 		public void addCorsMappings(CorsRegistry registry) {
-	// 			// tell it to allow cors for every route
-	// 			registry.addMapping("/**")
-	// 					// Enable this when run locally
-	// 					// TODO: this may need to change when Live
-	// 					.allowedOrigins("http://localhost:3000", "https://aadijain725.github.io")
-	// 					// Needed for REACT fetch requests CORS headers
-	// 					.allowCredentials(true);
-	// 		}
-	// 	};
-	// }
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurerAdapter() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				// tell it to allow cors for every route
+				registry.addMapping("/**")
+						// Enable this when run locally
+						// TODO: this may need to change when Live
+						.allowedOrigins("http://localhost:3000", "https://aadijain725.github.io")
+						// Needed for REACT fetch requests CORS headers
+						.allowCredentials(true);
+			}
+		};
+	}
 }
