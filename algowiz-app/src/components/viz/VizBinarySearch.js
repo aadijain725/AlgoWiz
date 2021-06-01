@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
-import VizCode from './VizCode';
+import VizBinarySearchCode from "./VizBinarySearchCode";
 
 const FILTERED_COLOR = "rgba(0,0,0,0.4)";
 const TARGET_COLOR = "rgba(255, 0, 0,0.4)";
@@ -319,7 +319,7 @@ class VizBinarySearch extends React.Component {
             ></Bar>
           </Col>
           <Col>
-            <VizCode 
+            <VizBinarySearchCode 
             step={this.state.step} 
             start = {this.state.points[0]} 
             mid = {this.state.points[1]} 
