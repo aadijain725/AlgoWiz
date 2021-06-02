@@ -7,31 +7,16 @@ import {
   Col,
   Container
 } from "react-bootstrap";
-
 import HomePageTab from "./HomePageTab";
 
+/**
+ * Homepage topics component. Renders a menu based on data received 
+ * in this.props.data, this.props.topics
+ */
 export class HomePageTopics extends React.Component {
   render() {
-    /* TODO: 1. These should not be hardcoded, they should be built from the built 
-     * from the fetched JSON data
-     * 2. avoid inline styles
-     */
-
-
-  //   <Tab eventKey="Search" title="Search" key = "a" >
-  //   <HomePageTab topic="Search" />
-  // </Tab>
-
-  // <Tab eventKey="Graph" title="Graph" key = "b">
-  //   <HomePageTab topic="Graph" /> 
-  // </Tab>
-
-  // <Tab eventKey="Sorting" title="Sorting" key = "c">
-  //   <HomePageTab topic="Sorting" />
-  // </Tab>
- 
-    return (
-      
+    // TODO: avoid inline styles
+    return (   
       <div>
         <Container fluid>
           <Row>
@@ -51,7 +36,12 @@ export class HomePageTopics extends React.Component {
     );
   }
   
-  // return the menu for topics
+  /**
+   * Given data and topics, build the menu
+   * @param {*} data 
+   * @param {*} topics 
+   * @returns JSX menu 
+   */
   getMenuForTopics(data, topics) {
     let menu =[]
     
