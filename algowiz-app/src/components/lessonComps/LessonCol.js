@@ -1,9 +1,12 @@
 import React from 'react';
 import {Col, Image} from 'react-bootstrap';
-
+/**
+ * Column Component. is passed props.content from parent row component
+ */
 export class LessonCol extends React.Component {
   render() {
-		// conditionally render different columns based on json contents
+		// conditionally render different html elements based on json contents
+		// TODO: use a better system to build html elements from json?
 		const data = this.props.content;
 		let cont;
 		if (data.type === "img") {

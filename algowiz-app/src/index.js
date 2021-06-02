@@ -7,10 +7,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
-
 /**
- * This is the Root entry point of the app.
+ * This is the Root entry point of the app. Don't touch this...
+ * Important code is located in App.js 
  */
 ReactDOM.render(
   <React.StrictMode>

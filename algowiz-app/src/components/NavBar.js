@@ -3,9 +3,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Nav, Navbar} from 'react-bootstrap';
 
+/**
+ * Navbar component, for now simply renders AlgoWiz text and link to 
+ * application root
+ */
 export class NavBar extends React.Component {
     render() {
-        // Render a nav component with link to home page for now
         return(  
             <Navbar id='nav' className='px-5'>
                 <Nav.Item><Link to='/' id="navLogo">
