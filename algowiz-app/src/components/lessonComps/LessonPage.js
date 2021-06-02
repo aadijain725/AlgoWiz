@@ -7,7 +7,7 @@ import LessonRow from './LessonRow';
 import VizRoot from '../viz/VizRoot'
 
 
-
+/** Root component for a lesson page */
 export class LessonPage extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +25,6 @@ export class LessonPage extends React.Component {
         const url = `lesson/${this.props.match.params.lessonID}`
         APIHelper(url)
         .then(lessonData => {
-            console.log(lessonData)
             this.setState({ lessonData })
         })
         .catch(err => {
@@ -42,6 +41,7 @@ export class LessonPage extends React.Component {
             content = 
             <p>Loading...</p>;
         } else {
+            // Build page based on data from api request
             content = 
             <Container fluid id='lessonContent'>
                 <Row><Col>
@@ -49,7 +49,8 @@ export class LessonPage extends React.Component {
                     <p>{data.description}</p>
                 </Col></Row>
                 {data.rows.map((row, i) => {
-                    // create a row for each element in array and pass them params
+                    // create a row for each element in data.rows array
+                    // and pass them column data to render
                     return <LessonRow key={i} cols={row.cols}/>
                 })}
                 <Row className='justify-content-md-center'><VizRoot id={data.lessonID}/></Row>

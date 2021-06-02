@@ -2,6 +2,9 @@ import React from 'react';
 import {Row} from 'react-bootstrap';
 import LessonCol from './LessonCol';
 
+/**
+ * Row component, receives props.cols data from Lesson page 
+ */
 export class LessonRow extends React.Component {
 	render() {
 		// Render a row and create a column for each, forward the params
