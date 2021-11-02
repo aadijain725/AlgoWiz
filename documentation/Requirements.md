@@ -188,15 +188,15 @@ take her back to the algorithm page.
 > * The contents are missing some algorithm concepts
 
 (Estevan) 
->**Actors:** Ben is a college tutor assisting intro to programming students remotely. 
+>**Actors:** Ben is a college tutor assisting intro to programming students remotely.   
 **Triggers:** Ben is looking for a way to help students better understand 
-sorting algorithms for an upcoming exam.  
+sorting algorithms for an upcoming exam.    
 **Preconditions:** Ben is already familiar with AlgoWiz and searches for the 
-correct sorting algorithm.  
-**Postconditions:** Ben is able to help the student better understand the concept. 
-**Steps:** 
->1. Ben searches for and finds the correct algorithm.
->2. He skips the quiz section.
+correct sorting algorithm.    
+**Postconditions:** Ben is able to help the student better understand the concept.   
+**Steps:**   
+>1. Ben searches for and finds the correct algorithm.  
+>2. He skips the quiz section.  
 >3. He shares his screen as he use the visualizer to walk the student through 
 the algorithm.   
 >
